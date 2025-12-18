@@ -1,0 +1,17 @@
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\App.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe.config
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\bin\Debug\PetCare.pdb
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.g.resources
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe.config

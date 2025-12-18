@@ -1,0 +1,64 @@
+﻿<Page x:Class="PetCareApp.Views.LoginView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Login PetCare">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#E3F2FD" Offset="0.0"/>
+                <GradientStop Color="#BBDEFB" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Border Background="White" Width="400" Height="450" CornerRadius="20" Padding="30">
+            <Border.Effect>
+                <DropShadowEffect Color="#1C3144" BlurRadius="30" ShadowDepth="10" Opacity="0.2"/>
+            </Border.Effect>
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="🐾 PetCare" FontSize="32" FontWeight="Bold" 
+                           Foreground="#1565C0" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Bun venit înapoi!" FontSize="16" Foreground="Gray" 
+                           HorizontalAlignment="Center" Margin="0,0,0,40"/>
+
+                <TextBlock Text="Utilizator / Email" FontWeight="SemiBold" Foreground="#455A64" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtUser" Height="40" Padding="10,0" FontSize="14" 
+                         VerticalContentAlignment="Center" BorderBrush="#CFD8DC" BorderThickness="1">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Text="Parolă" FontWeight="SemiBold" Foreground="#455A64" Margin="0,20,0,5"/>
+                <PasswordBox x:Name="txtPass" Height="40" Padding="10,0" FontSize="14" 
+                             VerticalContentAlignment="Center" BorderBrush="#CFD8DC" BorderThickness="1">
+                    <PasswordBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </PasswordBox.Resources>
+                </PasswordBox>
+
+                <Button Content="AUTENTIFICARE" Height="50" Margin="0,40,0,0"
+                        Background="#1976D2" Foreground="White" FontWeight="Bold" FontSize="16" 
+                        Cursor="Hand" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <TextBlock Text="Nu ai cont? Creează unul." Foreground="#1976D2" 
+                           HorizontalAlignment="Center" Margin="0,20,0,0" Cursor="Hand" TextDecorations="Underline"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
