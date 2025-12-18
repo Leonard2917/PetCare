@@ -1,0 +1,162 @@
+﻿<Page x:Class="PetCare.Views.DoctorDashboardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Panou Medic">
+
+    <Grid Background="#F5F7FA" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Bună ziua, Dr. Popescu!" FontSize="28" FontWeight="Bold" Foreground="#2C3E50"/>
+            <TextBlock Text="Ai o zi aglomerată azi. Iată situația curentă:" Foreground="Gray" Margin="0,5,0,0" FontSize="16"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="15" Margin="0,0,15,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="10" Opacity="0.05"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="📅 Programări Azi" Foreground="Gray" FontWeight="Bold"/>
+                    <TextBlock Text="12" FontSize="32" FontWeight="Bold" Foreground="#2196F3"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="15" Margin="0,0,15,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="10" Opacity="0.05"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="⏳ În Așteptare" Foreground="Gray" FontWeight="Bold"/>
+                    <TextBlock Text="4" FontSize="32" FontWeight="Bold" Foreground="#FF9800"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="2" Background="White" CornerRadius="10" Padding="15" Margin="0,0,15,0">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="10" Opacity="0.05"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="✅ Finalizate" Foreground="Gray" FontWeight="Bold"/>
+                    <TextBlock Text="5" FontSize="32" FontWeight="Bold" Foreground="#4CAF50"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="3" Background="#FFEBEE" CornerRadius="10" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="🚨 Urgențe" Foreground="#C62828" FontWeight="Bold"/>
+                    <TextBlock Text="1" FontSize="32" FontWeight="Bold" Foreground="#C62828"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="White" CornerRadius="10" Margin="0,0,20,0" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="10" Opacity="0.05"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel LastChildFill="False" Margin="0,0,0,15">
+                        <TextBlock Text="Agenda Pacienți" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" VerticalAlignment="Center"/>
+                        <TextBlock Text="18 Dec 2024" DockPanel.Dock="Right" Foreground="Gray" VerticalAlignment="Center"/>
+                    </DockPanel>
+
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              RowHeight="50" BorderThickness="0" GridLinesVisibility="Horizontal" Background="White">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ora" Binding="{Binding Ora}" Width="70" FontWeight="Bold"/>
+
+                            <DataGridTemplateColumn Header="Stare" Width="60">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Ellipse Width="12" Height="12" Fill="{Binding CuloareStatus}" ToolTip="{Binding StatusText}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Pacient" Binding="{Binding Pacient}" Width="150" FontWeight="SemiBold"/>
+                            <DataGridTextColumn Header="Specie" Binding="{Binding Specie}" Width="100"/>
+                            <DataGridTextColumn Header="Motiv Vizită" Binding="{Binding Motiv}" Width="*"/>
+
+                            <DataGridTemplateColumn Header="Acțiune" Width="140">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="▶️ Consultă" Background="#2196F3" Foreground="White" 
+                                                Height="30" Width="100" BorderThickness="0" Cursor="Hand"
+                                                ToolTip="Deschide pagina de consultație pentru acest pacient">
+                                            <Button.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="15"/>
+                                                </Style>
+                                            </Button.Resources>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                        <x:Array Type="{x:Type sys:Object}">
+                            <x:Array Type="{x:Type sys:String}"/>
+                        </x:Array>
+                    </DataGrid>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Column="1">
+
+                <Border Background="#FFF3E0" CornerRadius="10" Padding="15" Margin="0,0,0,20" BorderBrush="#FFCC80" BorderThickness="1">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="⚠️ Atenție Stoc" FontWeight="Bold" Foreground="#EF6C00" FontSize="16"/>
+                        </StackPanel>
+                        <TextBlock Text="• Vaccin Antirabic (Doar 2 rămase!)" Foreground="#E65100" TextWrapping="Wrap" Margin="0,0,0,5"/>
+                        <TextBlock Text="• Seringi 2ml (Stoc epuizat)" Foreground="#D84315" TextWrapping="Wrap"/>
+
+                        <Button Content="Comandă Acum" Background="Transparent" Foreground="#EF6C00" 
+                                HorizontalAlignment="Right" Margin="0,10,0,0" FontWeight="Bold" BorderThickness="0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" CornerRadius="10" Padding="15">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="10" Opacity="0.05"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="📝 De completat" FontWeight="Bold" Margin="0,0,0,15" FontSize="16"/>
+
+                        <CheckBox Content="Raport final - Rex" Margin="0,0,0,10" IsChecked="False"/>
+                        <CheckBox Content="Sunat proprietar Luna" Margin="0,0,0,10" IsChecked="True" Opacity="0.5"/>
+                        <CheckBox Content="Aprobare concediu" Margin="0,0,0,10"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -55,6 +55,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\MyPetsView.xaml.cs">
+      <DependentUpon>MyPetsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PetProfileView.xaml.cs">
+      <DependentUpon>PetProfileView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AdminApprovalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminUsersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConsultationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DoctorDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +97,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\AdminApprovalsView.xaml.cs">
+      <DependentUpon>AdminApprovalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminStatsView.xaml.cs">
+      <DependentUpon>AdminStatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminUsersView.xaml.cs">
+      <DependentUpon>AdminUsersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultationView.xaml.cs">
+      <DependentUpon>ConsultationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoctorDashboardView.xaml.cs">
+      <DependentUpon>DoctorDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryView.xaml.cs">
+      <DependentUpon>InventoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -74,6 +122,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MyPetsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PetProfileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

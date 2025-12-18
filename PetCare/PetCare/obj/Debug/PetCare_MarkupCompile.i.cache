@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\App.xaml
-21544739511
+1076847147
 
-72101112549
+151141501541
 13-1310406943
-Views\LoginView.xaml;Views\MainWindow.xaml;
+Views\AdminApprovalsView.xaml;Views\AdminStatsView.xaml;Views\AdminUsersView.xaml;Views\ConsultationView.xaml;Views\DoctorDashboardView.xaml;Views\InventoryView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;Views\MyPetsView.xaml;Views\PetProfileView.xaml;
 
 True
 

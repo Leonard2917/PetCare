@@ -1,0 +1,123 @@
+﻿<Page x:Class="PetCare.Views.InventoryView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Gestiune Inventar">
+
+    <Grid Background="#F5F7FA" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Inventar &amp; Stocuri" FontSize="24" FontWeight="Bold" Foreground="#2C3E50"/>
+                <TextBlock Text="Gestionează medicamentele și consumabilele clinicii." Foreground="Gray" Margin="0,5,0,0"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                    <TextBox Width="250" Height="35" Padding="10,0" VerticalContentAlignment="Center" 
+                             Text="Caută produs..." BorderBrush="#CFD8DC">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <ComboBox Width="180" Height="35" Margin="10,0,0,0" VerticalContentAlignment="Center" SelectedIndex="0">
+                        <ComboBoxItem Content="Toate Categoriile"/>
+                        <ComboBoxItem Content="Medicamente (Vaccinuri)"/>
+                        <ComboBoxItem Content="Consumabile (Seringi, Fașe)"/>
+                        <ComboBoxItem Content="Hrană / Dietă"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Grid.Column="1" Content="+ Produs Nou" Background="#1976D2" Foreground="White" 
+                    Padding="20,0" Height="40" FontWeight="Bold" BorderThickness="0" VerticalAlignment="Bottom">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+                  BorderBrush="#E0E0E0" HeadersVisibility="Column" RowHeight="55" Background="White">
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#ECEFF1"/>
+                    <Setter Property="Padding" Value="15,10"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Foreground" Value="#37474F"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Denumire Produs" Width="250" Binding="{Binding Nume}" FontWeight="SemiBold"/>
+                <DataGridTextColumn Header="Categorie" Width="150" Binding="{Binding Categorie}"/>
+
+                <DataGridTemplateColumn Header="Stoc Actual" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border Background="#E8F5E9" CornerRadius="15" Width="60" Height="30">
+                                <TextBlock Text="{Binding Stoc}" FontWeight="Bold" Foreground="#2E7D32" 
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Ajustare Rapidă" Width="180">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Button Content="➖" Width="40" Height="30" Background="#FFEBEE" Foreground="#C62828" 
+                                        FontWeight="Bold" BorderThickness="0" Margin="0,0,5,0" ToolTip="Scade Stoc (Consum)">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+
+                                <TextBlock Text="modifică" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5,0"/>
+
+                                <Button Content="➕" Width="40" Height="30" Background="#E3F2FD" Foreground="#1565C0" 
+                                        FontWeight="Bold" BorderThickness="0" Margin="5,0,0,0" ToolTip="Adaugă Stoc (Aprovizionare)">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Preț" Width="100" Binding="{Binding Pret}"/>
+                <DataGridTextColumn Header="Expiră la" Width="150" Binding="{Binding Expirare}"/>
+            </DataGrid.Columns>
+
+            <x:Array Type="{x:Type sys:String}">
+                <sys:String>Rand 1</sys:String>
+                <sys:String>Rand 2</sys:String>
+                <sys:String>Rand 3</sys:String>
+                <sys:String>Rand 4</sys:String>
+            </x:Array>
+        </DataGrid>
+    </Grid>
+</Page>
