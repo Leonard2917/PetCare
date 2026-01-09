@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\
 PetCare
 none
 false
 DEBUG;TRACE
-C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\App.xaml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\App.xaml
 11-1609854184
 21825606425
 73809683341
-19263048509
+191462642673
 Views\AdminDashboardView.xaml;Views\IssueMedicalRecordView.xaml;Views\ViewMedicalRecordView.xaml;Views\BookAppointmentView.xaml;Views\LoginView.xaml;Views\RegisterView.xaml;Views\MedicDashboardView.xaml;Views\OwnerDashboardView.xaml;Views\ChatView.xaml;Views\StatisticsView.xaml;Views\MainWindow.xaml;
 
-True
+False
 

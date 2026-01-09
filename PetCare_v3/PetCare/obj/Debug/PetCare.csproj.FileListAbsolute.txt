@@ -183,3 +183,46 @@ D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.Core
 D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.CopyComplete
 D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.exe
 D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\PetCare.exe.config
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\PetCare.exe
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\PetCare.pdb
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\EntityFramework.dll
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\EntityFramework.xml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.exe.config
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\IssueMedicalRecordView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\ViewMedicalRecordView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\BookAppointmentView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\ChatView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\StatisticsView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\MainWindow.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\IssueMedicalRecordView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\ViewMedicalRecordView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\BookAppointmentView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\LoginView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\RegisterView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\MedicDashboardView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\ChatView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\StatisticsView.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\App.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare_Content.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare_MarkupCompile.lref
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\LoginView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\RegisterView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\MedicDashboardView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\Views\OwnerDashboardView.baml
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.g.resources
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.csproj.Up2Date
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.exe
+C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare_v3\PetCare\obj\Debug\PetCare.pdb

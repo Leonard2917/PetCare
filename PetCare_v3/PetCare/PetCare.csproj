@@ -290,6 +290,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\chat_background.jpg" />
     <Content Include="PetCareDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PetCareDataModel.edmx</DependentUpon>

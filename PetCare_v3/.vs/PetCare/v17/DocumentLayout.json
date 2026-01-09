@@ -1,29 +1,73 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\",
+  "WorkspaceRootPath": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\views\\chatview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\chatview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\viewmodels\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\viewmodels\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\views\\chatview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\chatview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\views\\issuemedicalrecordview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\issuemedicalrecordview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\petcare\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\petcare\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare\\petcare\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\views\\bookappointmentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\bookappointmentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\petcare\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\models\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\models\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\petcaredatamodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\petcaredatamodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\models\\animalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\models\\animalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\models\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\models\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\viewmodels\\admindashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\viewmodels\\admindashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|c:\\users\\leo\\desktop\\siteflori\\petcare\\petcare_v3\\petcare\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\petcare\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\petcare\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7C95DBC8-05C3-4A2F-A09F-94159820D18C}|PetCare\\PetCare.csproj|solutionrelative:petcare\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,24 +90,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\LoginView.xaml.cs",
-              "RelativeDocumentMoniker": "PetCare\\Views\\LoginView.xaml.cs",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\LoginView.xaml.cs",
-              "RelativeToolTip": "PetCare\\Views\\LoginView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T10:48:03.398Z",
+              "DocumentIndex": 6,
+              "Title": "BookAppointmentView.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\BookAppointmentView.xaml",
+              "RelativeDocumentMoniker": "PetCare\\Views\\BookAppointmentView.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\BookAppointmentView.xaml",
+              "RelativeToolTip": "PetCare\\Views\\BookAppointmentView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-09T09:18:02.712Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\App.config",
+              "RelativeDocumentMoniker": "PetCare\\App.config",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\App.config",
+              "RelativeToolTip": "PetCare\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAADtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-12-18T10:54:08.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "LoginView.xaml",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\LoginView.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\LoginView.xaml",
               "RelativeDocumentMoniker": "PetCare\\Views\\LoginView.xaml",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\LoginView.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\LoginView.xaml",
               "RelativeToolTip": "PetCare\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-18T10:46:19.604Z",
@@ -72,10 +128,60 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ChatView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\ChatView.xaml.cs",
+              "RelativeDocumentMoniker": "PetCare\\Views\\ChatView.xaml.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\ChatView.xaml.cs",
+              "RelativeToolTip": "PetCare\\Views\\ChatView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:30:50.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IssueMedicalRecordView.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\IssueMedicalRecordView.xaml",
+              "RelativeDocumentMoniker": "PetCare\\Views\\IssueMedicalRecordView.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\IssueMedicalRecordView.xaml",
+              "RelativeToolTip": "PetCare\\Views\\IssueMedicalRecordView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-09T09:18:23.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatView.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\ChatView.xaml",
+              "RelativeDocumentMoniker": "PetCare\\Views\\ChatView.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\ChatView.xaml",
+              "RelativeToolTip": "PetCare\\Views\\ChatView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-09T08:29:39.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\ChatViewModel.cs",
+              "RelativeDocumentMoniker": "PetCare\\ViewModels\\ChatViewModel.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\ChatViewModel.cs",
+              "RelativeToolTip": "PetCare\\ViewModels\\ChatViewModel.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowDYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:29:19.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\App.xaml",
               "RelativeDocumentMoniker": "PetCare\\App.xaml",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\App.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\App.xaml",
               "RelativeToolTip": "PetCare\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-18T10:44:59.333Z",
@@ -83,11 +189,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 11,
+              "Title": "AnimalModel.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\AnimalModel.cs",
+              "RelativeDocumentMoniker": "PetCare\\Models\\AnimalModel.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\AnimalModel.cs",
+              "RelativeToolTip": "PetCare\\Models\\AnimalModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:28:25.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\ChatService.cs",
+              "RelativeDocumentMoniker": "PetCare\\Models\\ChatService.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\ChatService.cs",
+              "RelativeToolTip": "PetCare\\Models\\ChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:28:43.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PetCareDataModel.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\PetCareDataModel.edmx",
+              "RelativeDocumentMoniker": "PetCare\\PetCareDataModel.edmx",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\PetCareDataModel.edmx [Diagram1]",
+              "RelativeToolTip": "PetCare\\PetCareDataModel.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2026-01-09T08:34:23.786Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "PetCare\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "PetCare\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAswEkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:35:42.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "PetCare\\Models\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Models\\AuthenticationService.cs",
+              "RelativeToolTip": "PetCare\\Models\\AuthenticationService.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:35:22.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminDashboardViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\AdminDashboardViewModel.cs",
+              "RelativeDocumentMoniker": "PetCare\\ViewModels\\AdminDashboardViewModel.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\ViewModels\\AdminDashboardViewModel.cs",
+              "RelativeToolTip": "PetCare\\ViewModels\\AdminDashboardViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T08:28:13.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "PetCare\\Views\\LoginView.xaml.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\LoginView.xaml.cs",
+              "RelativeToolTip": "PetCare\\Views\\LoginView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:48:03.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "PetCare\\Views\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\MainWindow.xaml",
               "RelativeToolTip": "PetCare\\Views\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-18T10:41:39.089Z",
@@ -95,29 +290,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\App.config",
-              "RelativeDocumentMoniker": "PetCare\\App.config",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\App.config",
-              "RelativeToolTip": "PetCare\\App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-12-18T10:54:08.561Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 15,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PetCare\\Views\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare\\PetCare\\Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Leo\\Desktop\\SiteFlori\\PetCare\\PetCare_v3\\PetCare\\Views\\MainWindow.xaml.cs",
               "RelativeToolTip": "PetCare\\Views\\MainWindow.xaml.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAkwBgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T10:41:38.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T10:41:38.313Z"
             }
           ]
         }
