@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PetCareModelStoreContainer" CdmEntityContainer="PetCareEntities">
+    <EntitySetMapping Name="Administratoris">
+      <EntityTypeMapping TypeName="PetCareModel.Administratori">
+        <MappingFragment StoreEntitySet="Administratori">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Animales">
+      <EntityTypeMapping TypeName="PetCareModel.Animale">
+        <MappingFragment StoreEntitySet="Animale">
+          <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+          <ScalarProperty Name="ProprietarID" ColumnName="ProprietarID" />
+          <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="DataNasterii" ColumnName="DataNasterii" />
+          <ScalarProperty Name="Microcip" ColumnName="Microcip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinicis">
+      <EntityTypeMapping TypeName="PetCareModel.Clinici">
+        <MappingFragment StoreEntitySet="Clinici">
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetaliiFisa_Materiale">
+      <EntityTypeMapping TypeName="PetCareModel.DetaliiFisa_Materiale">
+        <MappingFragment StoreEntitySet="DetaliiFisa_Materiale">
+          <ScalarProperty Name="DetaliuID" ColumnName="DetaliuID" />
+          <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+          <ScalarProperty Name="StocID" ColumnName="StocID" />
+          <ScalarProperty Name="CantitateConsumata" ColumnName="CantitateConsumata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetaliiFisa_Servicii">
+      <EntityTypeMapping TypeName="PetCareModel.DetaliiFisa_Servicii">
+        <MappingFragment StoreEntitySet="DetaliiFisa_Servicii">
+          <ScalarProperty Name="DetaliuID" ColumnName="DetaliuID" />
+          <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+          <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+          <ScalarProperty Name="PretAplicat" ColumnName="PretAplicat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FiseMedicales">
+      <EntityTypeMapping TypeName="PetCareModel.FiseMedicale">
+        <MappingFragment StoreEntitySet="FiseMedicale">
+          <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+          <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+          <ScalarProperty Name="Diagnostic" ColumnName="Diagnostic" />
+          <ScalarProperty Name="Tratament" ColumnName="Tratament" />
+          <ScalarProperty Name="DataCrearii" ColumnName="DataCrearii" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicis">
+      <EntityTypeMapping TypeName="PetCareModel.Medici">
+        <MappingFragment StoreEntitySet="Medici">
+          <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="NrParafa" ColumnName="NrParafa" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrarMedicis">
+      <EntityTypeMapping TypeName="PetCareModel.OrarMedici">
+        <MappingFragment StoreEntitySet="OrarMedici">
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="OrarID" ColumnName="OrarID" />
+          <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+          <ScalarProperty Name="ZiSaptamana" ColumnName="ZiSaptamana" />
+          <ScalarProperty Name="OraInceput" ColumnName="OraInceput" />
+          <ScalarProperty Name="OraSfarsit" ColumnName="OraSfarsit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programaris">
+      <EntityTypeMapping TypeName="PetCareModel.Programari">
+        <MappingFragment StoreEntitySet="Programari">
+          <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+          <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+          <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+          <ScalarProperty Name="Motiv" ColumnName="Motiv" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proprietaris">
+      <EntityTypeMapping TypeName="PetCareModel.Proprietari">
+        <MappingFragment StoreEntitySet="Proprietari">
+          <ScalarProperty Name="ProprietarID" ColumnName="ProprietarID" />
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="AdresaDomiciliu" ColumnName="AdresaDomiciliu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Serviciis">
+      <EntityTypeMapping TypeName="PetCareModel.Servicii">
+        <MappingFragment StoreEntitySet="Servicii">
+          <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+          <ScalarProperty Name="PretStandard" ColumnName="PretStandard" />
+          <ScalarProperty Name="DurataEstimataMinute" ColumnName="DurataEstimataMinute" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Speciis">
+      <EntityTypeMapping TypeName="PetCareModel.Specii">
+        <MappingFragment StoreEntitySet="Specii">
+          <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocuris">
+      <EntityTypeMapping TypeName="PetCareModel.Stocuri">
+        <MappingFragment StoreEntitySet="Stocuri">
+          <ScalarProperty Name="StocID" ColumnName="StocID" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="DenumireProdus" ColumnName="DenumireProdus" />
+          <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+          <ScalarProperty Name="CantitateDisponibila" ColumnName="CantitateDisponibila" />
+          <ScalarProperty Name="PretUnitar" ColumnName="PretUnitar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilizatoris">
+      <EntityTypeMapping TypeName="PetCareModel.Utilizatori">
+        <MappingFragment StoreEntitySet="Utilizatori">
+          <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ParolaHash" ColumnName="ParolaHash" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SpecializariMedici" TypeName="PetCareModel.SpecializariMedici" StoreEntitySet="SpecializariMedici">
+      <EndProperty Name="Medici">
+        <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+      </EndProperty>
+      <EndProperty Name="Specii">
+        <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MediciClinici" TypeName="PetCareModel.MediciClinici" StoreEntitySet="MediciClinici">
+      <EndProperty Name="Medici">
+        <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+      </EndProperty>
+      <EndProperty Name="Clinici">
+        <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProgramariServicii" TypeName="PetCareModel.ProgramariServicii" StoreEntitySet="ProgramariServicii">
+      <EndProperty Name="Servicii">
+        <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+      </EndProperty>
+      <EndProperty Name="Programari">
+        <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Mesajes">
+      <EntityTypeMapping TypeName="PetCareModel.Mesaje">
+        <MappingFragment StoreEntitySet="Mesaje">
+          <ScalarProperty Name="IsCitit" ColumnName="IsCitit" />
+          <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+          <ScalarProperty Name="Continut" ColumnName="Continut" />
+          <ScalarProperty Name="ExpeditorID" ColumnName="ExpeditorID" />
+          <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+          <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reminderes">
+      <EntityTypeMapping TypeName="PetCareModel.Remindere">
+        <MappingFragment StoreEntitySet="Remindere">
+          <ScalarProperty Name="DataCreare" ColumnName="DataCreare" />
+          <ScalarProperty Name="IsCitit" ColumnName="IsCitit" />
+          <ScalarProperty Name="DataLimita" ColumnName="DataLimita" />
+          <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+          <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+          <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+          <ScalarProperty Name="ReminderID" ColumnName="ReminderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

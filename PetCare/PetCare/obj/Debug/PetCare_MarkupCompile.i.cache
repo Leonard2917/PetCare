@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\
 PetCare
 none
 false
 DEBUG;TRACE
-C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\App.xaml
-1076847147
-
-151141501541
-13-1310406943
-Views\AdminApprovalsView.xaml;Views\AdminStatsView.xaml;Views\AdminUsersView.xaml;Views\ConsultationView.xaml;Views\DoctorDashboardView.xaml;Views\InventoryView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;Views\MyPetsView.xaml;Views\PetProfileView.xaml;
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\App.xaml
+11-1609854184
+21825606425
+73809683341
+19263048509
+Views\AdminDashboardView.xaml;Views\IssueMedicalRecordView.xaml;Views\ViewMedicalRecordView.xaml;Views\BookAppointmentView.xaml;Views\LoginView.xaml;Views\RegisterView.xaml;Views\MedicDashboardView.xaml;Views\OwnerDashboardView.xaml;Views\ChatView.xaml;Views\StatisticsView.xaml;Views\MainWindow.xaml;
 
 True
 

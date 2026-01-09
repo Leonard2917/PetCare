@@ -15,3 +15,171 @@ C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.
 C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe
 C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.pdb
 C:\Users\Leo\Desktop\SiteFlori\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe.config
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe.config
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\bin\Debug\PetCare.pdb
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.baml
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\App.g.cs
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.g.resources
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe
+D:\Anul 3\Ap Baze\proiect_ApBaze_git\PetCare\PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe.config
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\EntityFramework.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\EntityFramework.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\App.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare_Content.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.lref
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.g.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CopyComplete
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\RegisterView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\RegisterView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\MedicDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\MedicDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\BookAppointmentView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\PetCare\PetCare\PetCare\obj\Debug\Views\BookAppointmentView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\PetCare.exe.config
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\EntityFramework.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\EntityFramework.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\BookAppointmentView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\MedicDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\BookAppointmentView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\RegisterView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\MedicDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\App.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare_Content.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.lref
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\LoginView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\Views\RegisterView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.g.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.csproj.CopyComplete
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\PetCare.exe.config
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\EntityFramework.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\EntityFramework.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\BookAppointmentView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\MedicDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\BookAppointmentView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\RegisterView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\MedicDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\App.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare_Content.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.lref
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\LoginView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\RegisterView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.g.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.csproj.CopyComplete
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.exe
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\PetCare.pdb
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\IssueMedicalRecordView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\IssueMedicalRecordView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\ViewMedicalRecordView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\ViewMedicalRecordView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\ChatView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\ChatView.g.cs
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\StatisticsView.baml
+C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\my_PetCare\PetCare\obj\Debug\Views\StatisticsView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\PetCare.exe.config
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\PetCare.exe
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\PetCare.pdb
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\EntityFramework.dll
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.dll
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\EntityFramework.xml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\bin\Debug\EntityFramework.SqlServer.xml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.AssemblyReference.cache
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\IssueMedicalRecordView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\ViewMedicalRecordView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\BookAppointmentView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\ChatView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\StatisticsView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\MainWindow.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\AdminDashboardView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\IssueMedicalRecordView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\ViewMedicalRecordView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\BookAppointmentView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\LoginView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\RegisterView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\MedicDashboardView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\ChatView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\StatisticsView.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\MainWindow.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\App.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare_Content.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.cache
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare_MarkupCompile.lref
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\AdminDashboardView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\LoginView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\RegisterView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\MedicDashboardView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\Views\OwnerDashboardView.baml
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.g.resources
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.Properties.Resources.resources
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.GenerateResource.cache
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.CoreCompileInputs.cache
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.csproj.CopyComplete
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.exe
+D:\Anul 3\Ap Baze\PetCare_copie\my_PetCare\PetCare\obj\Debug\PetCare.pdb

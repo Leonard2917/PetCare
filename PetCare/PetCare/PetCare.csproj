@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,8 +38,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,33 +68,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\MyPetsView.xaml.cs">
-      <DependentUpon>MyPetsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PetProfileView.xaml.cs">
-      <DependentUpon>PetProfileView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\AdminApprovalsView.xaml">
+    <Page Include="Views\AdminDashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdminStatsView.xaml">
+    <Page Include="Views\IssueMedicalRecordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdminUsersView.xaml">
+    <Page Include="Views\ViewMedicalRecordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ConsultationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DoctorDashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\InventoryView.xaml">
+    <Page Include="Views\BookAppointmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,47 +88,169 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegisterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedicDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OwnerDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChatView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatisticsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Administratori.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Animale.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\AdminApprovalsView.xaml.cs">
-      <DependentUpon>AdminApprovalsView.xaml</DependentUpon>
+    <Compile Include="Clinici.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdminStatsView.xaml.cs">
-      <DependentUpon>AdminStatsView.xaml</DependentUpon>
+    <Compile Include="DetaliiFisa_Materiale.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdminUsersView.xaml.cs">
-      <DependentUpon>AdminUsersView.xaml</DependentUpon>
+    <Compile Include="DetaliiFisa_Servicii.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\ConsultationView.xaml.cs">
-      <DependentUpon>ConsultationView.xaml</DependentUpon>
+    <Compile Include="FiseMedicale.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\DoctorDashboardView.xaml.cs">
-      <DependentUpon>DoctorDashboardView.xaml</DependentUpon>
+    <Compile Include="Medici.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\InventoryView.xaml.cs">
-      <DependentUpon>InventoryView.xaml</DependentUpon>
+    <Compile Include="OrarMedici.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetCareDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetCareDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetCareDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetCareEntitiesExtension.cs" />
+    <Compile Include="PetCareDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetCareDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Programari.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proprietari.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicii.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Specii.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Remindere.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mesaje.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stocuri.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilizatori.cs">
+      <DependentUpon>PetCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MedicalRecordService.cs" />
+    <Compile Include="Models\AnimalModel.cs" />
+    <Compile Include="Models\AppointmentDTO.cs" />
+    <Compile Include="Models\AppointmentService.cs" />
+    <Compile Include="Models\AuthenticationService.cs" />
+    <Compile Include="Models\StatisticsDTOs.cs" />
+    <Compile Include="Models\StatisticsService.cs" />
+    <Compile Include="Models\ClinicDTO.cs" />
+    <Compile Include="Models\ClinicService.cs" />
+    <Compile Include="Models\ClinicsModel.cs" />
+    <Compile Include="Models\MedicInfoDTO.cs" />
+    <Compile Include="ViewModels\IssueMedicalRecordViewModel.cs" />
+    <Compile Include="Models\MedicService.cs" />
+    <Compile Include="Models\OwnerService.cs" />
+    <Compile Include="Models\ScheduleModel.cs" />
+    <Compile Include="Models\SelectableSpeciesModel.cs" />
+    <Compile Include="Models\ServiceDTO.cs" />
+    <Compile Include="Models\SpeciesModel.cs" />
+    <Compile Include="Models\StockModel.cs" />
+    <Compile Include="Models\StockService.cs" />
+    <Compile Include="Models\TimeSlot.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\ReminderDTO.cs" />
+    <Compile Include="Models\ChatMessageDTO.cs" />
+    <Compile Include="Models\ChatService.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
+    <Compile Include="Views\ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\PasswordHelper.cs" />
+    <Compile Include="ViewModels\AdminDashboardViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BookAppointmentViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MedicDashboardViewModel.cs" />
+    <Compile Include="ViewModels\OwnerDashboardViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Views\AdminDashboardView.xaml.cs">
+      <DependentUpon>AdminDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IssueMedicalRecordView.xaml.cs">
+      <DependentUpon>IssueMedicalRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewMedicalRecordView.xaml.cs">
+      <DependentUpon>ViewMedicalRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ViewMedicalRecordViewModel.cs" />
+    <Compile Include="ViewModels\MedicalHistoryDTO.cs" />
+    <Compile Include="Views\BookAppointmentView.xaml.cs">
+      <DependentUpon>BookAppointmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedicDashboardView.xaml.cs">
+      <DependentUpon>MedicDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OwnerDashboardView.xaml.cs">
+      <DependentUpon>OwnerDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatisticsView.xaml.cs">
+      <DependentUpon>StatisticsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\MyPetsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PetProfileView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -149,6 +270,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
+    <EntityDeploy Include="PetCareDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PetCareDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PetCareDataModel.edmx.diagram">
+      <DependentUpon>PetCareDataModel.edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,9 +287,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Resources\" />
-    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PetCareDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PetCareDataModel.edmx</DependentUpon>
+      <LastGenOutput>PetCareDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PetCareDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PetCareDataModel.edmx</DependentUpon>
+      <LastGenOutput>PetCareDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if exist "$(ProjectDir)App.config" copy /Y "$(ProjectDir)App.config" "$(TargetDir)$(TargetFileName).config"
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

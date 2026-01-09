@@ -1,0 +1,160 @@
+<Page x:Class="PetCare.Views.BookAppointmentView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900"
+      Title="Programare Nouă">
+
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Background="#1976D2" Margin="20">
+            <TextBlock Text="Programare Nouă" FontSize="24" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="Completează pașii de mai jos pentru a crea o programare" FontSize="14" Foreground="#E3F2FD" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30,20">
+                
+                <!-- Step 1: Animal Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="1. Selectează Animalul" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <ComboBox ItemsSource="{Binding MyAnimals}" 
+                                  SelectedItem="{Binding SelectedAnimal}"
+                                  DisplayMemberPath="Nume"
+                                  Height="35"
+                                  FontSize="14"/>
+                        <TextBlock Text="{Binding SelectedAnimal.SpecieNume}" Foreground="#666" Margin="0,5,0,0" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Step 2: Clinic Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
+                        IsEnabled="{Binding IsStep2Enabled}">
+                    <StackPanel>
+                        <TextBlock Text="2. Selectează Clinica" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <ComboBox ItemsSource="{Binding AllClinics}" 
+                                  SelectedItem="{Binding SelectedClinic}"
+                                  DisplayMemberPath="Nume"
+                                  Height="35"
+                                  FontSize="14"/>
+                        <TextBlock Text="{Binding SelectedClinic.Adresa}" Foreground="#666" Margin="0,5,0,0" FontSize="12"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Step 3: Services Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
+                        IsEnabled="{Binding IsStep3Enabled}">
+                    <StackPanel>
+                        <TextBlock Text="3. Selectează Serviciile" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <TextBlock Text="Poți selecta unul sau mai multe servicii:" Foreground="#666" Margin="0,0,0,10"/>
+                        
+                        <ListBox ItemsSource="{Binding ClinicServices}" 
+                                 SelectionMode="Multiple"
+                                 MaxHeight="200"
+                                 BorderBrush="#DDD"
+                                 SelectionChanged="ServicesListBox_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <TextBlock Text="{Binding Denumire}" FontWeight="Bold" Width="200"/>
+                                        <TextBlock Text="{Binding DurataEstimataMinute}" Margin="10,0,0,0"/>
+                                        <TextBlock Text=" min" Margin="2,0,10,0"/>
+                                        <TextBlock Text="{Binding PretStandard, StringFormat={}{0:F2} RON}" Foreground="#4CAF50"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        
+                        <TextBlock Text="{Binding TotalDurationDisplay}" FontWeight="Bold" Foreground="#1976D2" Margin="0,10,0,0" FontSize="14"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Step 4: Medic Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
+                        IsEnabled="{Binding IsStep4Enabled}">
+                    <StackPanel>
+                        <TextBlock Text="4. Selectează Medicul" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <ComboBox ItemsSource="{Binding AvailableMedics}" 
+                                  SelectedItem="{Binding SelectedMedic}"
+                                  Height="35"
+                                  FontSize="14">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <Run Text="Dr. " FontWeight="Bold"/>
+                                            <Run Text="{Binding Nume}" FontWeight="Bold"/>
+                                            <Run Text=" "/>
+                                            <Run Text="{Binding Prenume}" FontWeight="Bold"/>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding NrParafa, StringFormat='Parafă: {0}'}" FontSize="11" Foreground="#666"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Step 5: Date Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
+                        IsEnabled="{Binding IsStep5Enabled}">
+                    <StackPanel>
+                        <TextBlock Text="5. Selectează Data" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <ListBox ItemsSource="{Binding AvailableDates}" 
+                                 SelectedItem="{Binding SelectedDate}"
+                                 MaxHeight="150"
+                                 BorderBrush="#DDD">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding StringFormat='dd MMMM yyyy (dddd)'}" Padding="5"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Step 6: Time Selection -->
+                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
+                        IsEnabled="{Binding IsStep6Enabled}">
+                    <StackPanel>
+                        <TextBlock Text="6. Selectează Ora" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <ListBox ItemsSource="{Binding AvailableTimeSlots}" 
+                                 SelectedItem="{Binding SelectedTimeSlot}"
+                                 MaxHeight="200"
+                                 BorderBrush="#DDD">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayText}" Padding="5" FontSize="14"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer Buttons -->
+        <Border Grid.Row="2" Background="White" BorderBrush="#DDD" BorderThickness="0,1,0,0" Padding="20">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Anulează" Click="CancelButton_Click" 
+                        Width="120" Height="40" Margin="0,0,10,0"
+                        Background="#F5F5F5" Foreground="#333" BorderThickness="1" BorderBrush="#DDD"/>
+                <Button Content="Confirmă Programarea" Click="ConfirmButton_Click" 
+                        Width="180" Height="40"
+                        Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0"
+                        IsEnabled="{Binding CanConfirmBooking}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
