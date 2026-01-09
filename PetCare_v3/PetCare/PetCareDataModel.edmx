@@ -1,0 +1,1534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PetCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administratori">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UtilizatorID" Type="int" />
+          <Property Name="ClinicaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Animale">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProprietarID" Type="int" />
+          <Property Name="SpecieID" Type="int" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataNasterii" Type="date" />
+          <Property Name="Microcip" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clinici">
+          <Key>
+            <PropertyRef Name="ClinicaID" />
+          </Key>
+          <Property Name="ClinicaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DetaliiFisa_Materiale">
+          <Key>
+            <PropertyRef Name="DetaliuID" />
+          </Key>
+          <Property Name="DetaliuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FisaID" Type="int" />
+          <Property Name="StocID" Type="int" />
+          <Property Name="CantitateConsumata" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetaliiFisa_Servicii">
+          <Key>
+            <PropertyRef Name="DetaliuID" />
+          </Key>
+          <Property Name="DetaliuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FisaID" Type="int" />
+          <Property Name="ServiciuID" Type="int" />
+          <Property Name="PretAplicat" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="FiseMedicale">
+          <Key>
+            <PropertyRef Name="FisaID" />
+          </Key>
+          <Property Name="FisaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramareID" Type="int" />
+          <Property Name="Diagnostic" Type="varchar(max)" />
+          <Property Name="Tratament" Type="varchar(max)" />
+          <Property Name="DataCrearii" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Medici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+          </Key>
+          <Property Name="MedicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UtilizatorID" Type="int" />
+          <Property Name="ClinicaID" Type="int" />
+          <Property Name="NrParafa" Type="varchar" MaxLength="50" />
+          <Property Name="Bio" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="MediciClinici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+            <PropertyRef Name="ClinicaID" />
+          </Key>
+          <Property Name="MedicID" Type="int" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesaje">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramareID" Type="int" />
+          <Property Name="ExpeditorID" Type="int" />
+          <Property Name="Continut" Type="varchar(max)" Nullable="false" />
+          <Property Name="DataOra" Type="datetime" />
+          <Property Name="IsCitit" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrarMedici">
+          <Key>
+            <PropertyRef Name="OrarID" />
+          </Key>
+          <Property Name="OrarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicID" Type="int" />
+          <Property Name="ZiSaptamana" Type="int" />
+          <Property Name="OraInceput" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OraSfarsit" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Programari">
+          <Key>
+            <PropertyRef Name="ProgramareID" />
+          </Key>
+          <Property Name="ProgramareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" />
+          <Property Name="MedicID" Type="int" />
+          <Property Name="AnimalID" Type="int" />
+          <Property Name="DataOra" Type="datetime" Nullable="false" />
+          <Property Name="Motiv" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ProgramariServicii">
+          <Key>
+            <PropertyRef Name="ProgramareID" />
+            <PropertyRef Name="ServiciuID" />
+          </Key>
+          <Property Name="ProgramareID" Type="int" Nullable="false" />
+          <Property Name="ServiciuID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proprietari">
+          <Key>
+            <PropertyRef Name="ProprietarID" />
+          </Key>
+          <Property Name="ProprietarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UtilizatorID" Type="int" />
+          <Property Name="AdresaDomiciliu" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Remindere">
+          <Key>
+            <PropertyRef Name="ReminderID" />
+          </Key>
+          <Property Name="ReminderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalID" Type="int" Nullable="false" />
+          <Property Name="MedicID" Type="int" Nullable="false" />
+          <Property Name="Mesaj" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DataLimita" Type="datetime" Nullable="false" />
+          <Property Name="IsCitit" Type="bit" />
+          <Property Name="DataCreare" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Servicii">
+          <Key>
+            <PropertyRef Name="ServiciuID" />
+          </Key>
+          <Property Name="ServiciuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" />
+          <Property Name="Denumire" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PretStandard" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DurataEstimataMinute" Type="int" />
+        </EntityType>
+        <EntityType Name="SpecializariMedici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+            <PropertyRef Name="SpecieID" />
+          </Key>
+          <Property Name="MedicID" Type="int" Nullable="false" />
+          <Property Name="SpecieID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specii">
+          <Key>
+            <PropertyRef Name="SpecieID" />
+          </Key>
+          <Property Name="SpecieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stocuri">
+          <Key>
+            <PropertyRef Name="StocID" />
+          </Key>
+          <Property Name="StocID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" />
+          <Property Name="DenumireProdus" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UnitateMasura" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CantitateDisponibila" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PretUnitar" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UtilizatorID" />
+          </Key>
+          <Property Name="UtilizatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParolaHash" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="20" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Administr__Clini__5070F446">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Administratori" Type="Self.Administratori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Administratori">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administr__Utili__4F7CD00D">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Administratori" Type="Self.Administratori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Administratori">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Animale__Proprie__5FB337D6">
+          <End Role="Proprietari" Type="Self.Proprietari" Multiplicity="0..1" />
+          <End Role="Animale" Type="Self.Animale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proprietari">
+              <PropertyRef Name="ProprietarID" />
+            </Principal>
+            <Dependent Role="Animale">
+              <PropertyRef Name="ProprietarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Animale__SpecieI__60A75C0F">
+          <End Role="Specii" Type="Self.Specii" Multiplicity="0..1" />
+          <End Role="Animale" Type="Self.Animale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specii">
+              <PropertyRef Name="SpecieID" />
+            </Principal>
+            <Dependent Role="Animale">
+              <PropertyRef Name="SpecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__FisaI__7A672E12">
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Servicii" Type="Self.DetaliiFisa_Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiseMedicale">
+              <PropertyRef Name="FisaID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Servicii">
+              <PropertyRef Name="FisaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__FisaI__7E37BEF6">
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Materiale" Type="Self.DetaliiFisa_Materiale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiseMedicale">
+              <PropertyRef Name="FisaID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Materiale">
+              <PropertyRef Name="FisaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__Servi__7B5B524B">
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Servicii" Type="Self.DetaliiFisa_Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicii">
+              <PropertyRef Name="ServiciuID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Servicii">
+              <PropertyRef Name="ServiciuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__StocI__7F2BE32F">
+          <End Role="Stocuri" Type="Self.Stocuri" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Materiale" Type="Self.DetaliiFisa_Materiale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocuri">
+              <PropertyRef Name="StocID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Materiale">
+              <PropertyRef Name="StocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FiseMedic__Progr__76969D2E">
+          <End Role="Programari" Type="Self.Programari" Multiplicity="0..1" />
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programari">
+              <PropertyRef Name="ProgramareID" />
+            </Principal>
+            <Dependent Role="FiseMedicale">
+              <PropertyRef Name="ProgramareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__ClinicaI__5441852A">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__Utilizat__534D60F1">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Expedito__17036CC0">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ExpeditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Programa__160F4887">
+          <End Role="Programari" Type="Self.Programari" Multiplicity="0..1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programari">
+              <PropertyRef Name="ProgramareID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ProgramareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarMedic__Medic__6383C8BA">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="0..1" />
+          <End Role="OrarMedici" Type="Self.OrarMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="OrarMedici">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Anima__70DDC3D8">
+          <End Role="Animale" Type="Self.Animale" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animale">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Clini__6EF57B66">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Medic__6FE99F9F">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proprieta__Utili__571DF1D5">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Proprietari" Type="Self.Proprietari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Proprietari">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicii__Clinic__6754599E">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Servicii">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specializ__Medic__5BE2A6F2">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="1" />
+          <End Role="SpecializariMedici" Type="Self.SpecializariMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="SpecializariMedici">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specializ__Speci__5CD6CB2B">
+          <End Role="Specii" Type="Self.Specii" Multiplicity="1" />
+          <End Role="SpecializariMedici" Type="Self.SpecializariMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specii">
+              <PropertyRef Name="SpecieID" />
+            </Principal>
+            <Dependent Role="SpecializariMedici">
+              <PropertyRef Name="SpecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocuri__Clinica__6B24EA82">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Stocuri" Type="Self.Stocuri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Stocuri">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediciClinici_Clinici">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="1" />
+          <End Role="MediciClinici" Type="Self.MediciClinici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="MediciClinici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediciClinici_Medici">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="1" />
+          <End Role="MediciClinici" Type="Self.MediciClinici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="MediciClinici">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrarMedici_Clinici">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="OrarMedici" Type="Self.OrarMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="OrarMedici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramariServicii_Programari">
+          <End Role="Programari" Type="Self.Programari" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramariServicii" Type="Self.ProgramariServicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programari">
+              <PropertyRef Name="ProgramareID" />
+            </Principal>
+            <Dependent Role="ProgramariServicii">
+              <PropertyRef Name="ProgramareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramariServicii_Servicii">
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="1" />
+          <End Role="ProgramariServicii" Type="Self.ProgramariServicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicii">
+              <PropertyRef Name="ServiciuID" />
+            </Principal>
+            <Dependent Role="ProgramariServicii">
+              <PropertyRef Name="ServiciuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remindere_Animale">
+          <End Role="Animale" Type="Self.Animale" Multiplicity="1" />
+          <End Role="Remindere" Type="Self.Remindere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animale">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="Remindere">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remindere_Medici">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="1" />
+          <End Role="Remindere" Type="Self.Remindere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="Remindere">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetCareModelStoreContainer">
+          <EntitySet Name="Administratori" EntityType="Self.Administratori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animale" EntityType="Self.Animale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinici" EntityType="Self.Clinici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetaliiFisa_Materiale" EntityType="Self.DetaliiFisa_Materiale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetaliiFisa_Servicii" EntityType="Self.DetaliiFisa_Servicii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FiseMedicale" EntityType="Self.FiseMedicale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medici" EntityType="Self.Medici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediciClinici" EntityType="Self.MediciClinici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesaje" EntityType="Self.Mesaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrarMedici" EntityType="Self.OrarMedici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programari" EntityType="Self.Programari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramariServicii" EntityType="Self.ProgramariServicii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proprietari" EntityType="Self.Proprietari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Remindere" EntityType="Self.Remindere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicii" EntityType="Self.Servicii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecializariMedici" EntityType="Self.SpecializariMedici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specii" EntityType="Self.Specii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stocuri" EntityType="Self.Stocuri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Administr__Clini__5070F446" Association="Self.FK__Administr__Clini__5070F446">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="Administratori" EntitySet="Administratori" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administr__Utili__4F7CD00D" Association="Self.FK__Administr__Utili__4F7CD00D">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Administratori" EntitySet="Administratori" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Animale__Proprie__5FB337D6" Association="Self.FK__Animale__Proprie__5FB337D6">
+            <End Role="Proprietari" EntitySet="Proprietari" />
+            <End Role="Animale" EntitySet="Animale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Animale__SpecieI__60A75C0F" Association="Self.FK__Animale__SpecieI__60A75C0F">
+            <End Role="Specii" EntitySet="Specii" />
+            <End Role="Animale" EntitySet="Animale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__FisaI__7A672E12" Association="Self.FK__DetaliiFi__FisaI__7A672E12">
+            <End Role="FiseMedicale" EntitySet="FiseMedicale" />
+            <End Role="DetaliiFisa_Servicii" EntitySet="DetaliiFisa_Servicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__FisaI__7E37BEF6" Association="Self.FK__DetaliiFi__FisaI__7E37BEF6">
+            <End Role="FiseMedicale" EntitySet="FiseMedicale" />
+            <End Role="DetaliiFisa_Materiale" EntitySet="DetaliiFisa_Materiale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__Servi__7B5B524B" Association="Self.FK__DetaliiFi__Servi__7B5B524B">
+            <End Role="Servicii" EntitySet="Servicii" />
+            <End Role="DetaliiFisa_Servicii" EntitySet="DetaliiFisa_Servicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__StocI__7F2BE32F" Association="Self.FK__DetaliiFi__StocI__7F2BE32F">
+            <End Role="Stocuri" EntitySet="Stocuri" />
+            <End Role="DetaliiFisa_Materiale" EntitySet="DetaliiFisa_Materiale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FiseMedic__Progr__76969D2E" Association="Self.FK__FiseMedic__Progr__76969D2E">
+            <End Role="Programari" EntitySet="Programari" />
+            <End Role="FiseMedicale" EntitySet="FiseMedicale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__ClinicaI__5441852A" Association="Self.FK__Medici__ClinicaI__5441852A">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="Medici" EntitySet="Medici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__Utilizat__534D60F1" Association="Self.FK__Medici__Utilizat__534D60F1">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Medici" EntitySet="Medici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Expedito__17036CC0" Association="Self.FK__Mesaje__Expedito__17036CC0">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Mesaje" EntitySet="Mesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Programa__160F4887" Association="Self.FK__Mesaje__Programa__160F4887">
+            <End Role="Programari" EntitySet="Programari" />
+            <End Role="Mesaje" EntitySet="Mesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarMedic__Medic__6383C8BA" Association="Self.FK__OrarMedic__Medic__6383C8BA">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="OrarMedici" EntitySet="OrarMedici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Anima__70DDC3D8" Association="Self.FK__Programar__Anima__70DDC3D8">
+            <End Role="Animale" EntitySet="Animale" />
+            <End Role="Programari" EntitySet="Programari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Clini__6EF57B66" Association="Self.FK__Programar__Clini__6EF57B66">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="Programari" EntitySet="Programari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Medic__6FE99F9F" Association="Self.FK__Programar__Medic__6FE99F9F">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="Programari" EntitySet="Programari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proprieta__Utili__571DF1D5" Association="Self.FK__Proprieta__Utili__571DF1D5">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Proprietari" EntitySet="Proprietari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicii__Clinic__6754599E" Association="Self.FK__Servicii__Clinic__6754599E">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="Servicii" EntitySet="Servicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specializ__Medic__5BE2A6F2" Association="Self.FK__Specializ__Medic__5BE2A6F2">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="SpecializariMedici" EntitySet="SpecializariMedici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specializ__Speci__5CD6CB2B" Association="Self.FK__Specializ__Speci__5CD6CB2B">
+            <End Role="Specii" EntitySet="Specii" />
+            <End Role="SpecializariMedici" EntitySet="SpecializariMedici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocuri__Clinica__6B24EA82" Association="Self.FK__Stocuri__Clinica__6B24EA82">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="Stocuri" EntitySet="Stocuri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediciClinici_Clinici" Association="Self.FK_MediciClinici_Clinici">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="MediciClinici" EntitySet="MediciClinici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediciClinici_Medici" Association="Self.FK_MediciClinici_Medici">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="MediciClinici" EntitySet="MediciClinici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrarMedici_Clinici" Association="Self.FK_OrarMedici_Clinici">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="OrarMedici" EntitySet="OrarMedici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramariServicii_Programari" Association="Self.FK_ProgramariServicii_Programari">
+            <End Role="Programari" EntitySet="Programari" />
+            <End Role="ProgramariServicii" EntitySet="ProgramariServicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramariServicii_Servicii" Association="Self.FK_ProgramariServicii_Servicii">
+            <End Role="Servicii" EntitySet="Servicii" />
+            <End Role="ProgramariServicii" EntitySet="ProgramariServicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remindere_Animale" Association="Self.FK_Remindere_Animale">
+            <End Role="Animale" EntitySet="Animale" />
+            <End Role="Remindere" EntitySet="Remindere" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remindere_Medici" Association="Self.FK_Remindere_Medici">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="Remindere" EntitySet="Remindere" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetCareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administratori">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UtilizatorID" Type="Int32" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <NavigationProperty Name="Clinici" Relationship="Self.FK__Administr__Clini__5070F446" FromRole="Administratori" ToRole="Clinici" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Administr__Utili__4F7CD00D" FromRole="Administratori" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Animale">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProprietarID" Type="Int32" />
+          <Property Name="SpecieID" Type="Int32" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataNasterii" Type="DateTime" Precision="0" />
+          <Property Name="Microcip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proprietari" Relationship="Self.FK__Animale__Proprie__5FB337D6" FromRole="Animale" ToRole="Proprietari" />
+          <NavigationProperty Name="Specii" Relationship="Self.FK__Animale__SpecieI__60A75C0F" FromRole="Animale" ToRole="Specii" />
+          <NavigationProperty Name="Programaris" Relationship="Self.FK__Programar__Anima__70DDC3D8" FromRole="Animale" ToRole="Programari" />
+          <NavigationProperty Name="Reminderes" Relationship="PetCareModel.FK_Remindere_Animale" FromRole="Animale" ToRole="Remindere" />
+        </EntityType>
+        <EntityType Name="Clinici">
+          <Key>
+            <PropertyRef Name="ClinicaID" />
+          </Key>
+          <Property Name="ClinicaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Administratoris" Relationship="Self.FK__Administr__Clini__5070F446" FromRole="Clinici" ToRole="Administratori" />
+          <NavigationProperty Name="Medicis" Relationship="Self.FK__Medici__ClinicaI__5441852A" FromRole="Clinici" ToRole="Medici" />
+          <NavigationProperty Name="Programaris" Relationship="Self.FK__Programar__Clini__6EF57B66" FromRole="Clinici" ToRole="Programari" />
+          <NavigationProperty Name="Serviciis" Relationship="Self.FK__Servicii__Clinic__6754599E" FromRole="Clinici" ToRole="Servicii" />
+          <NavigationProperty Name="Stocuris" Relationship="Self.FK__Stocuri__Clinica__6B24EA82" FromRole="Clinici" ToRole="Stocuri" />
+          <NavigationProperty Name="OrarMedicis" Relationship="PetCareModel.FK_OrarMedici_Clinici" FromRole="Clinici" ToRole="OrarMedici" />
+          <NavigationProperty Name="Medicis1" Relationship="PetCareModel.MediciClinici" FromRole="Clinici" ToRole="Medici" />
+        </EntityType>
+        <EntityType Name="DetaliiFisa_Materiale">
+          <Key>
+            <PropertyRef Name="DetaliuID" />
+          </Key>
+          <Property Name="DetaliuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FisaID" Type="Int32" />
+          <Property Name="StocID" Type="Int32" />
+          <Property Name="CantitateConsumata" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="FiseMedicale" Relationship="Self.FK__DetaliiFi__FisaI__7E37BEF6" FromRole="DetaliiFisa_Materiale" ToRole="FiseMedicale" />
+          <NavigationProperty Name="Stocuri" Relationship="Self.FK__DetaliiFi__StocI__7F2BE32F" FromRole="DetaliiFisa_Materiale" ToRole="Stocuri" />
+        </EntityType>
+        <EntityType Name="DetaliiFisa_Servicii">
+          <Key>
+            <PropertyRef Name="DetaliuID" />
+          </Key>
+          <Property Name="DetaliuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FisaID" Type="Int32" />
+          <Property Name="ServiciuID" Type="Int32" />
+          <Property Name="PretAplicat" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="FiseMedicale" Relationship="Self.FK__DetaliiFi__FisaI__7A672E12" FromRole="DetaliiFisa_Servicii" ToRole="FiseMedicale" />
+          <NavigationProperty Name="Servicii" Relationship="Self.FK__DetaliiFi__Servi__7B5B524B" FromRole="DetaliiFisa_Servicii" ToRole="Servicii" />
+        </EntityType>
+        <EntityType Name="FiseMedicale">
+          <Key>
+            <PropertyRef Name="FisaID" />
+          </Key>
+          <Property Name="FisaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramareID" Type="Int32" />
+          <Property Name="Diagnostic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tratament" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataCrearii" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DetaliiFisa_Materiale" Relationship="Self.FK__DetaliiFi__FisaI__7E37BEF6" FromRole="FiseMedicale" ToRole="DetaliiFisa_Materiale" />
+          <NavigationProperty Name="DetaliiFisa_Servicii" Relationship="Self.FK__DetaliiFi__FisaI__7A672E12" FromRole="FiseMedicale" ToRole="DetaliiFisa_Servicii" />
+          <NavigationProperty Name="Programari" Relationship="Self.FK__FiseMedic__Progr__76969D2E" FromRole="FiseMedicale" ToRole="Programari" />
+        </EntityType>
+        <EntityType Name="Medici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+          </Key>
+          <Property Name="MedicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UtilizatorID" Type="Int32" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <Property Name="NrParafa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clinici" Relationship="Self.FK__Medici__ClinicaI__5441852A" FromRole="Medici" ToRole="Clinici" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Medici__Utilizat__534D60F1" FromRole="Medici" ToRole="Utilizatori" />
+          <NavigationProperty Name="OrarMedicis" Relationship="Self.FK__OrarMedic__Medic__6383C8BA" FromRole="Medici" ToRole="OrarMedici" />
+          <NavigationProperty Name="Programaris" Relationship="Self.FK__Programar__Medic__6FE99F9F" FromRole="Medici" ToRole="Programari" />
+          <NavigationProperty Name="Speciis" Relationship="Self.SpecializariMedici" FromRole="Medici" ToRole="Specii" />
+          <NavigationProperty Name="Clinicis" Relationship="PetCareModel.MediciClinici" FromRole="Medici" ToRole="Clinici" />
+          <NavigationProperty Name="Reminderes" Relationship="PetCareModel.FK_Remindere_Medici" FromRole="Medici" ToRole="Remindere" />
+        </EntityType>
+        <EntityType Name="OrarMedici">
+          <Key>
+            <PropertyRef Name="OrarID" />
+          </Key>
+          <Property Name="OrarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicID" Type="Int32" />
+          <Property Name="ZiSaptamana" Type="Int32" />
+          <Property Name="OraInceput" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OraSfarsit" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Medici" Relationship="Self.FK__OrarMedic__Medic__6383C8BA" FromRole="OrarMedici" ToRole="Medici" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <NavigationProperty Name="Clinici" Relationship="PetCareModel.FK_OrarMedici_Clinici" FromRole="OrarMedici" ToRole="Clinici" />
+        </EntityType>
+        <EntityType Name="Programari">
+          <Key>
+            <PropertyRef Name="ProgramareID" />
+          </Key>
+          <Property Name="ProgramareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <Property Name="MedicID" Type="Int32" />
+          <Property Name="AnimalID" Type="Int32" />
+          <Property Name="DataOra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Motiv" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Animale" Relationship="Self.FK__Programar__Anima__70DDC3D8" FromRole="Programari" ToRole="Animale" />
+          <NavigationProperty Name="Clinici" Relationship="Self.FK__Programar__Clini__6EF57B66" FromRole="Programari" ToRole="Clinici" />
+          <NavigationProperty Name="FiseMedicales" Relationship="Self.FK__FiseMedic__Progr__76969D2E" FromRole="Programari" ToRole="FiseMedicale" />
+          <NavigationProperty Name="Medici" Relationship="Self.FK__Programar__Medic__6FE99F9F" FromRole="Programari" ToRole="Medici" />
+          <NavigationProperty Name="Serviciis" Relationship="PetCareModel.ProgramariServicii" FromRole="Programari" ToRole="Servicii" />
+          <NavigationProperty Name="Mesajes" Relationship="PetCareModel.FK__Mesaje__Programa__160F4887" FromRole="Programari" ToRole="Mesaje" />
+        </EntityType>
+        <EntityType Name="Proprietari">
+          <Key>
+            <PropertyRef Name="ProprietarID" />
+          </Key>
+          <Property Name="ProprietarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UtilizatorID" Type="Int32" />
+          <Property Name="AdresaDomiciliu" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Animales" Relationship="Self.FK__Animale__Proprie__5FB337D6" FromRole="Proprietari" ToRole="Animale" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Proprieta__Utili__571DF1D5" FromRole="Proprietari" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Servicii">
+          <Key>
+            <PropertyRef Name="ServiciuID" />
+          </Key>
+          <Property Name="ServiciuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <Property Name="Denumire" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PretStandard" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DurataEstimataMinute" Type="Int32" />
+          <NavigationProperty Name="Clinici" Relationship="Self.FK__Servicii__Clinic__6754599E" FromRole="Servicii" ToRole="Clinici" />
+          <NavigationProperty Name="DetaliiFisa_Servicii" Relationship="Self.FK__DetaliiFi__Servi__7B5B524B" FromRole="Servicii" ToRole="DetaliiFisa_Servicii" />
+          <NavigationProperty Name="Programaris" Relationship="PetCareModel.ProgramariServicii" FromRole="Servicii" ToRole="Programari" />
+        </EntityType>
+        <EntityType Name="Specii">
+          <Key>
+            <PropertyRef Name="SpecieID" />
+          </Key>
+          <Property Name="SpecieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Animales" Relationship="Self.FK__Animale__SpecieI__60A75C0F" FromRole="Specii" ToRole="Animale" />
+          <NavigationProperty Name="Medicis" Relationship="Self.SpecializariMedici" FromRole="Specii" ToRole="Medici" />
+        </EntityType>
+        <EntityType Name="Stocuri">
+          <Key>
+            <PropertyRef Name="StocID" />
+          </Key>
+          <Property Name="StocID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicaID" Type="Int32" />
+          <Property Name="DenumireProdus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitateMasura" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CantitateDisponibila" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PretUnitar" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Clinici" Relationship="Self.FK__Stocuri__Clinica__6B24EA82" FromRole="Stocuri" ToRole="Clinici" />
+          <NavigationProperty Name="DetaliiFisa_Materiale" Relationship="Self.FK__DetaliiFi__StocI__7F2BE32F" FromRole="Stocuri" ToRole="DetaliiFisa_Materiale" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UtilizatorID" />
+          </Key>
+          <Property Name="UtilizatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParolaHash" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Administratoris" Relationship="Self.FK__Administr__Utili__4F7CD00D" FromRole="Utilizatori" ToRole="Administratori" />
+          <NavigationProperty Name="Medicis" Relationship="Self.FK__Medici__Utilizat__534D60F1" FromRole="Utilizatori" ToRole="Medici" />
+          <NavigationProperty Name="Proprietaris" Relationship="Self.FK__Proprieta__Utili__571DF1D5" FromRole="Utilizatori" ToRole="Proprietari" />
+          <NavigationProperty Name="Mesajes" Relationship="PetCareModel.FK__Mesaje__Expedito__17036CC0" FromRole="Utilizatori" ToRole="Mesaje" />
+        </EntityType>
+        <Association Name="FK__Administr__Clini__5070F446">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Administratori" Type="Self.Administratori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Administratori">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Administr__Utili__4F7CD00D">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Administratori" Type="Self.Administratori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Administratori">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Animale__Proprie__5FB337D6">
+          <End Role="Proprietari" Type="Self.Proprietari" Multiplicity="0..1" />
+          <End Role="Animale" Type="Self.Animale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proprietari">
+              <PropertyRef Name="ProprietarID" />
+            </Principal>
+            <Dependent Role="Animale">
+              <PropertyRef Name="ProprietarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Animale__SpecieI__60A75C0F">
+          <End Role="Specii" Type="Self.Specii" Multiplicity="0..1" />
+          <End Role="Animale" Type="Self.Animale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specii">
+              <PropertyRef Name="SpecieID" />
+            </Principal>
+            <Dependent Role="Animale">
+              <PropertyRef Name="SpecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Anima__70DDC3D8">
+          <End Role="Animale" Type="Self.Animale" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animale">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__ClinicaI__5441852A">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Clini__6EF57B66">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicii__Clinic__6754599E">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Servicii">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocuri__Clinica__6B24EA82">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="0..1" />
+          <End Role="Stocuri" Type="Self.Stocuri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="Stocuri">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__FisaI__7E37BEF6">
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Materiale" Type="Self.DetaliiFisa_Materiale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiseMedicale">
+              <PropertyRef Name="FisaID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Materiale">
+              <PropertyRef Name="FisaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__StocI__7F2BE32F">
+          <End Role="Stocuri" Type="Self.Stocuri" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Materiale" Type="Self.DetaliiFisa_Materiale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stocuri">
+              <PropertyRef Name="StocID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Materiale">
+              <PropertyRef Name="StocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__FisaI__7A672E12">
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Servicii" Type="Self.DetaliiFisa_Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FiseMedicale">
+              <PropertyRef Name="FisaID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Servicii">
+              <PropertyRef Name="FisaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetaliiFi__Servi__7B5B524B">
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="0..1" />
+          <End Role="DetaliiFisa_Servicii" Type="Self.DetaliiFisa_Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicii">
+              <PropertyRef Name="ServiciuID" />
+            </Principal>
+            <Dependent Role="DetaliiFisa_Servicii">
+              <PropertyRef Name="ServiciuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FiseMedic__Progr__76969D2E">
+          <End Role="Programari" Type="Self.Programari" Multiplicity="0..1" />
+          <End Role="FiseMedicale" Type="Self.FiseMedicale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programari">
+              <PropertyRef Name="ProgramareID" />
+            </Principal>
+            <Dependent Role="FiseMedicale">
+              <PropertyRef Name="ProgramareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__Utilizat__534D60F1">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarMedic__Medic__6383C8BA">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="0..1" />
+          <End Role="OrarMedici" Type="Self.OrarMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="OrarMedici">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Medic__6FE99F9F">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proprieta__Utili__571DF1D5">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Proprietari" Type="Self.Proprietari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Proprietari">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SpecializariMedici">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <End Role="Specii" Type="Self.Specii" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PetCareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administratoris" EntityType="Self.Administratori" />
+          <EntitySet Name="Animales" EntityType="Self.Animale" />
+          <EntitySet Name="Clinicis" EntityType="Self.Clinici" />
+          <EntitySet Name="DetaliiFisa_Materiale" EntityType="Self.DetaliiFisa_Materiale" />
+          <EntitySet Name="DetaliiFisa_Servicii" EntityType="Self.DetaliiFisa_Servicii" />
+          <EntitySet Name="FiseMedicales" EntityType="Self.FiseMedicale" />
+          <EntitySet Name="Medicis" EntityType="Self.Medici" />
+          <EntitySet Name="OrarMedicis" EntityType="Self.OrarMedici" />
+          <EntitySet Name="Programaris" EntityType="Self.Programari" />
+          <EntitySet Name="Proprietaris" EntityType="Self.Proprietari" />
+          <EntitySet Name="Serviciis" EntityType="Self.Servicii" />
+          <EntitySet Name="Speciis" EntityType="Self.Specii" />
+          <EntitySet Name="Stocuris" EntityType="Self.Stocuri" />
+          <EntitySet Name="Utilizatoris" EntityType="Self.Utilizatori" />
+          <AssociationSet Name="FK__Administr__Clini__5070F446" Association="Self.FK__Administr__Clini__5070F446">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Administratori" EntitySet="Administratoris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Administr__Utili__4F7CD00D" Association="Self.FK__Administr__Utili__4F7CD00D">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Administratori" EntitySet="Administratoris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Animale__Proprie__5FB337D6" Association="Self.FK__Animale__Proprie__5FB337D6">
+            <End Role="Proprietari" EntitySet="Proprietaris" />
+            <End Role="Animale" EntitySet="Animales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Animale__SpecieI__60A75C0F" Association="Self.FK__Animale__SpecieI__60A75C0F">
+            <End Role="Specii" EntitySet="Speciis" />
+            <End Role="Animale" EntitySet="Animales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Anima__70DDC3D8" Association="Self.FK__Programar__Anima__70DDC3D8">
+            <End Role="Animale" EntitySet="Animales" />
+            <End Role="Programari" EntitySet="Programaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__ClinicaI__5441852A" Association="Self.FK__Medici__ClinicaI__5441852A">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Medici" EntitySet="Medicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Clini__6EF57B66" Association="Self.FK__Programar__Clini__6EF57B66">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Programari" EntitySet="Programaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicii__Clinic__6754599E" Association="Self.FK__Servicii__Clinic__6754599E">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Servicii" EntitySet="Serviciis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocuri__Clinica__6B24EA82" Association="Self.FK__Stocuri__Clinica__6B24EA82">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Stocuri" EntitySet="Stocuris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__FisaI__7E37BEF6" Association="Self.FK__DetaliiFi__FisaI__7E37BEF6">
+            <End Role="FiseMedicale" EntitySet="FiseMedicales" />
+            <End Role="DetaliiFisa_Materiale" EntitySet="DetaliiFisa_Materiale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__StocI__7F2BE32F" Association="Self.FK__DetaliiFi__StocI__7F2BE32F">
+            <End Role="Stocuri" EntitySet="Stocuris" />
+            <End Role="DetaliiFisa_Materiale" EntitySet="DetaliiFisa_Materiale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__FisaI__7A672E12" Association="Self.FK__DetaliiFi__FisaI__7A672E12">
+            <End Role="FiseMedicale" EntitySet="FiseMedicales" />
+            <End Role="DetaliiFisa_Servicii" EntitySet="DetaliiFisa_Servicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetaliiFi__Servi__7B5B524B" Association="Self.FK__DetaliiFi__Servi__7B5B524B">
+            <End Role="Servicii" EntitySet="Serviciis" />
+            <End Role="DetaliiFisa_Servicii" EntitySet="DetaliiFisa_Servicii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FiseMedic__Progr__76969D2E" Association="Self.FK__FiseMedic__Progr__76969D2E">
+            <End Role="Programari" EntitySet="Programaris" />
+            <End Role="FiseMedicale" EntitySet="FiseMedicales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__Utilizat__534D60F1" Association="Self.FK__Medici__Utilizat__534D60F1">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Medici" EntitySet="Medicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarMedic__Medic__6383C8BA" Association="Self.FK__OrarMedic__Medic__6383C8BA">
+            <End Role="Medici" EntitySet="Medicis" />
+            <End Role="OrarMedici" EntitySet="OrarMedicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Medic__6FE99F9F" Association="Self.FK__Programar__Medic__6FE99F9F">
+            <End Role="Medici" EntitySet="Medicis" />
+            <End Role="Programari" EntitySet="Programaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proprieta__Utili__571DF1D5" Association="Self.FK__Proprieta__Utili__571DF1D5">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Proprietari" EntitySet="Proprietaris" />
+          </AssociationSet>
+          <AssociationSet Name="SpecializariMedici" Association="Self.SpecializariMedici">
+            <End Role="Medici" EntitySet="Medicis" />
+            <End Role="Specii" EntitySet="Speciis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrarMedici_Clinici" Association="PetCareModel.FK_OrarMedici_Clinici">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="OrarMedici" EntitySet="OrarMedicis" />
+          </AssociationSet>
+          <AssociationSet Name="MediciClinici" Association="PetCareModel.MediciClinici">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="Medici" EntitySet="Medicis" />
+          </AssociationSet>
+          <AssociationSet Name="ProgramariServicii" Association="PetCareModel.ProgramariServicii">
+            <End Role="Programari" EntitySet="Programaris" />
+            <End Role="Servicii" EntitySet="Serviciis" />
+          </AssociationSet>
+          <EntitySet Name="Mesajes" EntityType="PetCareModel.Mesaje" />
+          <AssociationSet Name="FK__Mesaje__Expedito__17036CC0" Association="PetCareModel.FK__Mesaje__Expedito__17036CC0">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Mesaje" EntitySet="Mesajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Programa__160F4887" Association="PetCareModel.FK__Mesaje__Programa__160F4887">
+            <End Role="Programari" EntitySet="Programaris" />
+            <End Role="Mesaje" EntitySet="Mesajes" />
+          </AssociationSet>
+          <EntitySet Name="Reminderes" EntityType="PetCareModel.Remindere" />
+          <AssociationSet Name="FK_Remindere_Animale" Association="PetCareModel.FK_Remindere_Animale">
+            <End Role="Animale" EntitySet="Animales" />
+            <End Role="Remindere" EntitySet="Reminderes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remindere_Medici" Association="PetCareModel.FK_Remindere_Medici">
+            <End Role="Medici" EntitySet="Medicis" />
+            <End Role="Remindere" EntitySet="Reminderes" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_OrarMedici_Clinici">
+          <End Type="PetCareModel.Clinici" Role="Clinici" Multiplicity="0..1" />
+          <End Type="PetCareModel.OrarMedici" Role="OrarMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="OrarMedici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MediciClinici">
+          <End Type="PetCareModel.Clinici" Role="Clinici" Multiplicity="*" />
+          <End Type="PetCareModel.Medici" Role="Medici" Multiplicity="*" />
+        </Association>
+        <Association Name="ProgramariServicii">
+          <End Type="PetCareModel.Programari" Role="Programari" Multiplicity="*" />
+          <End Type="PetCareModel.Servicii" Role="Servicii" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Mesaje">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramareID" Type="Int32" />
+          <Property Name="ExpeditorID" Type="Int32" />
+          <Property Name="Continut" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataOra" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Utilizatori" Relationship="PetCareModel.FK__Mesaje__Expedito__17036CC0" FromRole="Mesaje" ToRole="Utilizatori" />
+          <NavigationProperty Name="Programari" Relationship="PetCareModel.FK__Mesaje__Programa__160F4887" FromRole="Mesaje" ToRole="Programari" />
+          <Property Name="IsCitit" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Mesaje__Expedito__17036CC0">
+          <End Type="PetCareModel.Utilizatori" Role="Utilizatori" Multiplicity="0..1" />
+          <End Type="PetCareModel.Mesaje" Role="Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ExpeditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Programa__160F4887">
+          <End Type="PetCareModel.Programari" Role="Programari" Multiplicity="0..1" />
+          <End Type="PetCareModel.Mesaje" Role="Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programari">
+              <PropertyRef Name="ProgramareID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ProgramareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Remindere">
+          <Key>
+            <PropertyRef Name="ReminderID" />
+          </Key>
+          <Property Name="ReminderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalID" Type="Int32" Nullable="false" />
+          <Property Name="MedicID" Type="Int32" Nullable="false" />
+          <Property Name="Mesaj" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataLimita" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCitit" Type="Boolean" />
+          <Property Name="DataCreare" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Animale" Relationship="PetCareModel.FK_Remindere_Animale" FromRole="Remindere" ToRole="Animale" />
+          <NavigationProperty Name="Medici" Relationship="PetCareModel.FK_Remindere_Medici" FromRole="Remindere" ToRole="Medici" />
+        </EntityType>
+        <Association Name="FK_Remindere_Animale">
+          <End Type="PetCareModel.Animale" Role="Animale" Multiplicity="1" />
+          <End Type="PetCareModel.Remindere" Role="Remindere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animale">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="Remindere">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remindere_Medici">
+          <End Type="PetCareModel.Medici" Role="Medici" Multiplicity="1" />
+          <End Type="PetCareModel.Remindere" Role="Remindere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="Remindere">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetCareModelStoreContainer" CdmEntityContainer="PetCareEntities">
+          <EntitySetMapping Name="Administratoris">
+            <EntityTypeMapping TypeName="PetCareModel.Administratori">
+              <MappingFragment StoreEntitySet="Administratori">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animales">
+            <EntityTypeMapping TypeName="PetCareModel.Animale">
+              <MappingFragment StoreEntitySet="Animale">
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="ProprietarID" ColumnName="ProprietarID" />
+                <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="DataNasterii" ColumnName="DataNasterii" />
+                <ScalarProperty Name="Microcip" ColumnName="Microcip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinicis">
+            <EntityTypeMapping TypeName="PetCareModel.Clinici">
+              <MappingFragment StoreEntitySet="Clinici">
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetaliiFisa_Materiale">
+            <EntityTypeMapping TypeName="PetCareModel.DetaliiFisa_Materiale">
+              <MappingFragment StoreEntitySet="DetaliiFisa_Materiale">
+                <ScalarProperty Name="DetaliuID" ColumnName="DetaliuID" />
+                <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+                <ScalarProperty Name="StocID" ColumnName="StocID" />
+                <ScalarProperty Name="CantitateConsumata" ColumnName="CantitateConsumata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetaliiFisa_Servicii">
+            <EntityTypeMapping TypeName="PetCareModel.DetaliiFisa_Servicii">
+              <MappingFragment StoreEntitySet="DetaliiFisa_Servicii">
+                <ScalarProperty Name="DetaliuID" ColumnName="DetaliuID" />
+                <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+                <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+                <ScalarProperty Name="PretAplicat" ColumnName="PretAplicat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiseMedicales">
+            <EntityTypeMapping TypeName="PetCareModel.FiseMedicale">
+              <MappingFragment StoreEntitySet="FiseMedicale">
+                <ScalarProperty Name="FisaID" ColumnName="FisaID" />
+                <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+                <ScalarProperty Name="Diagnostic" ColumnName="Diagnostic" />
+                <ScalarProperty Name="Tratament" ColumnName="Tratament" />
+                <ScalarProperty Name="DataCrearii" ColumnName="DataCrearii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicis">
+            <EntityTypeMapping TypeName="PetCareModel.Medici">
+              <MappingFragment StoreEntitySet="Medici">
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="NrParafa" ColumnName="NrParafa" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrarMedicis">
+            <EntityTypeMapping TypeName="PetCareModel.OrarMedici">
+              <MappingFragment StoreEntitySet="OrarMedici">
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="OrarID" ColumnName="OrarID" />
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="ZiSaptamana" ColumnName="ZiSaptamana" />
+                <ScalarProperty Name="OraInceput" ColumnName="OraInceput" />
+                <ScalarProperty Name="OraSfarsit" ColumnName="OraSfarsit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programaris">
+            <EntityTypeMapping TypeName="PetCareModel.Programari">
+              <MappingFragment StoreEntitySet="Programari">
+                <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+                <ScalarProperty Name="Motiv" ColumnName="Motiv" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proprietaris">
+            <EntityTypeMapping TypeName="PetCareModel.Proprietari">
+              <MappingFragment StoreEntitySet="Proprietari">
+                <ScalarProperty Name="ProprietarID" ColumnName="ProprietarID" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+                <ScalarProperty Name="AdresaDomiciliu" ColumnName="AdresaDomiciliu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serviciis">
+            <EntityTypeMapping TypeName="PetCareModel.Servicii">
+              <MappingFragment StoreEntitySet="Servicii">
+                <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="PretStandard" ColumnName="PretStandard" />
+                <ScalarProperty Name="DurataEstimataMinute" ColumnName="DurataEstimataMinute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Speciis">
+            <EntityTypeMapping TypeName="PetCareModel.Specii">
+              <MappingFragment StoreEntitySet="Specii">
+                <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocuris">
+            <EntityTypeMapping TypeName="PetCareModel.Stocuri">
+              <MappingFragment StoreEntitySet="Stocuri">
+                <ScalarProperty Name="StocID" ColumnName="StocID" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="DenumireProdus" ColumnName="DenumireProdus" />
+                <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+                <ScalarProperty Name="CantitateDisponibila" ColumnName="CantitateDisponibila" />
+                <ScalarProperty Name="PretUnitar" ColumnName="PretUnitar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizatoris">
+            <EntityTypeMapping TypeName="PetCareModel.Utilizatori">
+              <MappingFragment StoreEntitySet="Utilizatori">
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ParolaHash" ColumnName="ParolaHash" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="SpecializariMedici" TypeName="PetCareModel.SpecializariMedici" StoreEntitySet="SpecializariMedici">
+            <EndProperty Name="Medici">
+              <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+            </EndProperty>
+            <EndProperty Name="Specii">
+              <ScalarProperty Name="SpecieID" ColumnName="SpecieID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MediciClinici" TypeName="PetCareModel.MediciClinici" StoreEntitySet="MediciClinici">
+            <EndProperty Name="Medici">
+              <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+            </EndProperty>
+            <EndProperty Name="Clinici">
+              <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProgramariServicii" TypeName="PetCareModel.ProgramariServicii" StoreEntitySet="ProgramariServicii">
+            <EndProperty Name="Servicii">
+              <ScalarProperty Name="ServiciuID" ColumnName="ServiciuID" />
+            </EndProperty>
+            <EndProperty Name="Programari">
+              <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Mesajes">
+            <EntityTypeMapping TypeName="PetCareModel.Mesaje">
+              <MappingFragment StoreEntitySet="Mesaje">
+                <ScalarProperty Name="IsCitit" ColumnName="IsCitit" />
+                <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+                <ScalarProperty Name="Continut" ColumnName="Continut" />
+                <ScalarProperty Name="ExpeditorID" ColumnName="ExpeditorID" />
+                <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reminderes">
+            <EntityTypeMapping TypeName="PetCareModel.Remindere">
+              <MappingFragment StoreEntitySet="Remindere">
+                <ScalarProperty Name="DataCreare" ColumnName="DataCreare" />
+                <ScalarProperty Name="IsCitit" ColumnName="IsCitit" />
+                <ScalarProperty Name="DataLimita" ColumnName="DataLimita" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="ReminderID" ColumnName="ReminderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

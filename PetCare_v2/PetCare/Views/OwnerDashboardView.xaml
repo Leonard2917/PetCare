@@ -1,0 +1,136 @@
+<Page x:Class="PetCare.Views.OwnerDashboardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="Panou Proprietar">
+      
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Background="#F5F5F5">
+    
+        <!-- MAIN CONTENT (Visible if Profile is Complete) -->
+        <Grid Margin="20" Visibility="{Binding IsProfileComplete, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/> <!-- List -->
+                <ColumnDefinition Width="Auto"/> <!-- Add Form (Auto size to collapse) -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="{Binding WelcomeMessage}" FontSize="24" FontWeight="Bold" Foreground="#333"/>
+                <Button Content="Deconectare" Click="LogoutButton_Click" Margin="20,0,0,0" Padding="10,5" Background="#FFEBEE" Foreground="#D32F2F" BorderThickness="0"/>
+            </StackPanel>
+
+            <!-- Main Content: TabControl -->
+            <TabControl Grid.Row="1" Grid.Column="0" Margin="0,0,20,0">
+                
+                <!-- Tab: Animals -->
+                <TabItem Header="Animalele Mele">
+                    <Border Background="White" CornerRadius="10" Padding="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <DockPanel LastChildFill="False" Margin="0,0,0,10">
+                                <TextBlock Text="Animalele Mele" FontSize="18" FontWeight="SemiBold" Foreground="#555" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                                <Button Content="Adaugă Animal" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Padding="10,5" Background="#2196F3" Foreground="White" BorderThickness="0" Cursor="Hand"/>
+                            </DockPanel>
+                            
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Animals}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nume" Binding="{Binding Nume}" Width="*"/>
+                                    <DataGridTextColumn Header="Specie" Binding="{Binding SpecieNume}" Width="100"/>
+                                    <DataGridTextColumn Header="Vârstă" Binding="{Binding Varsta}" Width="80"/>
+                                    <DataGridTextColumn Header="Microcip" Binding="{Binding Microcip}" Width="150"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </TabItem>
+                
+                <!-- Tab: Appointments -->
+                <TabItem Header="Programări">
+                    <Border Background="White" CornerRadius="10" Padding="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <DockPanel LastChildFill="False" Margin="0,0,0,10">
+                                <TextBlock Text="Programările Mele" FontSize="18" FontWeight="SemiBold" Foreground="#555" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                                <Button Content="+ Programare Nouă" Click="NewAppointment_Click" DockPanel.Dock="Right" Padding="10,5" Background="#4CAF50" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                            </DockPanel>
+                            
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Appointments}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Data/Ora" Binding="{Binding DataOraDisplay}" Width="140"/>
+                                    <DataGridTextColumn Header="Animal" Binding="{Binding AnimalNume}" Width="120"/>
+                                    <DataGridTextColumn Header="Clinică" Binding="{Binding ClinicaNume}" Width="*"/>
+                                    <DataGridTextColumn Header="Medic" Binding="{Binding MedicNume}" Width="150"/>
+                                    <DataGridTextColumn Header="Servicii" Binding="{Binding ServiciiDisplay}" Width="200"/>
+                                    <DataGridTextColumn Header="Durată" Binding="{Binding DurataMinute, StringFormat={}{0} min}" Width="70"/>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </TabItem>
+                
+            </TabControl>
+
+            <!-- Right: Add Animal Form -->
+            <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="10" Padding="20" Width="300"
+                    Visibility="{Binding IsAddAnimalVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel>
+                    <DockPanel LastChildFill="False">
+                        <TextBlock Text="Adaugă Animal" FontSize="18" FontWeight="SemiBold" Foreground="#1976D2" DockPanel.Dock="Left"/>
+                        <Button Content="X" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Background="Transparent" Foreground="#999" BorderThickness="0" FontSize="16" Cursor="Hand"/>
+                    </DockPanel>
+                    
+                    <TextBlock Text="Nume" Margin="0,20,0,2" Foreground="#666"/>
+                    <TextBox Text="{Binding NewAnimalName}" Padding="5" Height="30"/>
+
+                    <TextBlock Text="Specie" Margin="0,10,0,2" Foreground="#666"/>
+                    <ComboBox ItemsSource="{Binding Species}" SelectedItem="{Binding SelectedSpecies}" DisplayMemberPath="Denumire" Height="30" Padding="5"/>
+
+                    <TextBlock Text="Data Nașterii" Margin="0,10,0,2" Foreground="#666"/>
+                    <DatePicker SelectedDate="{Binding NewAnimalBirthDate}" DisplayDateEnd="{x:Static sys:DateTime.Today}" Height="30"/>
+
+                    <TextBlock Text="Microcip (opțional)" Margin="0,10,0,2" Foreground="#666"/>
+                    <TextBox Text="{Binding NewAnimalMicrocip}" Padding="5" Height="30"/>
+
+                    <Button Content="Salvează" Height="40" Margin="0,20,0,0" Click="AddAnimalButton_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        <!-- OVERLAY: Complete Profile (Visible if Profile is Incomplete) -->
+        <Grid Background="#CC000000" Visibility="{Binding IsProfileIncomplete, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="White" Width="400" Height="250" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Completează Profilul" FontSize="22" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="Pentru a administra animale, avem nevoie de adresa domiciliului tău." TextWrapping="Wrap" TextAlignment="Center" Foreground="#666" Margin="0,0,0,20"/>
+                    
+                    <TextBlock Text="Adresa Domiciliu" FontWeight="SemiBold" Foreground="#444" Margin="0,0,0,5"/>
+                    <TextBox Text="{Binding AdresaDomiciliu}" Height="35" Padding="5" VerticalContentAlignment="Center"/>
+                    
+                    <Button Content="Salvează și Continuă" Height="40" Margin="0,20,0,0" Click="SaveProfileButton_Click" Background="#2196F3" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+    </Grid>
+</Page>
