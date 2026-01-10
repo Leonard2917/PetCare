@@ -4,100 +4,188 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900"
-      Title="Programare Nouă">
+      d:DesignHeight="800" d:DesignWidth="900"
+      Title="Programare Nouă"
+      FontFamily="Segoe UI">
 
-    <Grid Background="#F5F5F5">
+    <Page.Resources>
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="PrimaryGreen" Color="#4CAF50"/>
+        <SolidColorBrush x:Key="TextDark" Color="#333333"/>
+        <SolidColorBrush x:Key="TextLight" Color="#666666"/>
+
+        <Style x:Key="StepCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="25"/>
+            <Setter Property="Margin" Value="0,0,0,25"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.1" Color="Black" Direction="270"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StepHeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/bookappointment_background.jpg" Stretch="UniformToFill" Opacity="1"/>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <StackPanel Grid.Row="0" Background="#1976D2" Margin="20">
-            <TextBlock Text="Programare Nouă" FontSize="24" FontWeight="Bold" Foreground="White"/>
-            <TextBlock Text="Completează pașii de mai jos pentru a crea o programare" FontSize="14" Foreground="#E3F2FD" Margin="0,5,0,0"/>
-        </StackPanel>
+        <Border Grid.Row="0" Padding="30,25">
+            <Border.Background>
+                <SolidColorBrush Color="#CCFFFFFF"/>
+            </Border.Background>
 
-        <!-- Main Content -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="30,20">
-                
-                <!-- Step 1: Animal Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.1" Color="Black"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="Programare Nouă" 
+                           FontSize="28" 
+                           FontWeight="Bold" 
+                           Foreground="{StaticResource PrimaryBlue}"/>
+
+                <TextBlock Text="Completează pașii de mai jos pentru a stabili o vizită." 
+                           FontSize="16" 
+                           Foreground="#666666" 
+                           Margin="0,8,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="0,30,0,30">
+            <StackPanel Margin="40,0" MaxWidth="800" HorizontalAlignment="Center">
+
+                <Border Style="{StaticResource StepCardStyle}">
                     <StackPanel>
-                        <TextBlock Text="1. Selectează Animalul" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <TextBlock Text="1. Selectează Animalul" Style="{StaticResource StepHeaderTextStyle}"/>
                         <ComboBox ItemsSource="{Binding MyAnimals}" 
                                   SelectedItem="{Binding SelectedAnimal}"
-                                  DisplayMemberPath="Nume"
-                                  Height="35"
-                                  FontSize="14"/>
-                        <TextBlock Text="{Binding SelectedAnimal.SpecieNume}" Foreground="#666" Margin="0,5,0,0" FontSize="12"/>
+                                  DisplayMemberPath="Nume"/>
+                        <TextBlock Text="{Binding SelectedAnimal.SpecieNume}" Foreground="{StaticResource TextLight}" Margin="2,8,0,0" FontSize="13" FontStyle="Italic"/>
                     </StackPanel>
                 </Border>
 
-                <!-- Step 2: Clinic Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
-                        IsEnabled="{Binding IsStep2Enabled}">
+                <Border Style="{StaticResource StepCardStyle}" IsEnabled="{Binding IsStep2Enabled}">
                     <StackPanel>
-                        <TextBlock Text="2. Selectează Clinica" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <TextBlock Text="2. Selectează Clinica" Style="{StaticResource StepHeaderTextStyle}"/>
                         <ComboBox ItemsSource="{Binding AllClinics}" 
                                   SelectedItem="{Binding SelectedClinic}"
-                                  DisplayMemberPath="Nume"
-                                  Height="35"
-                                  FontSize="14"/>
-                        <TextBlock Text="{Binding SelectedClinic.Adresa}" Foreground="#666" Margin="0,5,0,0" FontSize="12"/>
+                                  DisplayMemberPath="Nume"/>
+                        <StackPanel Orientation="Horizontal" Margin="2,8,0,0">
+                            <TextBlock Text="📍" Foreground="{StaticResource TextLight}" Margin="0,0,5,0" FontSize="11"/>
+                            <TextBlock Text="{Binding SelectedClinic.Adresa}" Foreground="{StaticResource TextLight}" FontSize="13"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
-                <!-- Step 3: Services Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
-                        IsEnabled="{Binding IsStep3Enabled}">
+                <Border Style="{StaticResource StepCardStyle}" IsEnabled="{Binding IsStep3Enabled}">
                     <StackPanel>
-                        <TextBlock Text="3. Selectează Serviciile" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
-                        <TextBlock Text="Poți selecta unul sau mai multe servicii:" Foreground="#666" Margin="0,0,0,10"/>
-                        
+                        <TextBlock Text="3. Selectează Serviciile" Style="{StaticResource StepHeaderTextStyle}"/>
+                        <TextBlock Text="Poți selecta unul sau mai multe servicii:" Foreground="{StaticResource TextLight}" Margin="0,0,0,15" FontSize="14"/>
+
                         <ListBox ItemsSource="{Binding ClinicServices}" 
                                  SelectionMode="Multiple"
-                                 MaxHeight="200"
-                                 BorderBrush="#DDD"
+                                 MaxHeight="250"
+                                 BorderBrush="#EEE"
+                                 BorderThickness="1"
+                                 Padding="5"
                                  SelectionChanged="ServicesListBox_SelectionChanged">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Margin" Value="0,2"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border x:Name="ItemBorder" Background="Transparent" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="ItemBorder" Property="Background" Value="#E3F2FD"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ItemBorder" Property="Background" Value="#F5F5F5"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" Margin="5">
-                                        <TextBlock Text="{Binding Denumire}" FontWeight="Bold" Width="200"/>
-                                        <TextBlock Text="{Binding DurataEstimataMinute}" Margin="10,0,0,0"/>
-                                        <TextBlock Text=" min" Margin="2,0,10,0"/>
-                                        <TextBlock Text="{Binding PretStandard, StringFormat={}{0:F2} RON}" Foreground="#4CAF50"/>
-                                    </StackPanel>
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Denumire}" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center"/>
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
+                                            <TextBlock Text="⏱️" FontSize="12" Margin="0,1,4,0" Opacity="0.7"/>
+                                            <TextBlock Text="{Binding DurataEstimataMinute}" Foreground="{StaticResource TextLight}"/>
+                                            <TextBlock Text=" min" Foreground="{StaticResource TextLight}"/>
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2" Text="{Binding PretStandard, StringFormat={}{0:F2} RON}" 
+                                                   Foreground="{StaticResource PrimaryGreen}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        
-                        <TextBlock Text="{Binding TotalDurationDisplay}" FontWeight="Bold" Foreground="#1976D2" Margin="0,10,0,0" FontSize="14"/>
+
+                        <Border Background="#E8F5E9" CornerRadius="8" Padding="15" Margin="0,20,0,0" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Durată totală estimată: " FontWeight="Normal" Foreground="{StaticResource TextDark}" FontSize="14"/>
+                                <TextBlock Text="{Binding TotalDurationDisplay}" FontWeight="Bold" Foreground="{StaticResource PrimaryGreen}" FontSize="15" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Border>
                     </StackPanel>
                 </Border>
 
-                <!-- Step 4: Medic Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
-                        IsEnabled="{Binding IsStep4Enabled}">
+                <Border Style="{StaticResource StepCardStyle}" IsEnabled="{Binding IsStep4Enabled}">
                     <StackPanel>
-                        <TextBlock Text="4. Selectează Medicul" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
+                        <TextBlock Text="4. Selectează Medicul" Style="{StaticResource StepHeaderTextStyle}"/>
                         <ComboBox ItemsSource="{Binding AvailableMedics}" 
                                   SelectedItem="{Binding SelectedMedic}"
-                                  Height="35"
-                                  FontSize="14">
+                                  Height="50">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock>
-                                            <Run Text="Dr. " FontWeight="Bold"/>
-                                            <Run Text="{Binding Nume}" FontWeight="Bold"/>
+                                    <StackPanel Margin="5">
+                                        <TextBlock FontSize="15">
+                                            <Run Text="Dr. " FontWeight="SemiBold" Foreground="{StaticResource PrimaryBlue}"/>
+                                            <Run Text="{Binding Nume}" FontWeight="SemiBold"/>
                                             <Run Text=" "/>
-                                            <Run Text="{Binding Prenume}" FontWeight="Bold"/>
+                                            <Run Text="{Binding Prenume}" FontWeight="SemiBold"/>
                                         </TextBlock>
-                                        <TextBlock Text="{Binding NrParafa, StringFormat='Parafă: {0}'}" FontSize="11" Foreground="#666"/>
+                                        <TextBlock Text="{Binding NrParafa, StringFormat='Parafă: {0}'}" FontSize="12" Foreground="{StaticResource TextLight}" Margin="0,2,0,0"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
@@ -105,55 +193,141 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Step 5: Date Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
-                        IsEnabled="{Binding IsStep5Enabled}">
-                    <StackPanel>
-                        <TextBlock Text="5. Selectează Data" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
-                        <ListBox ItemsSource="{Binding AvailableDates}" 
-                                 SelectedItem="{Binding SelectedDate}"
-                                 MaxHeight="150"
-                                 BorderBrush="#DDD">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding StringFormat='dd MMMM yyyy (dddd)'}" Padding="5"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- Step 6: Time Selection -->
-                <Border Background="White" CornerRadius="5" Padding="20" Margin="0,0,0,15" BorderBrush="#DDD" BorderThickness="1"
-                        IsEnabled="{Binding IsStep6Enabled}">
-                    <StackPanel>
-                        <TextBlock Text="6. Selectează Ora" FontSize="18" FontWeight="Bold" Foreground="#1976D2" Margin="0,0,0,10"/>
-                        <ListBox ItemsSource="{Binding AvailableTimeSlots}" 
-                                 SelectedItem="{Binding SelectedTimeSlot}"
-                                 MaxHeight="200"
-                                 BorderBrush="#DDD">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding DisplayText}" Padding="5" FontSize="14"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </Border>
+                    <Border Grid.Column="0" Style="{StaticResource StepCardStyle}" IsEnabled="{Binding IsStep5Enabled}">
+                        <StackPanel>
+                            <TextBlock Text="5. Data" Style="{StaticResource StepHeaderTextStyle}"/>
+                            <ListBox ItemsSource="{Binding AvailableDates}" 
+                                     SelectedItem="{Binding SelectedDate}"
+                                     MaxHeight="200"
+                                     BorderBrush="#EEE" BorderThickness="1" Padding="5">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Padding" Value="10,8"/>
+                                        <Setter Property="Margin" Value="0,2"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border x:Name="DateBorder" Background="Transparent" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="DateBorder" Property="Background" Value="{StaticResource PrimaryBlue}"/>
+                                                            <Setter Property="Foreground" Value="White"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="DateBorder" Property="Background" Value="#E3F2FD"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding StringFormat='dd MMMM yyyy (dddd)'}" FontSize="14"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Style="{StaticResource StepCardStyle}" IsEnabled="{Binding IsStep6Enabled}">
+                        <StackPanel>
+                            <TextBlock Text="6. Ora" Style="{StaticResource StepHeaderTextStyle}"/>
+                            <ListBox ItemsSource="{Binding AvailableTimeSlots}" 
+                                     SelectedItem="{Binding SelectedTimeSlot}"
+                                     MaxHeight="200"
+                                     BorderBrush="#EEE" BorderThickness="1" Padding="5"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Margin" Value="4"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border x:Name="TimeBorder" Background="White" BorderBrush="#DDD" BorderThickness="1" CornerRadius="6" Width="80" Height="40">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="TimeBorder" Property="Background" Value="{StaticResource PrimaryGreen}"/>
+                                                            <Setter TargetName="TimeBorder" Property="BorderBrush" Value="{StaticResource PrimaryGreen}"/>
+                                                            <Setter Property="Foreground" Value="White"/>
+                                                            <Setter Property="FontWeight" Value="Bold"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="TimeBorder" Property="Background" Value="#E8F5E9"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DisplayText}" FontSize="14"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Border>
+                </Grid>
 
             </StackPanel>
         </ScrollViewer>
 
-        <!-- Footer Buttons -->
-        <Border Grid.Row="2" Background="White" BorderBrush="#DDD" BorderThickness="0,1,0,0" Padding="20">
+        <Border Grid.Row="2" Background="White" Padding="30,20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="-2" Opacity="0.1" Direction="90"/>
+            </Border.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Anulează" Click="CancelButton_Click" 
-                        Width="120" Height="40" Margin="0,0,10,0"
-                        Background="#F5F5F5" Foreground="#333" BorderThickness="1" BorderBrush="#DDD"/>
+                        Width="130" Height="45" Margin="0,0,15,0"
+                        Background="White" Foreground="{StaticResource TextLight}" 
+                        BorderThickness="1" BorderBrush="#DDD" FontSize="15">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
                 <Button Content="Confirmă Programarea" Click="ConfirmButton_Click" 
-                        Width="180" Height="40"
-                        Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0"
-                        IsEnabled="{Binding CanConfirmBooking}"/>
+                        Width="200" Height="45"
+                        Background="{StaticResource PrimaryGreen}" Foreground="White" 
+                        FontWeight="Bold" FontSize="15" BorderThickness="0"
+                        IsEnabled="{Binding CanConfirmBooking}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
         </Border>
     </Grid>

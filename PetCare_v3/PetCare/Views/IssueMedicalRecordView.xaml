@@ -1,90 +1,205 @@
 <Window x:Class="PetCare.Views.IssueMedicalRecordView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Emitere Fișă Medicală" Height="750" Width="700" WindowStartupLocation="CenterScreen">
-    <Grid Margin="20">
+        Title="Emitere Fișă Medicală" Height="800" Width="750" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        FontFamily="Segoe UI" Background="#F4F7F6">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#43A047"/>
+        <SolidColorBrush x:Key="TextDark" Color="#37474F"/>
+        <SolidColorBrush x:Key="TextLight" Color="#78909C"/>
+        <SolidColorBrush x:Key="CardBackground" Color="White"/>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.05" Color="#000"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ModernBtn">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Opacity" Value="0.9"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Emitere Fișă Medicală" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
-
-        <StackPanel Grid.Row="1" Margin="0,0,0,15">
-            <TextBlock Text="Diagnostic (Opțional)" Margin="0,0,0,5" Foreground="#666"/>
-            <TextBox Text="{Binding Diagnostic}" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Padding="5"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Margin="0,0,0,15">
-            <TextBlock Text="Tratament / Observații" Margin="0,0,0,5" Foreground="#666"/>
-            <TextBox Text="{Binding Tratament}" Height="80" TextWrapping="Wrap" AcceptsReturn="True" Padding="5"/>
-        </StackPanel>
-
-        <GroupBox Grid.Row="3" Header="Materiale Utilizate" Margin="0,0,0,15">
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <!-- Left: Add Controls -->
-                <StackPanel Grid.Column="0" Margin="0,0,10,0" VerticalAlignment="Top">
-                     <TextBlock Text="Material" Margin="0,0,0,2"/>
-                     <ComboBox ItemsSource="{Binding AvailableMaterials}" 
-                              SelectedItem="{Binding SelectedAvailableMaterial}"
-                              DisplayMemberPath="DenumireProdus" Width="180" Margin="0,0,0,10"/>
-                     
-                     <TextBlock Text="Cantitate" Margin="0,0,0,2"/>
-                     <TextBox Text="{Binding MaterialQuantity}" Width="180" Margin="0,0,0,10" Padding="5"/>
-                     
-                     <Button Content="Adaugă" Click="AddMaterial_Click" Background="#2196F3" Foreground="White" Padding="10,5" BorderThickness="0"/>
-                </StackPanel>
-
-                <!-- Right: List -->
-                <DataGrid Grid.Column="1" 
-                          ItemsSource="{Binding UsedMaterials}" 
-                          MinHeight="120"
-                          MaxHeight="200"
-                          AutoGenerateColumns="False" 
-                          CanUserAddRows="False" 
-                          IsReadOnly="True" 
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="All"
-                          Background="#FAFAFA"
-                          BorderThickness="1" 
-                          BorderBrush="#CCC"
-                          VerticalScrollBarVisibility="Auto">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Material" Binding="{Binding NumeMaterial}" Width="*"/>
-                        <DataGridTextColumn Header="Cantitate" Binding="{Binding Cantitate}" Width="80"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </GroupBox>
-
-        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-            <TextBlock Text="Total Estimativ (Servicii + Materiale): " FontWeight="Bold"/>
-            <TextBlock Text="{Binding TotalCost, StringFormat={}{0:F2} RON}" FontWeight="Bold" Foreground="#4CAF50" FontSize="14"/>
-        </StackPanel>
-
-        <GroupBox Grid.Row="5" Header="Reminder" Margin="0,0,0,15">
-            <StackPanel Margin="5">
-                <CheckBox Content="Adaugă Reminder" IsChecked="{Binding AddReminder}" Margin="0,0,0,10"/>
-                <StackPanel IsEnabled="{Binding AddReminder}">
-                    <DatePicker SelectedDate="{Binding ReminderDate}" Margin="0,0,0,5" HorizontalAlignment="Left" Width="150"/>
-                    <TextBox Text="{Binding ReminderMessage}" Height="40" TextWrapping="Wrap" AcceptsReturn="True" Padding="5" ToolTip="Mesaj Reminder"/>
-                </StackPanel>
+        <Border Grid.Row="0" Background="White" Padding="25,20" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1">
+            <StackPanel>
+                <TextBlock Text="Emitere Fișă Medicală" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryBlue}"/>
+                <TextBlock Text="Completează detaliile consultației și tratamentului." FontSize="14" Foreground="{StaticResource TextLight}" Margin="0,5,0,0"/>
             </StackPanel>
-        </GroupBox>
+        </Border>
 
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Anulează" IsCancel="True" Padding="20,10" Margin="0,0,10,0"/>
-            <Button Content="Salvează Fișa" Click="SaveButton_Click" Padding="20,10" Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="25">
+            <StackPanel>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Detalii Consultație" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}" Margin="0,0,0,15"/>
+
+                        <TextBlock Text="Diagnostic (Opțional)" Margin="0,0,0,5" Foreground="{StaticResource TextLight}" FontWeight="SemiBold"/>
+                        <TextBox Text="{Binding Diagnostic}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+                        <TextBlock Text="Tratament / Observații" Margin="0,15,0,5" Foreground="{StaticResource TextLight}" FontWeight="SemiBold"/>
+                        <TextBox Text="{Binding Tratament}" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Materiale &amp; Consumabile" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}" Margin="0,0,0,15"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                <TextBlock Text="Selectează Material" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
+                                <ComboBox ItemsSource="{Binding AvailableMaterials}" 
+                                          SelectedItem="{Binding SelectedAvailableMaterial}"
+                                          DisplayMemberPath="DenumireProdus" Margin="0,0,0,15"/>
+
+                                <TextBlock Text="Cantitate" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
+                                <TextBox Text="{Binding MaterialQuantity}" Margin="0,0,0,20" Height="35" VerticalContentAlignment="Center"/>
+
+                                <Button Content="+ Adaugă" Click="AddMaterial_Click" Height="35"
+                                        Style="{StaticResource ModernBtn}" Background="{StaticResource PrimaryBlue}" Foreground="White" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <DataGrid Grid.Column="1" ItemsSource="{Binding UsedMaterials}" 
+                                      MinHeight="150" MaxHeight="200"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                      BorderThickness="1" BorderBrush="#EEE" Background="White"
+                                      GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#F5F5F5">
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="#F9FAFB"/>
+                                        <Setter Property="Padding" Value="10"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                        <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+                                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                        <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                                    </Style>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Padding" Value="10,5"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="DataGridCell">
+                                                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                                                        <ContentPresenter VerticalAlignment="Center" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGrid.Resources>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Denumire Material" Binding="{Binding NumeMaterial}" Width="*"/>
+                                    <DataGridTextColumn Header="Cantitate" Binding="{Binding Cantitate}" Width="100"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Border Background="#F1F8E9" BorderBrush="#C8E6C9" BorderThickness="1" CornerRadius="6" Padding="15" Margin="0,20,0,0">
+                            <DockPanel>
+                                <TextBlock Text="TOTAL ESTIMATIV (Servicii + Materiale):" FontWeight="Bold" Foreground="{StaticResource TextDark}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding TotalCost, StringFormat={}{0:F2} RON}" FontWeight="Bold" Foreground="{StaticResource AccentGreen}" FontSize="18" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                            </DockPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                            <TextBlock Text="🔔 Reminder" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                            <CheckBox Content="Adaugă notificare pentru proprietar" IsChecked="{Binding AddReminder}" VerticalAlignment="Center" Foreground="{StaticResource TextLight}">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </StackPanel>
+
+                        <StackPanel IsEnabled="{Binding AddReminder}" Margin="0,5,0,0">
+                            <TextBlock Text="Data Scadentă" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
+                            <DatePicker SelectedDate="{Binding ReminderDate}" Margin="0,0,0,15" HorizontalAlignment="Left" Width="200" Height="35"/>
+
+                            <TextBlock Text="Mesaj Reminder" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
+                            <TextBox Text="{Binding ReminderMessage}" Height="60" TextWrapping="Wrap" AcceptsReturn="True" ToolTip="Ex: Vaccinare anuala, Deparazitare, Control post-operator"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="2" Background="White" Padding="20" BorderBrush="#E0E0E0" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Anulează" IsCancel="True" Click="CancelButton_Click"
+                        Style="{StaticResource ModernBtn}" Background="White" Foreground="{StaticResource TextLight}"
+                        BorderBrush="#DDD" BorderThickness="1" Padding="20,10" Margin="0,0,15,0" Height="40"/>
+
+                <Button Content="💾 Salvează Fișa" Click="SaveButton_Click"
+                        Style="{StaticResource ModernBtn}" Background="{StaticResource AccentGreen}" Foreground="White" FontWeight="Bold"
+                        Padding="25,10" Height="40">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.2" Color="#43A047"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

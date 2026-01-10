@@ -22,6 +22,11 @@ namespace PetCare.Views
             (DataContext as IssueMedicalRecordViewModel).AddMaterial();
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             string error = (DataContext as IssueMedicalRecordViewModel).Save();

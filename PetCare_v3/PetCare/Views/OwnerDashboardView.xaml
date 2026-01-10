@@ -6,88 +6,240 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:PetCare.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="900"
-      Title="Panou Proprietar">
-      
+      d:DesignHeight="700" d:DesignWidth="1100"
+      Title="Panou Proprietar"
+      FontFamily="Segoe UI">
+
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#43A047"/>
+
+        <SolidColorBrush x:Key="TextDark" Color="#0D47A1"/>
+
+        <SolidColorBrush x:Key="TextLight" Color="#1565C0"/>
+
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#BBDEFB"/>
+            <Setter Property="Background" Value="#F0F8FF"/>
+            <Setter Property="Foreground" Value="{StaticResource TextDark}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E3F2FD"/>
+            <Setter Property="AlternatingRowBackground" Value="#F4F9FD"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,15"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="#E3F2FD"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="10,12"/>
+            <Setter Property="Foreground" Value="{StaticResource TextDark}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#E3F2FD"/>
+                    <Setter Property="Foreground" Value="#0D47A1"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="Border" Padding="20,12" Background="Transparent" Margin="0,0,5,0" CornerRadius="8">
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter TargetName="Border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1" Color="#1565C0"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ModernBtn">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Opacity" Value="0.9"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
-    <Grid Background="#F5F5F5">
-    
-        <!-- MAIN CONTENT (Visible if Profile is Complete) -->
-        <Grid Margin="20" Visibility="{Binding IsProfileComplete, Converter={StaticResource BooleanToVisibilityConverter}}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/test.jpg" Stretch="UniformToFill" Opacity="1"/>
+        </Grid.Background>
+        <Rectangle Fill="#F0F8FF" Opacity="0.2"/>
+        <Grid Margin="30,20" Visibility="{Binding IsProfileComplete, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/> <!-- List -->
-                <ColumnDefinition Width="Auto"/> <!-- Add Form (Auto size to collapse) -->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Header -->
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,20">
-                <TextBlock Text="{Binding WelcomeMessage}" FontSize="24" FontWeight="Bold" Foreground="#333"/>
-                <Button Content="Deconectare" Click="LogoutButton_Click" Margin="20,0,0,0" Padding="10,5" Background="#FFEBEE" Foreground="#D32F2F" BorderThickness="0"/>
-            </StackPanel>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Background="{StaticResource PrimaryBlue}" Width="5" Height="30" CornerRadius="2" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="{Binding WelcomeMessage}" FontSize="22" FontWeight="Bold" Foreground="{StaticResource TextDark}"/>
+                        <TextBlock Text="Bun venit înapoi în aplicația PetCare" FontSize="14" Foreground="{StaticResource TextLight}"/>
+                    </StackPanel>
+                </StackPanel>
 
-            <!-- Main Content: TabControl -->
-            <TabControl Grid.Row="1" Grid.Column="0" Margin="0,0,20,0">
-                
-                <!-- Tab: Animals -->
+                <Button Content="Deconectare" Click="LogoutButton_Click" HorizontalAlignment="Right" Padding="15,8"
+                        Style="{StaticResource ModernBtn}" Background="White" Foreground="#D32F2F" BorderThickness="0">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="1" Opacity="0.1"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <TabControl Grid.Row="1" Grid.Column="0" Margin="0,0,20,0" Background="Transparent" BorderThickness="0">
+
                 <TabItem Header="Animalele Mele">
-                    <Border Background="White" CornerRadius="10" Padding="15">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            
-                            <DockPanel LastChildFill="False" Margin="0,0,0,10">
-                                <TextBlock Text="Animalele Mele" FontSize="18" FontWeight="SemiBold" Foreground="#555" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                                <Button Content="Adaugă Animal" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Padding="10,5" Background="#2196F3" Foreground="White" BorderThickness="0" Cursor="Hand"/>
-                            </DockPanel>
-                            
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding Animals}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Nume" Binding="{Binding Nume}" Width="*"/>
-                                    <DataGridTextColumn Header="Specie" Binding="{Binding SpecieNume}" Width="100"/>
-                                    <DataGridTextColumn Header="Vârstă" Binding="{Binding Varsta}" Width="80"/>
-                                    <DataGridTextColumn Header="Microcip" Binding="{Binding Microcip}" Width="150"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </Border>
+                    <Grid>
+                        <Border Background="White" CornerRadius="10" Padding="0">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.05" Color="#1565C0"/>
+                            </Border.Effect>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" Padding="20" BorderBrush="#E3F2FD" BorderThickness="0,0,0,1">
+                                    <DockPanel LastChildFill="False">
+                                        <TextBlock Text="Lista Animalelor" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                                        <Button Content="+ Adaugă Animal" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Padding="15,8" 
+                                                Style="{StaticResource ModernBtn}" Background="{StaticResource PrimaryBlue}" Foreground="White"/>
+                                    </DockPanel>
+                                </Border>
+
+                                <DataGrid Grid.Row="1" ItemsSource="{Binding Animals}" IsReadOnly="True" Margin="10">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Nume" Binding="{Binding Nume}" Width="*" FontWeight="SemiBold"/>
+                                        <DataGridTextColumn Header="Specie" Binding="{Binding SpecieNume}" Width="150"/>
+                                        <DataGridTextColumn Header="Vârstă" Binding="{Binding Varsta}" Width="100"/>
+                                        <DataGridTextColumn Header="Microcip" Binding="{Binding Microcip}" Width="150" Foreground="{StaticResource TextLight}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </TabItem>
-                
-                <!-- Tab: Appointments -->
+
                 <TabItem Header="Programări">
-                    <Border Background="White" CornerRadius="10" Padding="15">
+                    <Border Background="White" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.05" Color="#1565C0"/>
+                        </Border.Effect>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            
-                            <DockPanel LastChildFill="False" Margin="0,0,0,10">
-                                <TextBlock Text="Programările Mele" FontSize="18" FontWeight="SemiBold" Foreground="#555" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                                <Button Content="+ Programare Nouă" Click="NewAppointment_Click" DockPanel.Dock="Right" Padding="10,5" Background="#4CAF50" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
-                            </DockPanel>
-                            
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding Appointments}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
+
+                            <Border Grid.Row="0" Padding="20" BorderBrush="#E3F2FD" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="False">
+                                    <TextBlock Text="Programări Recente" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                                    <Button Content="+ Programare Nouă" Click="NewAppointment_Click" DockPanel.Dock="Right" Padding="15,8" 
+                                            Style="{StaticResource ModernBtn}" Background="{StaticResource AccentGreen}" Foreground="White"/>
+                                </DockPanel>
+                            </Border>
+
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Appointments}" IsReadOnly="True" Margin="10">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Data/Ora" Binding="{Binding DataOraDisplay}" Width="140"/>
+                                    <DataGridTextColumn Header="Data &amp; Ora" Binding="{Binding DataOraDisplay}" Width="160" FontWeight="SemiBold"/>
                                     <DataGridTextColumn Header="Animal" Binding="{Binding AnimalNume}" Width="120"/>
                                     <DataGridTextColumn Header="Clinică" Binding="{Binding ClinicaNume}" Width="*"/>
                                     <DataGridTextColumn Header="Medic" Binding="{Binding MedicNume}" Width="150"/>
-                                    <DataGridTextColumn Header="Servicii" Binding="{Binding ServiciiDisplay}" Width="200"/>
-                                    <DataGridTextColumn Header="Durată" Binding="{Binding DurataMinute, StringFormat={}{0} min}" Width="70"/>
-                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
-                                    <DataGridTemplateColumn Header="Chat" Width="60">
+
+                                    <DataGridTemplateColumn Header="Status" Width="100">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Content="Chat" Click="OpenChat_Click" Padding="4,2" Background="{Binding ChatButtonStyle}" Foreground="White" BorderThickness="0"/>
+                                                <Border Background="#E8F5E9" CornerRadius="4" Padding="8,2" HorizontalAlignment="Left">
+                                                    <TextBlock Text="{Binding Status}" Foreground="#2E7D32" FontWeight="SemiBold" FontSize="12"/>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn Header="Acțiuni" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="Chat" Click="OpenChat_Click" Padding="10,4" FontSize="12"
+                                                        Style="{StaticResource ModernBtn}" Background="{Binding ChatButtonStyle}" Foreground="White"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -97,32 +249,37 @@
                     </Border>
                 </TabItem>
 
-                <!-- Tab: Medical History -->
                 <TabItem Header="Istoric Medical">
-                    <Border Background="White" CornerRadius="10" Padding="15">
+                    <Border Background="White" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.05" Color="#1565C0"/>
+                        </Border.Effect>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                <TextBlock Text="Selectează Animal:" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                <ComboBox ItemsSource="{Binding Animals}" 
-                                          SelectedItem="{Binding SelectedAnimalForHistory}"
-                                          DisplayMemberPath="Nume"
-                                          Width="200"/>
-                            </StackPanel>
+                            <Border Grid.Row="0" Padding="20" BorderBrush="#E3F2FD" BorderThickness="0,0,0,1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Selectează Animal:" VerticalAlignment="Center" Margin="0,0,15,0" FontWeight="SemiBold" Foreground="{StaticResource TextLight}"/>
+                                    <ComboBox ItemsSource="{Binding Animals}" 
+                                              SelectedItem="{Binding SelectedAnimalForHistory}"
+                                              DisplayMemberPath="Nume"
+                                              Width="200" Height="35" Padding="10,0" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
 
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding SelectedAnimalHistory}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding SelectedAnimalHistory}" IsReadOnly="True" Margin="10">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Data" Binding="{Binding DataDisplay}" Width="120"/>
+                                    <DataGridTextColumn Header="Data" Binding="{Binding DataDisplay}" Width="140"/>
                                     <DataGridTextColumn Header="Diagnostic" Binding="{Binding Diagnostic}" Width="*"/>
                                     <DataGridTextColumn Header="Medic" Binding="{Binding MedicNume}" Width="150"/>
-                                    <DataGridTemplateColumn Width="80">
+                                    <DataGridTemplateColumn Width="100">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Content="Vezi Fișa" Click="ViewRecord_Click" Background="#2196F3" Foreground="White" BorderThickness="0" Padding="5,2" Cursor="Hand"/>
+                                                <Button Content="Vezi Fișa" Click="ViewRecord_Click" Padding="10,4" FontSize="12"
+                                                        Style="{StaticResource ModernBtn}" Background="#E3F2FD" Foreground="{StaticResource PrimaryBlue}"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -132,33 +289,30 @@
                     </Border>
                 </TabItem>
 
-                <!-- Tab: Reminders -->
-                <TabItem Header="Remindere &amp; Notificări">
-                    <Border Background="White" CornerRadius="10" Padding="15">
+                <TabItem Header="Notificări">
+                    <Border Background="White" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.05" Color="#1565C0"/>
+                        </Border.Effect>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="Remindere Active" FontSize="18" FontWeight="SemiBold" Foreground="#555" Margin="0,0,0,15"/>
+                            <Border Grid.Row="0" Padding="20" BorderBrush="#E3F2FD" BorderThickness="0,0,0,1">
+                                <TextBlock Text="Remindere Active" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextDark}"/>
+                            </Border>
 
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding Reminders}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" Background="White">
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Reminders}" IsReadOnly="True" Margin="10">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Data Limită" Binding="{Binding DataLimitaDisplay}" Width="120">
-                                        <DataGridTextColumn.ElementStyle>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="FontWeight" Value="Bold"/>
-                                            </Style>
-                                        </DataGridTextColumn.ElementStyle>
-                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Data Limită" Binding="{Binding DataLimitaDisplay}" Width="140" FontWeight="Bold" Foreground="#D32F2F"/>
                                     <DataGridTextColumn Header="Animal" Binding="{Binding AnimalNume}" Width="120"/>
                                     <DataGridTextColumn Header="Mesaj" Binding="{Binding Mesaj}" Width="*"/>
-                                    <DataGridTextColumn Header="Medic" Binding="{Binding MedicNume}" Width="150"/>
-                                    <DataGridTemplateColumn Width="20">
+                                    <DataGridTemplateColumn Width="30">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Border Background="{Binding StatusColor}" Width="15" Height="15" CornerRadius="10" ToolTip="Stare Reminder"/>
+                                                <Border Background="{Binding StatusColor}" Width="10" Height="10" CornerRadius="5"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -168,53 +322,66 @@
                     </Border>
                 </TabItem>
 
-                <!-- Tab: Statistici -->
                 <TabItem Header="Statistici">
-                    <local:StatisticsView DataContext="{Binding Statistics}"/>
+                    <Border Background="White" CornerRadius="10" Padding="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.05" Color="#1565C0"/>
+                        </Border.Effect>
+                        <local:StatisticsView DataContext="{Binding Statistics}"/>
+                    </Border>
                 </TabItem>
-                
+
             </TabControl>
 
-            <!-- Right: Add Animal Form -->
-            <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="10" Padding="20" Width="300"
+            <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="10" Padding="25" Width="320" VerticalAlignment="Top"
                     Visibility="{Binding IsAddAnimalVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.1" Color="#1565C0"/>
+                </Border.Effect>
+
                 <StackPanel>
-                    <DockPanel LastChildFill="False">
-                        <TextBlock Text="Adaugă Animal" FontSize="18" FontWeight="SemiBold" Foreground="#1976D2" DockPanel.Dock="Left"/>
-                        <Button Content="X" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Background="Transparent" Foreground="#999" BorderThickness="0" FontSize="16" Cursor="Hand"/>
+                    <DockPanel LastChildFill="False" Margin="0,0,0,20">
+                        <TextBlock Text="Adaugă Animal" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryBlue}" DockPanel.Dock="Left"/>
+                        <Button Content="✕" Click="ToggleAddAnimal_Click" DockPanel.Dock="Right" Background="Transparent" Foreground="{StaticResource PrimaryBlue}" BorderThickness="0" FontSize="14" Cursor="Hand"/>
                     </DockPanel>
-                    
-                    <TextBlock Text="Nume" Margin="0,20,0,2" Foreground="#666"/>
-                    <TextBox Text="{Binding NewAnimalName}" Padding="5" Height="30"/>
 
-                    <TextBlock Text="Specie" Margin="0,10,0,2" Foreground="#666"/>
-                    <ComboBox ItemsSource="{Binding Species}" SelectedItem="{Binding SelectedSpecies}" DisplayMemberPath="Denumire" Height="30" Padding="5"/>
+                    <TextBlock Text="Nume" FontSize="12" Foreground="{StaticResource TextLight}" Margin="0,0,0,5"/>
+                    <TextBox Text="{Binding NewAnimalName}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
 
-                    <TextBlock Text="Data Nașterii" Margin="0,10,0,2" Foreground="#666"/>
-                    <DatePicker SelectedDate="{Binding NewAnimalBirthDate}" DisplayDateEnd="{x:Static sys:DateTime.Today}" Height="30"/>
+                    <TextBlock Text="Specie" FontSize="12" Foreground="{StaticResource TextLight}" Margin="0,0,0,5"/>
+                    <ComboBox ItemsSource="{Binding Species}" SelectedItem="{Binding SelectedSpecies}" DisplayMemberPath="Denumire" 
+                              Height="35" Padding="5" VerticalContentAlignment="Center" Margin="0,0,0,15"/>
 
-                    <TextBlock Text="Microcip (opțional)" Margin="0,10,0,2" Foreground="#666"/>
-                    <TextBox Text="{Binding NewAnimalMicrocip}" Padding="5" Height="30"/>
+                    <TextBlock Text="Data Nașterii" FontSize="12" Foreground="{StaticResource TextLight}" Margin="0,0,0,5"/>
+                    <DatePicker SelectedDate="{Binding NewAnimalBirthDate}" DisplayDateEnd="{x:Static sys:DateTime.Today}" Height="35" Margin="0,0,0,15"/>
 
-                    <Button Content="Salvează" Height="40" Margin="0,20,0,0" Click="AddAnimalButton_Click" Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                    <TextBlock Text="Microcip (opțional)" FontSize="12" Foreground="{StaticResource TextLight}" Margin="0,0,0,5"/>
+                    <TextBox Text="{Binding NewAnimalMicrocip}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,25"/>
+
+                    <Button Content="Salvează" Height="45" Click="AddAnimalButton_Click" 
+                            Style="{StaticResource ModernBtn}" Background="{StaticResource AccentGreen}" Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
             </Border>
         </Grid>
-        
-        <!-- OVERLAY: Complete Profile (Visible if Profile is Incomplete) -->
-        <Grid Background="#CC000000" Visibility="{Binding IsProfileIncomplete, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Border Background="White" Width="400" Height="250" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20">
+
+        <Grid Background="#CCFFFFFF" Visibility="{Binding IsProfileIncomplete, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="White" Width="450" CornerRadius="15" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="40">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.1" Color="#1565C0"/>
+                </Border.Effect>
+
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Completează Profilul" FontSize="22" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                    <TextBlock Text="Pentru a administra animale, avem nevoie de adresa domiciliului tău." TextWrapping="Wrap" TextAlignment="Center" Foreground="#666" Margin="0,0,0,20"/>
-                    
-                    <TextBlock Text="Adresa Domiciliu" FontWeight="SemiBold" Foreground="#444" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding AdresaDomiciliu}" Height="35" Padding="5" VerticalContentAlignment="Center"/>
-                    
-                    <Button Content="Salvează și Continuă" Height="40" Margin="0,20,0,0" Click="SaveProfileButton_Click" Background="#2196F3" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                    <TextBlock Text="👋 Completează Profilul" FontSize="24" FontWeight="Bold" Foreground="{StaticResource PrimaryBlue}" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="Pentru a administra animale, avem nevoie de adresa domiciliului tău." TextWrapping="Wrap" TextAlignment="Center" Foreground="{StaticResource TextLight}" Margin="0,0,0,30" FontSize="14"/>
+
+                    <TextBlock Text="Adresa Domiciliu" FontWeight="SemiBold" Foreground="{StaticResource TextDark}" Margin="0,0,0,8"/>
+                    <TextBox Text="{Binding AdresaDomiciliu}" Style="{StaticResource ModernTextBox}" Height="40" Margin="0,0,0,25"/>
+
+                    <Button Content="Salvează și Continuă" Height="50" Click="SaveProfileButton_Click" 
+                            Style="{StaticResource ModernBtn}" Background="{StaticResource PrimaryBlue}" Foreground="White" FontWeight="Bold" FontSize="15"/>
                 </StackPanel>
             </Border>
         </Grid>
-        
+
     </Grid>
 </Page>

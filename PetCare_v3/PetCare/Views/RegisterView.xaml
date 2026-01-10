@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:vm="clr-namespace:PetCare.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
-      Title="Register PetCare">
+      d:DesignHeight="950" d:DesignWidth="1200"
+      Title="Register PetCare"
+      FontFamily="Segoe UI">
 
     <Page.DataContext>
         <vm:RegisterViewModel />
@@ -14,86 +15,248 @@
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
+        <SolidColorBrush x:Key="DarkText" Color="#455A64"/>
+        <SolidColorBrush x:Key="InputBackground" Color="#FAFAFA"/>
+        <SolidColorBrush x:Key="InputBorder" Color="#E0E0E0"/>
+
+        <Style x:Key="InputBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource InputBorder}"/>
+            <Setter Property="Background" Value="{StaticResource InputBackground}"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="2,0,0,4"/>
+        </Style>
     </Page.Resources>
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#E3F2FD" Offset="0.0"/>
-                <GradientStop Color="#BBDEFB" Offset="1.0"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/Assets/register_background.jpg" 
+                        Stretch="UniformToFill" 
+                        Opacity="1"/>
         </Grid.Background>
 
-        <Border Background="White" Width="450" MaxHeight="700" VerticalAlignment="Center" CornerRadius="20" Padding="30">
+        <Rectangle Fill="White" Opacity="0.1"/>
+
+        <Border Background="White" Width="500" VerticalAlignment="Center" 
+                CornerRadius="20" Padding="30,30,30,20" Margin="20">
             <Border.Effect>
-                <DropShadowEffect Color="#1C3144" BlurRadius="30" ShadowDepth="10" Opacity="0.2"/>
+                <DropShadowEffect Color="#1C3144" BlurRadius="40" ShadowDepth="10" Opacity="0.4"/>
             </Border.Effect>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly" Margin="-10,0,-10,0" Padding="10,0,10,0">
-                <StackPanel VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,20">
                     <TextBlock Text="Creează Cont" FontSize="28" FontWeight="Bold" 
-                               Foreground="#1565C0" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-
-                    <TextBlock Text="Nume" FontWeight="SemiBold" Foreground="#455A64" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding Nume, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Prenume" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                    <TextBox Text="{Binding Prenume, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Telefon" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                    <TextBox Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Email" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Rol" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                    <ComboBox ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <StackPanel Visibility="{Binding IsClinicSelectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock Text="Clinica" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                        <ComboBox ItemsSource="{Binding Clinics}" SelectedItem="{Binding SelectedClinic}" DisplayMemberPath="Nume" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Visibility="{Binding IsClinicCreationVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock Text="Nume Clinică Nouă" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                        <TextBox Text="{Binding ClinicaNouaNume, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-                        
-                        <TextBlock Text="Adresă Clinică" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                        <TextBox Text="{Binding ClinicaNouaAdresa, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-                        
-                        <TextBlock Text="Telefon Clinică" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                        <TextBox Text="{Binding ClinicaNouaTelefon, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-                    </StackPanel>
-
-                    <TextBlock Text="Parolă" FontWeight="SemiBold" Foreground="#455A64" Margin="0,10,0,5"/>
-                    <PasswordBox x:Name="txtPass" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="Confirmă Parola" FontWeight="SemiBold" Foreground="#455A64" Margin="0,15,0,5"/>
-                    <PasswordBox x:Name="txtConfirmPass" Height="35" Padding="5,0" VerticalContentAlignment="Center"/>
-
-                    <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Margin="0,15,0,0" TextWrapping="Wrap"/>
-
-                    <Button Content="ÎNREGISTREAZĂ-TE" Height="45" Margin="0,20,0,0"
-                            Click="RegisterButton_Click"
-                            Background="#1976D2" Foreground="White" FontWeight="Bold" Cursor="Hand">
-                         <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" CornerRadius="22" BorderThickness="0">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#1565C0"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
-                    <Button Content="Înapoi la Login" Margin="0,15,0,0" Click="BackToLogin_Click"
-                            Background="Transparent" Foreground="#78909C" Cursor="Hand" BorderThickness="0"/>
+                               Foreground="{StaticResource PrimaryBlue}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Completează detaliile de mai jos" FontSize="14" Foreground="Gray" 
+                               HorizontalAlignment="Center" Margin="0,5,0,0"/>
                 </StackPanel>
-            </ScrollViewer>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" MaxHeight="600" Padding="0,0,10,0">
+                    <StackPanel>
+
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Nume" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox Text="{Binding Nume, UpdateSourceTrigger=PropertyChanged}" 
+                                             BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Prenume" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox Text="{Binding Prenume, UpdateSourceTrigger=PropertyChanged}" 
+                                             BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Email" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}">
+                            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" 
+                                     BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                        </Border>
+
+                        <TextBlock Text="Telefon" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}">
+                            <TextBox Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged}" 
+                                     BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                        </Border>
+
+                        <TextBlock Text="Tip Utilizator" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}">
+                            <ComboBox ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole}" 
+                                      BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                        </Border>
+
+                        <StackPanel Visibility="{Binding IsClinicSelectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBlock Text="Alege Clinica" Style="{StaticResource LabelStyle}"/>
+                            <Border Style="{StaticResource InputBorderStyle}" Background="#E3F2FD" BorderBrush="#2196F3">
+                                <ComboBox ItemsSource="{Binding Clinics}" SelectedItem="{Binding SelectedClinic}" DisplayMemberPath="Nume" 
+                                          BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                            </Border>
+                        </StackPanel>
+
+                        <Border Visibility="{Binding IsClinicCreationVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Background="#FAFAFA" Margin="-10,0,-10,15" Padding="15" CornerRadius="8">
+                            <StackPanel>
+                                <TextBlock Text="Detalii Clinică Nouă" FontWeight="Bold" Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,10"/>
+
+                                <TextBlock Text="Nume Clinică" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}" Background="White">
+                                    <TextBox Text="{Binding ClinicaNouaNume, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+
+                                <TextBlock Text="Adresă" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}" Background="White">
+                                    <TextBox Text="{Binding ClinicaNouaAdresa, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+
+                                <TextBlock Text="Telefon Clinică" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}" Background="White">
+                                    <TextBox Text="{Binding ClinicaNouaTelefon, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Parolă" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <PasswordBox x:Name="txtPass" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Confirmă" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <PasswordBox x:Name="txtConfirmPass" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="{Binding ErrorMessage}" Foreground="#D32F2F" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap"/>
+
+                        <Button Content="ÎNREGISTREAZĂ-TE" Height="50" Margin="0,15,0,0"
+        Click="RegisterButton_Click"
+        Foreground="White" FontWeight="Bold" FontSize="15" Cursor="Hand" BorderThickness="0">
+
+                            <Button.Background>
+                                <SolidColorBrush Color="#1976D2"/>
+                            </Button.Background>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="25"/>
+                                </Style>
+                            </Button.Resources>
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border x:Name="BtnBorder" CornerRadius="25">
+                                                    <Border.Background>
+                                                        <SolidColorBrush Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                    </Border.Background>
+
+                                                    <Border x:Name="FocusBorder" CornerRadius="25" BorderThickness="2" BorderBrush="Transparent">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </Border>
+
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Trigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetName="BtnBorder" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#8E24AA" Duration="0:0:0.3"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.EnterActions>
+                                                        <Trigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetName="BtnBorder" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#1976D2" Duration="0:0:0.3"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.ExitActions>
+                                                    </Trigger>
+
+                                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                                        <Setter TargetName="FocusBorder" Property="BorderBrush" Value="White"/>
+                                                        <Trigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetName="BtnBorder" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#8E24AA" Duration="0:0:0.3"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.EnterActions>
+                                                        <Trigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetName="BtnBorder" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#1976D2" Duration="0:0:0.3"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.ExitActions>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        
+                        <Button Content="Înapoi la Login" Margin="0,15,0,10" Click="BackToLogin_Click"
+                                Background="Transparent" Foreground="#78909C" Cursor="Hand" BorderThickness="0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <TextBlock Text="{TemplateBinding Content}" TextDecorations="Underline" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
         </Border>
     </Grid>
 </Page>

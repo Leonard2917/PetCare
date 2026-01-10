@@ -291,6 +291,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\chat_background.jpg" />
+    <Resource Include="Assets\background_clinica.jpg" />
+    <Resource Include="Assets\test.jpg" />
+    <Resource Include="Assets\login_background.jpg" />
+    <Resource Include="Assets\register_background.jpg" />
+    <Resource Include="Assets\admin_background.jpg" />
+    <Resource Include="Assets\bookappointment_background.jpg" />
+    <Resource Include="Assets\owner_background.jpg" />
+    <Resource Include="Assets\medic_background.jpg" />
     <Content Include="PetCareDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PetCareDataModel.edmx</DependentUpon>

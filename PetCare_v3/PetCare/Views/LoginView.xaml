@@ -12,19 +12,88 @@
         <vm:LoginViewModel />
     </Page.DataContext>
 
+    <Page.Resources>
+        <Style x:Key="LoginButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" CornerRadius="25">
+                            <Border.Background>
+                                <SolidColorBrush Color="#FF1375D6"/>
+                            </Border.Background>
+
+                            <Border x:Name="FocusBorder" CornerRadius="25" BorderThickness="2" BorderBrush="Transparent">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBorder" 
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#8E24AA" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBorder" 
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF1375D6" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="FocusBorder" Property="BorderBrush" Value="White"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBorder" 
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#8E24AA" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBorder" 
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF1375D6" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#E3F2FD" Offset="0.0"/>
-                <GradientStop Color="#BBDEFB" Offset="1.0"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/Assets/login_background.jpg" 
+                        Stretch="UniformToFill"
+                        Opacity="0.9"/>
         </Grid.Background>
-
-
 
         <Border Background="White" Width="400" Height="450" CornerRadius="20" Padding="30">
             <Border.Effect>
-                <DropShadowEffect Color="#1C3144" BlurRadius="30" ShadowDepth="10" Opacity="0.2"/>
+                <DropShadowEffect Color="#1C3144" BlurRadius="30" ShadowDepth="10" Opacity="0.5"/>
             </Border.Effect>
 
             <StackPanel VerticalAlignment="Center">
@@ -54,25 +123,17 @@
                     </PasswordBox.Resources>
                 </PasswordBox>
 
-
-                <!-- Error Message -->
                 <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap"/>
 
-                <Button Content="AUTENTIFICARE" Height="50" Margin="0,20,0,0"
+                <Button Content="AUTENTIFICARE" 
+                        Margin="0,20,0,0"
                         Click="LoginButton_Click"
-                        Background="#FF1375D6" Foreground="White" FontWeight="Bold" FontSize="16" 
-                        Cursor="Hand" BorderThickness="0" Opacity="0.5">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="25"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                        Style="{StaticResource LoginButtonStyle}"/>
 
                 <Button Content="Nu ai cont? Creează unul." Margin="0,20,0,0"
                         Click="RegisterLink_Click"
                         Background="Transparent" Foreground="#1976D2" Cursor="Hand" BorderThickness="0">
-                     <Button.Template>
+                    <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <TextBlock Text="{TemplateBinding Content}" TextDecorations="Underline" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center"/>
                         </ControlTemplate>

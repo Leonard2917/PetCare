@@ -11,8 +11,12 @@ namespace PetCare.Views
             InitializeComponent();
             DataContext = new ViewMedicalRecordViewModel(record);
         }
-        
-         public ViewMedicalRecordView()
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        public ViewMedicalRecordView()
         {
             InitializeComponent();
         }
