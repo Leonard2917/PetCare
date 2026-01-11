@@ -25,6 +25,7 @@
     <EntitySetMapping Name="Clinicis">
       <EntityTypeMapping TypeName="PetCareModel.Clinici">
         <MappingFragment StoreEntitySet="Clinici">
+          <ScalarProperty Name="CUI" ColumnName="CUI" />
           <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
           <ScalarProperty Name="Adresa" ColumnName="Adresa" />
@@ -198,6 +199,17 @@
           <ScalarProperty Name="MedicID" ColumnName="MedicID" />
           <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
           <ScalarProperty Name="ReminderID" ColumnName="ReminderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CereriMedicis">
+      <EntityTypeMapping TypeName="PetCareModel.CereriMedici">
+        <MappingFragment StoreEntitySet="CereriMedici">
+          <ScalarProperty Name="DataCerere" ColumnName="DataCerere" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+          <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+          <ScalarProperty Name="CerereID" ColumnName="CerereID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

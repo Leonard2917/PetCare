@@ -21,6 +21,9 @@ namespace PetCare.ViewModels
         private string _clinicaNouaNume;
         private string _clinicaNouaAdresa;
         private string _clinicaNouaTelefon;
+        private string _clinicaNouaCUI;
+        private string _nrParafa;
+        private bool _isMedicParafaVisible;
 
         private string _errorMessage;
         
@@ -71,10 +74,12 @@ namespace PetCare.ViewModels
                 _selectedRole = value; 
                 OnPropertyChanged(nameof(SelectedRole)); 
                 
-                // Show clinic selection only for 'Medic Veterinar'
-                IsClinicSelectionVisible = (_selectedRole == "Medic Veterinar");
+                // Clinic selection is no longer during registration for medics
+                IsClinicSelectionVisible = false;
                 // Show clinic creation only for 'Administrator'
                 IsClinicCreationVisible = (_selectedRole == "Administrator");
+                // Show Parafa input only for 'Medic Veterinar'
+                IsMedicParafaVisible = (_selectedRole == "Medic Veterinar");
             }
         }
 
@@ -96,6 +101,18 @@ namespace PetCare.ViewModels
             set { _isClinicCreationVisible = value; OnPropertyChanged(nameof(IsClinicCreationVisible)); }
         }
 
+        public bool IsMedicParafaVisible
+        {
+            get => _isMedicParafaVisible;
+            set { _isMedicParafaVisible = value; OnPropertyChanged(nameof(IsMedicParafaVisible)); }
+        }
+
+        public string NrParafa
+        {
+            get => _nrParafa;
+            set { _nrParafa = value; OnPropertyChanged(nameof(NrParafa)); }
+        }
+
         public string ClinicaNouaNume
         {
             get => _clinicaNouaNume;
@@ -112,6 +129,12 @@ namespace PetCare.ViewModels
         {
             get => _clinicaNouaTelefon;
             set { _clinicaNouaTelefon = value; OnPropertyChanged(nameof(ClinicaNouaTelefon)); }
+        }
+
+        public string ClinicaNouaCUI
+        {
+            get => _clinicaNouaCUI;
+            set { _clinicaNouaCUI = value; OnPropertyChanged(nameof(ClinicaNouaCUI)); }
         }
 
         public string Prenume
@@ -167,19 +190,29 @@ namespace PetCare.ViewModels
                 return;
             }
             
-            // Validate Clinic selection for Medics
+            // Medicine clinic selection is now skipped; medics join later via approval
+            /*
             if (SelectedRole == "Medic Veterinar" && SelectedClinic == null)
             {
                 ErrorMessage = "Te rog selectează clinica la care lucrezi.";
+                return;
+            }
+            */
+            
+            // Validate Parafa for Medics
+            if (SelectedRole == "Medic Veterinar" && string.IsNullOrWhiteSpace(NrParafa))
+            {
+                ErrorMessage = "Te rog completează numărul de parafă.";
                 return;
             }
 
             // Validate New Clinic for Admins
             if (SelectedRole == "Administrator")
             {
-                if (string.IsNullOrWhiteSpace(ClinicaNouaNume) || string.IsNullOrWhiteSpace(ClinicaNouaAdresa) || string.IsNullOrWhiteSpace(ClinicaNouaTelefon))
+                if (string.IsNullOrWhiteSpace(ClinicaNouaNume) || string.IsNullOrWhiteSpace(ClinicaNouaAdresa) || 
+                    string.IsNullOrWhiteSpace(ClinicaNouaTelefon) || string.IsNullOrWhiteSpace(ClinicaNouaCUI))
                 {
-                    ErrorMessage = "Toate detaliile clinicii sunt obligatorii.";
+                    ErrorMessage = "Toate detaliile clinicii (inclusiv CUI) sunt obligatorii.";
                     return;
                 }
             }
@@ -208,9 +241,10 @@ namespace PetCare.ViewModels
             }
             
             // Pass clinic ID logic
-            int? clinicaId = (roleToSave == "Medic" && SelectedClinic != null) ? (int?)SelectedClinic.ClinicaID : null;
+            int? clinicaId = null; // Medics join later
 
-            string errorResult = authService.RegisterUser(Nume, Prenume, Email, Password, Telefon, roleToSave, clinicaId, ClinicaNouaNume, ClinicaNouaAdresa, ClinicaNouaTelefon);
+            string errorResult = authService.RegisterUser(Nume, Prenume, Email, Password, Telefon, roleToSave, 
+                                                        clinicaId, ClinicaNouaNume, ClinicaNouaAdresa, ClinicaNouaTelefon, ClinicaNouaCUI, NrParafa);
 
             if (errorResult == null) // Success returns null
             {

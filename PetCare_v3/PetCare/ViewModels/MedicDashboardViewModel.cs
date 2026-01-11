@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -26,6 +27,16 @@ namespace PetCare.ViewModels
         
         // Appointments
         public ObservableCollection<AppointmentDTO> MyAppointments { get; set; } = new ObservableCollection<AppointmentDTO>();
+
+        // Join Requests
+        public ObservableCollection<MedicRequestDTO> MedicRequests { get; set; } = new ObservableCollection<MedicRequestDTO>();
+
+        private bool _hasRequests;
+        public bool HasRequests
+        {
+            get => _hasRequests;
+            set { _hasRequests = value; OnPropertyChanged(nameof(HasRequests)); }
+        }
 
         public StatisticsViewModel Statistics { get; set; }
 
@@ -107,6 +118,9 @@ namespace PetCare.ViewModels
                 
                 // LOAD APPOINTMENTS
                 LoadAppointments(appointmentService);
+
+                // LOAD REQUESTS
+                LoadMedicRequests(medicService);
             }
         }
 
@@ -157,6 +171,17 @@ namespace PetCare.ViewModels
                 appt.HasUnreadMessages = new ChatService().GetUnreadCount(appt.ProgramareID, _loggedInUser.UtilizatorID) > 0;
                 MyAppointments.Add(appt);
             }
+        }
+
+        private void LoadMedicRequests(MedicService medicService)
+        {
+            var requests = medicService.GetMedicRequests(_medicID.Value);
+            MedicRequests.Clear();
+            foreach (var req in requests)
+            {
+                MedicRequests.Add(req);
+            }
+            HasRequests = MedicRequests.Count > 0;
         }
 
         public void SaveProfile()
@@ -228,6 +253,22 @@ namespace PetCare.ViewModels
                 return;
             }
 
+            // Convert string inputs to TimeSpan
+            foreach (var item in WeeklySchedule.Where(s => s.IsWorkingDay))
+            {
+                if (TimeSpan.TryParse(item.OraInceputStr, out TimeSpan start) &&
+                    TimeSpan.TryParse(item.OraSfarsitStr, out TimeSpan end))
+                {
+                    item.OraInceput = start;
+                    item.OraSfarsit = end;
+                }
+                else
+                {
+                    MessageBox.Show($"Format invalid pentru ore în ziua de {item.ZiNume}. Te rugăm să folosești formatul HH:mm.", "Eroare Format", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+
             var medicService = new MedicService();
             bool success = medicService.UpdateMedicSchedule(_medicID.Value, SelectedClinic.ClinicaID, WeeklySchedule.ToList());
 
@@ -266,14 +307,14 @@ namespace PetCare.ViewModels
             if (!string.IsNullOrEmpty(result) && int.TryParse(result, out int clinicID))
             {
                 var medicService = new MedicService();
-                if (medicService.AddMedicToClinic(_medicID.Value, clinicID))
+                if (medicService.CreateJoinRequest(_medicID.Value, clinicID))
                 {
-                    MessageBox.Show("Clinică adăugată cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadClinics(medicService);
+                    MessageBox.Show("Cererea a fost trimisă cu succes administratorului clinicii!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadMedicRequests(medicService);
                 }
                 else
                 {
-                    MessageBox.Show("Eroare la adăugarea clinicii.", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Nu s-a putut trimite cererea. Verifică dacă ai deja o cerere activă pentru această clinică.", "Info", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }

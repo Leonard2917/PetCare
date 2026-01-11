@@ -24,12 +24,14 @@ namespace PetCare
             this.Stocuris = new HashSet<Stocuri>();
             this.OrarMedicis = new HashSet<OrarMedici>();
             this.Medicis1 = new HashSet<Medici>();
+            this.CereriMedicis = new HashSet<CereriMedici>();
         }
     
         public int ClinicaID { get; set; }
         public string Nume { get; set; }
         public string Adresa { get; set; }
         public string Telefon { get; set; }
+        public string CUI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Administratori> Administratoris { get; set; }
@@ -45,5 +47,7 @@ namespace PetCare
         public virtual ICollection<OrarMedici> OrarMedicis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medici> Medicis1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CereriMedici> CereriMedicis { get; set; }
     }
 }

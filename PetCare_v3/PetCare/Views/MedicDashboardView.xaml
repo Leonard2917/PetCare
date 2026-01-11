@@ -186,10 +186,39 @@
                                 <Button Grid.Column="1" Content="+ Adaugă" Click="AddClinic_Click" Padding="15,0" Height="40"
                                         Style="{StaticResource ModernBtn}" Background="{StaticResource AccentGreen}" Foreground="White"/>
                             </Grid>
-                            <TextBlock Text="{Binding SelectedClinic.Adresa}" Foreground="{StaticResource TextLight}" FontSize="13" Margin="0,0,0,20" FontStyle="Italic"/>
+                            <TextBlock Text="{Binding SelectedClinic.Adresa}" Foreground="{StaticResource TextLight}" FontSize="13" Margin="0,0,0,10" FontStyle="Italic"/>
 
-                            <TextBlock Text="Număr Parafă (Obligatoriu)" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
-                            <TextBox Text="{Binding NrParafa}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
+                            <TextBlock Text="Cereri în Așteptare:" FontWeight="SemiBold" Foreground="{StaticResource TextDark}" Margin="0,15,0,5" 
+                                       Visibility="{Binding HasRequests, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <DataGrid ItemsSource="{Binding MedicRequests}" AutoGenerateColumns="False" IsReadOnly="True" Height="120" Margin="0,0,0,20"
+                                      Visibility="{Binding HasRequests, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Clinică" Binding="{Binding ClinicaNume}" Width="*"/>
+                                    <DataGridTextColumn Header="Data" Binding="{Binding DataCerere, StringFormat={}{0:dd/MM/yyyy}}" Width="100"/>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="Pending">
+                                                        <Setter Property="Foreground" Value="Orange"/>
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="Approved">
+                                                        <Setter Property="Foreground" Value="#43A047"/>
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="Rejected">
+                                                        <Setter Property="Foreground" Value="#D32F2F"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <TextBlock Text="Număr Parafă" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
+                            <TextBox Text="{Binding NrParafa}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15" IsReadOnly="True" Background="#F0F4F8"/>
 
                             <TextBlock Text="Biografie / Descriere" Margin="0,0,0,5" Foreground="{StaticResource TextLight}"/>
                             <TextBox Text="{Binding Bio}" Style="{StaticResource ModernTextBox}" Height="120" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>

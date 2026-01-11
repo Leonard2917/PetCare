@@ -188,7 +188,9 @@ namespace PetCare.Models
                             ZiSaptamana = i,
                             IsWorkingDay = true,
                             OraInceput = existingDay.OraInceput,
-                            OraSfarsit = existingDay.OraSfarsit
+                            OraInceputStr = existingDay.OraInceput.ToString(@"hh\:mm"),
+                            OraSfarsit = existingDay.OraSfarsit,
+                            OraSfarsitStr = existingDay.OraSfarsit.ToString(@"hh\:mm")
                         });
                     }
                     else
@@ -201,7 +203,9 @@ namespace PetCare.Models
                             ZiSaptamana = i,
                             IsWorkingDay = false,
                             OraInceput = new TimeSpan(9, 0, 0),
-                            OraSfarsit = new TimeSpan(17, 0, 0)
+                            OraInceputStr = "09:00",
+                            OraSfarsit = new TimeSpan(17, 0, 0),
+                            OraSfarsitStr = "17:00"
                         });
                     }
                 }
@@ -281,5 +285,126 @@ namespace PetCare.Models
                 return medics;
             }
         }
+
+        public bool CreateJoinRequest(int medicID, int clinicID)
+        {
+            using (var context = new PetCareEntities())
+            {
+                try
+                {
+                    // Check if already in clinic
+                    var medic = context.Medicis.Include("Clinicis").FirstOrDefault(m => m.MedicID == medicID);
+                    if (medic != null && medic.Clinicis.Any(c => c.ClinicaID == clinicID))
+                    {
+                        return false;
+                    }
+
+                    // Check if request already exists
+                    if (context.CereriMedicis.Any(r => r.MedicID == medicID && r.ClinicaID == clinicID && r.Status == "Pending"))
+                    {
+                        return false;
+                    }
+
+                    var request = new CereriMedici
+                    {
+                        MedicID = medicID,
+                        ClinicaID = clinicID,
+                        Status = "Pending",
+                        DataCerere = DateTime.Now
+                    };
+
+                    context.CereriMedicis.Add(request);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch { return false; }
+            }
+        }
+
+        public List<MedicRequestDTO> GetMedicRequests(int medicID)
+        {
+            using (var context = new PetCareEntities())
+            {
+                return context.CereriMedicis
+                    .Include("Clinici")
+                    .Where(r => r.MedicID == medicID)
+                    .Select(r => new MedicRequestDTO
+                    {
+                        CerereID = r.CerereID,
+                        ClinicaID = r.ClinicaID,
+                        ClinicaNume = r.Clinici.Nume,
+                        Status = r.Status,
+                        DataCerere = r.DataCerere
+                    })
+                    .OrderByDescending(r => r.DataCerere)
+                    .ToList();
+            }
+        }
+
+        public List<MedicRequestDTO> GetIncomingRequestsForClinic(int clinicID)
+        {
+            using (var context = new PetCareEntities())
+            {
+                return context.CereriMedicis
+                    .Include("Medici.Utilizatori")
+                    .Where(r => r.ClinicaID == clinicID && r.Status == "Pending")
+                    .Select(r => new MedicRequestDTO
+                    {
+                        CerereID = r.CerereID,
+                        MedicID = r.MedicID,
+                        MedicNume = r.Medici.Utilizatori.Nume + " " + r.Medici.Utilizatori.Prenume,
+                        Status = r.Status,
+                        DataCerere = r.DataCerere
+                    })
+                    .ToList();
+            }
+        }
+
+        public bool RespondToRequest(int cerereID, bool approve)
+        {
+            using (var context = new PetCareEntities())
+            {
+                try
+                {
+                    var request = context.CereriMedicis.Find(cerereID);
+                    if (request == null || request.Status != "Pending") return false;
+
+                    if (approve)
+                    {
+                        request.Status = "Approved";
+                        
+                        var medic = context.Medicis.Include("Clinicis").FirstOrDefault(m => m.MedicID == request.MedicID);
+                        var clinic = context.Clinicis.Find(request.ClinicaID);
+                        
+                        if (medic != null && clinic != null)
+                        {
+                            if (!medic.Clinicis.Any(c => c.ClinicaID == request.ClinicaID))
+                            {
+                                medic.Clinicis.Add(clinic);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        request.Status = "Rejected";
+                    }
+
+                    context.SaveChanges();
+                    return true;
+                }
+                catch { return false; }
+            }
+        }
+    }
+
+    public class MedicRequestDTO
+    {
+        public int CerereID { get; set; }
+        public int MedicID { get; set; }
+        public string MedicNume { get; set; }
+        public int ClinicaID { get; set; }
+        public string ClinicaNume { get; set; }
+        public string Status { get; set; }
+        public DateTime DataCerere { get; set; }
     }
 }

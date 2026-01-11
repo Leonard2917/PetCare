@@ -47,6 +47,9 @@
         <EntityTypeShape EntityType="PetCareModel.Remindere" Width="1.5" PointX="12.75" PointY="15.5" />
         <AssociationConnector Association="PetCareModel.FK_Remindere_Animale" />
         <AssociationConnector Association="PetCareModel.FK_Remindere_Medici" />
+        <EntityTypeShape EntityType="PetCareModel.CereriMedici" Width="1.5" PointX="11.25" PointY="7.375" />
+        <AssociationConnector Association="PetCareModel.FK__CereriMed__Clini__3D2915A8" />
+        <AssociationConnector Association="PetCareModel.FK__CereriMed__Medic__3C34F16F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

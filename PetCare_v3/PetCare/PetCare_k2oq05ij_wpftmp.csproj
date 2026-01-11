@@ -38,80 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Views\AdminDashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\IssueMedicalRecordView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ViewMedicalRecordView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\BookAppointmentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RegisterView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MedicDashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\OwnerDashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ChatView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\StatisticsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Administratori.cs">
       <DependentUpon>PetCareDataModel.tt</DependentUpon>
     </Compile>
@@ -293,14 +221,6 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\chat_background.jpg" />
-    <Resource Include="Assets\background_clinica.jpg" />
-    <Resource Include="Assets\login_background.jpg" />
-    <Resource Include="Assets\register_background.jpg" />
-    <Resource Include="Assets\admin_background.jpg" />
-    <Resource Include="Assets\bookappointment_background.jpg" />
-    <Resource Include="Assets\owner_background.jpg" />
-    <Resource Include="Assets\medic_background.jpg" />
     <Content Include="PetCareDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PetCareDataModel.edmx</DependentUpon>
@@ -329,4 +249,41 @@
     if exist "$(ProjectDir)App.config" copy /Y "$(ProjectDir)App.config" "$(TargetDir)$(TargetFileName).config"
     </PostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll" />
+    <ReferencePath Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.VisualBasic.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Security.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\AdminDashboardView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\IssueMedicalRecordView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\ViewMedicalRecordView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\BookAppointmentView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\LoginView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\RegisterView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\MedicDashboardView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\OwnerDashboardView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\ChatView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\StatisticsView.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\Views\MainWindow.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\PetCare_Content.g.cs" />
+    <Compile Include="C:\Users\chita\.gemini\antigravity\playground\triple-mariner\proiect_ApBze\my_PetCare\PetCare_v3\PetCare\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
 </Project>

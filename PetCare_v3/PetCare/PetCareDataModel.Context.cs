@@ -41,5 +41,6 @@ namespace PetCare
         public virtual DbSet<Utilizatori> Utilizatoris { get; set; }
         public virtual DbSet<Mesaje> Mesajes { get; set; }
         public virtual DbSet<Remindere> Reminderes { get; set; }
+        public virtual DbSet<CereriMedici> CereriMedicis { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace PetCare
             this.Speciis = new HashSet<Specii>();
             this.Clinicis = new HashSet<Clinici>();
             this.Reminderes = new HashSet<Remindere>();
+            this.CereriMedicis = new HashSet<CereriMedici>();
         }
     
         public int MedicID { get; set; }
@@ -42,5 +43,7 @@ namespace PetCare
         public virtual ICollection<Clinici> Clinicis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Remindere> Reminderes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CereriMedici> CereriMedicis { get; set; }
     }
 }

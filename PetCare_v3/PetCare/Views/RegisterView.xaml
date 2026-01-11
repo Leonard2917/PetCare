@@ -111,6 +111,14 @@
                                       BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
                         </Border>
 
+                        <StackPanel Visibility="{Binding IsMedicParafaVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBlock Text="Număr Parafă" Style="{StaticResource LabelStyle}"/>
+                            <Border Style="{StaticResource InputBorderStyle}">
+                                <TextBox Text="{Binding NrParafa, UpdateSourceTrigger=PropertyChanged}" 
+                                         BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                            </Border>
+                        </StackPanel>
+
                         <StackPanel Visibility="{Binding IsClinicSelectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                             <TextBlock Text="Alege Clinica" Style="{StaticResource LabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}" Background="#E3F2FD" BorderBrush="#2196F3">
@@ -137,6 +145,11 @@
                                 <TextBlock Text="Telefon Clinică" Style="{StaticResource LabelStyle}"/>
                                 <Border Style="{StaticResource InputBorderStyle}" Background="White">
                                     <TextBox Text="{Binding ClinicaNouaTelefon, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
+                                </Border>
+
+                                <TextBlock Text="CUI" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}" Background="White">
+                                    <TextBox Text="{Binding ClinicaNouaCUI, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Padding="10,0"/>
                                 </Border>
                             </StackPanel>
                         </Border>

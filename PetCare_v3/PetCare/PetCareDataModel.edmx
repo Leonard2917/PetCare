@@ -24,6 +24,16 @@
           <Property Name="DataNasterii" Type="date" />
           <Property Name="Microcip" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CereriMedici">
+          <Key>
+            <PropertyRef Name="CerereID" />
+          </Key>
+          <Property Name="CerereID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicID" Type="int" Nullable="false" />
+          <Property Name="ClinicaID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DataCerere" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clinici">
           <Key>
             <PropertyRef Name="ClinicaID" />
@@ -32,6 +42,7 @@
           <Property Name="Nume" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Adresa" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Telefon" Type="varchar" MaxLength="20" />
+          <Property Name="CUI" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DetaliiFisa_Materiale">
           <Key>
@@ -234,6 +245,30 @@
             </Principal>
             <Dependent Role="Animale">
               <PropertyRef Name="SpecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CereriMed__Clini__3D2915A8">
+          <End Role="Clinici" Type="Self.Clinici" Multiplicity="1" />
+          <End Role="CereriMedici" Type="Self.CereriMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="CereriMedici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CereriMed__Medic__3C34F16F">
+          <End Role="Medici" Type="Self.Medici" Multiplicity="1" />
+          <End Role="CereriMedici" Type="Self.CereriMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="CereriMedici">
+              <PropertyRef Name="MedicID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -542,6 +577,7 @@
         <EntityContainer Name="PetCareModelStoreContainer">
           <EntitySet Name="Administratori" EntityType="Self.Administratori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Animale" EntityType="Self.Animale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CereriMedici" EntityType="Self.CereriMedici" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clinici" EntityType="Self.Clinici" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetaliiFisa_Materiale" EntityType="Self.DetaliiFisa_Materiale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetaliiFisa_Servicii" EntityType="Self.DetaliiFisa_Servicii" Schema="dbo" store:Type="Tables" />
@@ -574,6 +610,14 @@
           <AssociationSet Name="FK__Animale__SpecieI__60A75C0F" Association="Self.FK__Animale__SpecieI__60A75C0F">
             <End Role="Specii" EntitySet="Specii" />
             <End Role="Animale" EntitySet="Animale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CereriMed__Clini__3D2915A8" Association="Self.FK__CereriMed__Clini__3D2915A8">
+            <End Role="Clinici" EntitySet="Clinici" />
+            <End Role="CereriMedici" EntitySet="CereriMedici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CereriMed__Medic__3C34F16F" Association="Self.FK__CereriMed__Medic__3C34F16F">
+            <End Role="Medici" EntitySet="Medici" />
+            <End Role="CereriMedici" EntitySet="CereriMedici" />
           </AssociationSet>
           <AssociationSet Name="FK__DetaliiFi__FisaI__7A672E12" Association="Self.FK__DetaliiFi__FisaI__7A672E12">
             <End Role="FiseMedicale" EntitySet="FiseMedicale" />
@@ -720,6 +764,8 @@
           <NavigationProperty Name="Stocuris" Relationship="Self.FK__Stocuri__Clinica__6B24EA82" FromRole="Clinici" ToRole="Stocuri" />
           <NavigationProperty Name="OrarMedicis" Relationship="PetCareModel.FK_OrarMedici_Clinici" FromRole="Clinici" ToRole="OrarMedici" />
           <NavigationProperty Name="Medicis1" Relationship="PetCareModel.MediciClinici" FromRole="Clinici" ToRole="Medici" />
+          <Property Name="CUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CereriMedicis" Relationship="PetCareModel.FK__CereriMed__Clini__3D2915A8" FromRole="Clinici" ToRole="CereriMedici" />
         </EntityType>
         <EntityType Name="DetaliiFisa_Materiale">
           <Key>
@@ -772,6 +818,7 @@
           <NavigationProperty Name="Speciis" Relationship="Self.SpecializariMedici" FromRole="Medici" ToRole="Specii" />
           <NavigationProperty Name="Clinicis" Relationship="PetCareModel.MediciClinici" FromRole="Medici" ToRole="Clinici" />
           <NavigationProperty Name="Reminderes" Relationship="PetCareModel.FK_Remindere_Medici" FromRole="Medici" ToRole="Remindere" />
+          <NavigationProperty Name="CereriMedicis" Relationship="PetCareModel.FK__CereriMed__Medic__3C34F16F" FromRole="Medici" ToRole="CereriMedici" />
         </EntityType>
         <EntityType Name="OrarMedici">
           <Key>
@@ -1206,6 +1253,15 @@
             <End Role="Medici" EntitySet="Medicis" />
             <End Role="Remindere" EntitySet="Reminderes" />
           </AssociationSet>
+          <EntitySet Name="CereriMedicis" EntityType="PetCareModel.CereriMedici" />
+          <AssociationSet Name="FK__CereriMed__Clini__3D2915A8" Association="PetCareModel.FK__CereriMed__Clini__3D2915A8">
+            <End Role="Clinici" EntitySet="Clinicis" />
+            <End Role="CereriMedici" EntitySet="CereriMedicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CereriMed__Medic__3C34F16F" Association="PetCareModel.FK__CereriMed__Medic__3C34F16F">
+            <End Role="Medici" EntitySet="Medicis" />
+            <End Role="CereriMedici" EntitySet="CereriMedicis" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_OrarMedici_Clinici">
           <End Type="PetCareModel.Clinici" Role="Clinici" Multiplicity="0..1" />
@@ -1302,6 +1358,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CereriMedici">
+          <Key>
+            <PropertyRef Name="CerereID" />
+          </Key>
+          <Property Name="CerereID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicID" Type="Int32" Nullable="false" />
+          <Property Name="ClinicaID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DataCerere" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Clinici" Relationship="PetCareModel.FK__CereriMed__Clini__3D2915A8" FromRole="CereriMedici" ToRole="Clinici" />
+          <NavigationProperty Name="Medici" Relationship="PetCareModel.FK__CereriMed__Medic__3C34F16F" FromRole="CereriMedici" ToRole="Medici" />
+        </EntityType>
+        <Association Name="FK__CereriMed__Clini__3D2915A8">
+          <End Type="PetCareModel.Clinici" Role="Clinici" Multiplicity="1" />
+          <End Type="PetCareModel.CereriMedici" Role="CereriMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinici">
+              <PropertyRef Name="ClinicaID" />
+            </Principal>
+            <Dependent Role="CereriMedici">
+              <PropertyRef Name="ClinicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CereriMed__Medic__3C34F16F">
+          <End Type="PetCareModel.Medici" Role="Medici" Multiplicity="1" />
+          <End Type="PetCareModel.CereriMedici" Role="CereriMedici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medici">
+              <PropertyRef Name="MedicID" />
+            </Principal>
+            <Dependent Role="CereriMedici">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1332,6 +1424,7 @@
           <EntitySetMapping Name="Clinicis">
             <EntityTypeMapping TypeName="PetCareModel.Clinici">
               <MappingFragment StoreEntitySet="Clinici">
+                <ScalarProperty Name="CUI" ColumnName="CUI" />
                 <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
                 <ScalarProperty Name="Adresa" ColumnName="Adresa" />
@@ -1505,6 +1598,17 @@
                 <ScalarProperty Name="MedicID" ColumnName="MedicID" />
                 <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
                 <ScalarProperty Name="ReminderID" ColumnName="ReminderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CereriMedicis">
+            <EntityTypeMapping TypeName="PetCareModel.CereriMedici">
+              <MappingFragment StoreEntitySet="CereriMedici">
+                <ScalarProperty Name="DataCerere" ColumnName="DataCerere" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClinicaID" ColumnName="ClinicaID" />
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="CerereID" ColumnName="CerereID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

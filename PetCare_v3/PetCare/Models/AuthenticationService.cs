@@ -33,7 +33,7 @@ namespace PetCare.Models
             }
         }
 
-        public string RegisterUser(string nume, string prenume, string email, string password, string telefon, string rol, int? clinicaId, string clinicaNume, string clinicaAdresa, string clinicaTelefon)
+        public string RegisterUser(string nume, string prenume, string email, string password, string telefon, string rol, int? clinicaId, string clinicaNume, string clinicaAdresa, string clinicaTelefon, string clinicaCUI = null, string nrParafa = null)
         {
             using (var context = new PetCareEntities())
             {
@@ -74,7 +74,8 @@ namespace PetCare.Models
                     {
                         Nume = clinicaNume,
                         Adresa = clinicaAdresa,
-                        Telefon = clinicaTelefon
+                        Telefon = clinicaTelefon,
+                        CUI = clinicaCUI
                     };
                     context.Clinicis.Add(newClinic);
                     context.SaveChanges();
@@ -87,24 +88,17 @@ namespace PetCare.Models
                     context.Administratoris.Add(newAdmin);
                     context.SaveChanges();
                 }
-                // If Role is Medic, add to Medici table (existing clinic)
-                else if (rol == "Medic" && clinicaId.HasValue)
+                // If Role is Medic, add to Medici table (WITHOUT initial clinic association)
+                else if (rol == "Medic")
                 {
                     var newMedic = new Medici
                     {
-                        UtilizatorID = newUser.UtilizatorID
+                        UtilizatorID = newUser.UtilizatorID,
+                        ClinicaID = null, // Medics join clinics later via approval
+                        NrParafa = nrParafa
                     };
                     context.Medicis.Add(newMedic);
                     context.SaveChanges();
-
-                    // Add association to clinic via MediciClinici
-                    var medic = context.Medicis.Include("Clinicis").FirstOrDefault(m => m.MedicID == newMedic.MedicID);
-                    var clinic = context.Clinicis.Find(clinicaId.Value);
-                    if (medic != null && clinic != null)
-                    {
-                        medic.Clinicis.Add(clinic);
-                        context.SaveChanges();
-                    }
                 }
                 // If Role is Owner, add to Proprietari table
                 else if (rol == "Owner")
@@ -112,7 +106,7 @@ namespace PetCare.Models
                     // Proprietar entry will be created later when they complete profile
                 }
 
-                return "SUCCESS";
+                return null;
             }
         }
     }

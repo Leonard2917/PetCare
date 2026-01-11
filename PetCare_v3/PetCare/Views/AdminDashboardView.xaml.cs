@@ -41,6 +41,22 @@ namespace PetCare.Views
              }
         }
 
+        private void ApproveRequest_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is MedicRequestDTO request)
+            {
+                VM?.ApproveRequest(request);
+            }
+        }
+
+        private void RejectRequest_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is MedicRequestDTO request)
+            {
+                VM?.RejectRequest(request);
+            }
+        }
+
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate back to Login wrapping it in a Frame to ensure NavigationService works

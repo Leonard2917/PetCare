@@ -26,7 +26,8 @@ namespace PetCare.Models
                         ClinicaID = clinic.ClinicaID,
                         Nume = clinic.Nume,
                         Adresa = clinic.Adresa,
-                        Telefon = clinic.Telefon
+                        Telefon = clinic.Telefon,
+                        CUI = clinic.CUI
                     };
                 }
                 return null;
@@ -77,7 +78,8 @@ namespace PetCare.Models
                     ClinicaID = c.ClinicaID,
                     Nume = c.Nume,
                     Adresa = c.Adresa,
-                    Telefon = c.Telefon
+                    Telefon = c.Telefon,
+                    CUI = c.CUI
                 }).ToList();
             }
         }
@@ -167,7 +169,7 @@ namespace PetCare.Models
             }
         }
 
-        public bool UpdateClinicDetails(int clinicaID, string nume, string adresa, string telefon)
+        public bool UpdateClinicDetails(int clinicaID, string nume, string adresa, string telefon, string cui)
         {
             using (var context = new PetCareEntities())
             {
@@ -179,6 +181,7 @@ namespace PetCare.Models
                         clinic.Nume = nume;
                         clinic.Adresa = adresa;
                         clinic.Telefon = telefon;
+                        clinic.CUI = cui;
                         context.SaveChanges();
                         return true;
                     }

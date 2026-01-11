@@ -10,6 +10,7 @@
       FontFamily="Segoe UI">
 
     <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <SolidColorBrush x:Key="PrimaryBlue" Color="#1976D2"/>
         <SolidColorBrush x:Key="AccentGreen" Color="#43A047"/>
         <SolidColorBrush x:Key="AccentRed" Color="#E53935"/>
@@ -165,7 +166,10 @@
                             <TextBox Text="{Binding ClinicAddress}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
 
                             <TextBlock Text="Telefon" FontSize="14" Foreground="#546E7A" Margin="0,0,0,6"/>
-                            <TextBox Text="{Binding ClinicPhone}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,35"/>
+                            <TextBox Text="{Binding ClinicPhone}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
+
+                            <TextBlock Text="CUI" FontSize="14" Foreground="#546E7A" Margin="0,0,0,6"/>
+                            <TextBox Text="{Binding ClinicCUI}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,35"/>
 
                             <Button Content="💾 Salvează Modificările" Click="SaveClinic_Click" 
                                     Width="220" Height="45"
@@ -258,6 +262,45 @@
                                 <DataGridTextColumn Header="Prenume" Binding="{Binding Prenume}" Width="*"/>
                                 <DataGridTextColumn Header="Nr. Parafă" Binding="{Binding NrParafa}" Width="150"/>
                                 <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}" Width="150"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Cereri Noi"/>
+                            <Border Background="Red" CornerRadius="10" Margin="5,0,0,0" Padding="5,0" 
+                                    Visibility="{Binding IncomingRequestsCount, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}">
+                                <TextBlock Text="{Binding IncomingRequestsCount}" Foreground="White" FontSize="10" FontWeight="Bold"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Cereri de înscriere medici" FontSize="18" FontWeight="SemiBold" Margin="20,20,20,10" Foreground="{StaticResource PrimaryBlue}"/>
+                        <DataGrid Grid.Row="1" ItemsSource="{Binding IncomingRequests}" IsReadOnly="True" Margin="20,0,20,20">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nume Medic" Binding="{Binding MedicNume}" Width="*"/>
+                                <DataGridTextColumn Header="Data Cerere" Binding="{Binding DataCerere, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="150"/>
+                                <DataGridTemplateColumn Header="Acțiuni" Width="200">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="Aprobă" Click="ApproveRequest_Click" 
+                                                        Style="{StaticResource ModernButtonStyle}" Background="{StaticResource AccentGreen}" 
+                                                        Padding="10,5" Margin="0,0,5,0"/>
+                                                <Button Content="Respinge" Click="RejectRequest_Click" 
+                                                        Style="{StaticResource ModernButtonStyle}" Background="{StaticResource AccentRed}" 
+                                                        Padding="10,5"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
