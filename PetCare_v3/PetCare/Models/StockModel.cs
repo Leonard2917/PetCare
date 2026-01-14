@@ -11,7 +11,6 @@ namespace PetCare.Models
         public decimal CantitateDisponibila { get; set; }
         public decimal PretUnitar { get; set; }
 
-        // Helper for display
         public string DisplayPrice => $"{PretUnitar:F2} RON";
     }
 }

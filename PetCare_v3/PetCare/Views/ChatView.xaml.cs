@@ -12,7 +12,7 @@ namespace PetCare.Views
             InitializeComponent();
             DataContext = new ChatViewModel(programareID, currentUserId, partnerName);
             
-            // Scroll to bottom on load
+
             Loaded += (s, e) => ScrollToBottom();
         }
 
@@ -24,7 +24,7 @@ namespace PetCare.Views
 
         private void ScrollToBottom()
         {
-            // Simple helper to find the ListBox and scroll
+
              var listBox = this.Content as Grid;
              if(listBox != null)
              {
@@ -40,7 +40,5 @@ namespace PetCare.Views
         }
     }
     
-    // Quick BooleanToVisibilityConverter inverse implementation if needed, 
-    // but usually we rely on standard one. 
-    // Since Resource lookup might be tricky if not in App.xaml, I'll rely on global resource or add it safely.
+
 }

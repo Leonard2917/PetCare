@@ -10,7 +10,7 @@ namespace PetCare.ViewModels
 {
     public class IssueMedicalRecordViewModel : BaseViewModel
     {
-        private readonly AppointmentDTO _appointment;
+        private readonly Appointment _appointment;
         private readonly MedicalRecordService _medicalRecordService;
         private readonly StockService _stockService;
 
@@ -28,7 +28,7 @@ namespace PetCare.ViewModels
             set { _tratament = value; OnPropertyChanged(nameof(Tratament)); }
         }
 
-        public ObservableCollection<MaterialUsageDTO> UsedMaterials { get; set; } = new ObservableCollection<MaterialUsageDTO>();
+        public ObservableCollection<MaterialUsage> UsedMaterials { get; set; } = new ObservableCollection<MaterialUsage>();
         public ObservableCollection<StockModel> AvailableMaterials { get; set; } = new ObservableCollection<StockModel>();
 
         private decimal _totalCost;
@@ -73,7 +73,7 @@ namespace PetCare.ViewModels
             set { _materialQuantity = value; OnPropertyChanged(nameof(MaterialQuantity)); }
         }
 
-        public IssueMedicalRecordViewModel(AppointmentDTO appointment)
+        public IssueMedicalRecordViewModel(Appointment appointment)
         {
             _appointment = appointment;
             _medicalRecordService = new MedicalRecordService();
@@ -101,7 +101,7 @@ namespace PetCare.ViewModels
             if (SelectedAvailableMaterial == null) return;
             if (decimal.TryParse(MaterialQuantity, out decimal qty))
             {
-                UsedMaterials.Add(new MaterialUsageDTO
+                UsedMaterials.Add(new MaterialUsage
                 {
                     StocID = SelectedAvailableMaterial.StocID,
                     NumeMaterial = SelectedAvailableMaterial.DenumireProdus,
@@ -116,8 +116,7 @@ namespace PetCare.ViewModels
 
         public string Save()
         {
-            // Diagnostic is now optional
-            
+
             List<int> serviceIDs = _medicalRecordService.GetAppointmentServiceIDs(_appointment.ProgramareID); 
 
             string error = _medicalRecordService.SaveMedicalRecord(
@@ -131,7 +130,7 @@ namespace PetCare.ViewModels
                 ReminderMessage
             );
 
-            return error; // null = success
+            return error;
         }
     }
 }

@@ -6,14 +6,14 @@ namespace PetCare.Models
 {
     public class StatisticsService
     {
-        public List<ClinicStatDTO> GetTopClinics(int count = 5)
+        public List<ClinicStat> GetTopClinics(int count = 5)
         {
             using (var context = new PetCareEntities())
             {
                 return context.Programaris
                     .Where(p => p.Status == "Completed")
                     .GroupBy(p => p.Clinici.Nume)
-                    .Select(g => new ClinicStatDTO
+                    .Select(g => new ClinicStat
                     {
                         NumeClinica = g.Key,
                         TotalProgramari = g.Count()
@@ -24,14 +24,14 @@ namespace PetCare.Models
             }
         }
 
-        public List<MedicStatDTO> GetTopMedics(int count = 5)
+        public List<MedicStat> GetTopMedics(int count = 5)
         {
             using (var context = new PetCareEntities())
             {
                 return context.Programaris
                     .Where(p => p.Status == "Completed")
                     .GroupBy(p => new { MedicNume = p.Medici.Utilizatori.Nume + " " + p.Medici.Utilizatori.Prenume, ClinicaNume = p.Clinici.Nume })
-                    .Select(g => new MedicStatDTO
+                    .Select(g => new MedicStat
                     {
                         NumeMedic = g.Key.MedicNume,
                         NumeClinica = g.Key.ClinicaNume,
@@ -43,13 +43,13 @@ namespace PetCare.Models
             }
         }
 
-        public List<MaterialStatDTO> GetTopConsumedMaterials(int count = 5)
+        public List<MaterialStat> GetTopConsumedMaterials(int count = 5)
         {
             using (var context = new PetCareEntities())
             {
                 return context.DetaliiFisa_Materiale
                     .GroupBy(m => m.Stocuri.DenumireProdus)
-                    .Select(g => new MaterialStatDTO
+                    .Select(g => new MaterialStat
                     {
                         NumeMaterial = g.Key,
                         CantitateTotala = g.Sum(x => x.CantitateConsumata)
@@ -60,18 +60,17 @@ namespace PetCare.Models
             }
         }
 
-        public List<RevenueStatDTO> GetTotalRevenuePerMedic(int clinicaId)
+        public List<RevenueStat> GetTotalRevenuePerMedic(int clinicaId)
         {
             using (var context = new PetCareEntities())
             {
-                // We need to sum both services and materials for each medic in this clinic
                 var fiseInClinica = context.FiseMedicales
                     .Where(f => f.Programari.ClinicaID == clinicaId && f.Programari.Status == "Completed")
                     .ToList();
 
                 var results = fiseInClinica
                     .GroupBy(f => f.Programari.Medici.Utilizatori.Nume + " " + f.Programari.Medici.Utilizatori.Prenume)
-                    .Select(g => new RevenueStatDTO
+                    .Select(g => new RevenueStat
                     {
                         NumeEntitate = g.Key,
                         TotalVenit = g.Sum(f => 
@@ -86,16 +85,16 @@ namespace PetCare.Models
             }
         }
 
-        public List<AnimalTypeStatDTO> GetAnimalTypeDistribution()
+        public List<AnimalTypeStat> GetAnimalTypeDistribution()
         {
             using (var context = new PetCareEntities())
             {
                 var total = context.Animales.Count();
-                if (total == 0) return new List<AnimalTypeStatDTO>();
+                if (total == 0) return new List<AnimalTypeStat>();
 
                 return context.Animales
                     .GroupBy(a => a.Specii.Denumire)
-                    .Select(g => new AnimalTypeStatDTO
+                    .Select(g => new AnimalTypeStat
                     {
                         TipAnimal = g.Key ?? "Altele",
                         Numar = g.Count(),

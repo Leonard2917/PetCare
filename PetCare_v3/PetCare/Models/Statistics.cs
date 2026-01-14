@@ -2,32 +2,32 @@ using System;
 
 namespace PetCare.Models
 {
-    public class ClinicStatDTO
+    public class ClinicStat
     {
         public string NumeClinica { get; set; }
         public int TotalProgramari { get; set; }
     }
 
-    public class MedicStatDTO
+    public class MedicStat
     {
         public string NumeMedic { get; set; }
         public string NumeClinica { get; set; }
         public int TotalProgramari { get; set; }
     }
 
-    public class MaterialStatDTO
+    public class MaterialStat
     {
         public string NumeMaterial { get; set; }
         public decimal CantitateTotala { get; set; }
     }
 
-    public class RevenueStatDTO
+    public class RevenueStat
     {
         public string NumeEntitate { get; set; }
         public decimal TotalVenit { get; set; }
     }
 
-    public class AnimalTypeStatDTO
+    public class AnimalTypeStat
     {
         public string TipAnimal { get; set; }
         public int Numar { get; set; }

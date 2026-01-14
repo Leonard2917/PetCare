@@ -44,7 +44,7 @@ namespace PetCare.Views
         private void ViewRecord_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            if (button?.DataContext is MedicalHistoryDTO historyItem)
+            if (button?.DataContext is MedicalHistory historyItem)
             {
                 _viewModel.ViewMedicalRecord(historyItem);
             }
@@ -53,7 +53,7 @@ namespace PetCare.Views
         private void OpenChat_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            if (button?.DataContext is AppointmentDTO appointment)
+            if (button?.DataContext is Appointment appointment)
             {
                 _viewModel.OpenChat(appointment);
             }

@@ -14,10 +14,10 @@ namespace PetCare.Views
             DataContext = new AdminDashboardViewModel(authenticatedUser);
         }
         
-        // Helper
+
         private AdminDashboardViewModel VM => DataContext as AdminDashboardViewModel;
 
-        // --- Event Handlers ---
+
 
         private void SaveClinic_Click(object sender, RoutedEventArgs e) => VM?.SaveClinic();
 
@@ -25,7 +25,7 @@ namespace PetCare.Views
         private void UpdateService_Click(object sender, RoutedEventArgs e) => VM?.UpdateService();
         private void DeleteService_Click(object sender, RoutedEventArgs e)
         {
-             if (sender is System.Windows.Controls.Button btn && btn.DataContext is ServiceDTO service)
+             if (sender is System.Windows.Controls.Button btn && btn.DataContext is Service service)
              {
                  VM?.DeleteService(service);
              }
@@ -43,7 +43,7 @@ namespace PetCare.Views
 
         private void ApproveRequest_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.DataContext is MedicRequestDTO request)
+            if (sender is Button btn && btn.DataContext is MedicRequest request)
             {
                 VM?.ApproveRequest(request);
             }
@@ -51,7 +51,7 @@ namespace PetCare.Views
 
         private void RejectRequest_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.DataContext is MedicRequestDTO request)
+            if (sender is Button btn && btn.DataContext is MedicRequest request)
             {
                 VM?.RejectRequest(request);
             }
@@ -59,7 +59,7 @@ namespace PetCare.Views
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate back to Login wrapping it in a Frame to ensure NavigationService works
+
              Application.Current.MainWindow.Content = new System.Windows.Controls.Frame { Source = new System.Uri("Views/LoginView.xaml", System.UriKind.Relative) };
         }
     }

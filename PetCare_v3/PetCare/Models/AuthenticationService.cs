@@ -16,7 +16,7 @@ namespace PetCare.Models
 
                 if (userEntity != null)
                 {
-                    // Map Entity to Model
+
                     return new UserModel
                     {
                         UtilizatorID = userEntity.UtilizatorID,
@@ -37,13 +37,13 @@ namespace PetCare.Models
         {
             using (var context = new PetCareEntities())
             {
-                // Check if email already exists
+
                 if (context.Utilizatoris.Any(u => u.Email == email))
                 {
                     return "Acest email este deja utilizat.";
                 }
 
-                // If Admin, check if Clinic Name already exists to prevent duplicates
+
                 if (rol == "Admin")
                 {
                     if (context.Clinicis.Any(c => c.Nume == clinicaNume))
@@ -67,7 +67,7 @@ namespace PetCare.Models
                 context.Utilizatoris.Add(newUser);
                 context.SaveChanges();
 
-                // Logic for Admin: Create new Clinic first, then Link
+
                 if (rol == "Admin")
                 {
                     var newClinic = new Clinici
@@ -88,22 +88,22 @@ namespace PetCare.Models
                     context.Administratoris.Add(newAdmin);
                     context.SaveChanges();
                 }
-                // If Role is Medic, add to Medici table (WITHOUT initial clinic association)
+
                 else if (rol == "Medic")
                 {
                     var newMedic = new Medici
                     {
                         UtilizatorID = newUser.UtilizatorID,
-                        ClinicaID = null, // Medics join clinics later via approval
+                        ClinicaID = null, 
                         NrParafa = nrParafa
                     };
                     context.Medicis.Add(newMedic);
                     context.SaveChanges();
                 }
-                // If Role is Owner, add to Proprietari table
+
                 else if (rol == "Owner")
                 {
-                    // Proprietar entry will be created later when they complete profile
+
                 }
 
                 return null;

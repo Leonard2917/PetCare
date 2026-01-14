@@ -14,7 +14,7 @@ namespace PetCare.ViewModels
         public string DataCrearii => _record.DataCrearii?.ToString("dd.MM.yyyy") ?? "N/A";
 
         public ObservableCollection<string> Services { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<MaterialUsageDTO> UsedMaterials { get; set; } = new ObservableCollection<MaterialUsageDTO>();
+        public ObservableCollection<MaterialUsage> UsedMaterials { get; set; } = new ObservableCollection<MaterialUsage>();
 
         public decimal TotalCost { get; set; }
 
@@ -26,7 +26,7 @@ namespace PetCare.ViewModels
 
         private void LoadDetails()
         {
-            // Services
+
             if (_record.DetaliiFisa_Servicii != null)
             {
                 foreach (var s in _record.DetaliiFisa_Servicii)
@@ -36,13 +36,13 @@ namespace PetCare.ViewModels
                 }
             }
 
-            // Materials
+
             if (_record.DetaliiFisa_Materiale != null)
             {
                 foreach (var m in _record.DetaliiFisa_Materiale)
                 {
                     decimal cost = (m.CantitateConsumata * (m.Stocuri.PretUnitar ?? 0));
-                    UsedMaterials.Add(new MaterialUsageDTO
+                    UsedMaterials.Add(new MaterialUsage
                     {
                         NumeMaterial = m.Stocuri.DenumireProdus,
                         Cantitate = m.CantitateConsumata,

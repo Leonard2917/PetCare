@@ -7,7 +7,7 @@ namespace PetCare.Models
         public int OrarID { get; set; }
         public int MedicID { get; set; }
         public int ClinicaID { get; set; }
-        public int ZiSaptamana { get; set; } // 1=Luni, 7=Duminica
+        public int ZiSaptamana { get; set; } 
         public bool IsWorkingDay { get; set; }
         public TimeSpan OraInceput { get; set; }
         public TimeSpan OraSfarsit { get; set; }
@@ -30,7 +30,7 @@ namespace PetCare.Models
             }
         }
         
-        // For UI Binding - using Strings for simpler TextBox binding with validation in VM
+
         public string OraInceputStr { get; set; } 
         public string OraSfarsitStr { get; set; }
     }

@@ -12,7 +12,6 @@ namespace PetCare.Models
         public DateTime? DataNasterii { get; set; }
         public string Microcip { get; set; }
         
-        // Helper for display
         public string Varsta
         {
             get

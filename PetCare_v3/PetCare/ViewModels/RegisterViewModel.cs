@@ -9,7 +9,7 @@ namespace PetCare.ViewModels
         private string _nume;
         private string _prenume;
         private string _email;
-        private string _password; // Plain text here, hashed in Model
+        private string _password; 
         private string _confirmPassword;
         private string _telefon;
         private string _selectedRole;
@@ -17,7 +17,7 @@ namespace PetCare.ViewModels
         private bool _isClinicSelectionVisible;
         private bool _isClinicCreationVisible;
         
-        // New Clinic Properties for Admin
+
         private string _clinicaNouaNume;
         private string _clinicaNouaAdresa;
         private string _clinicaNouaTelefon;
@@ -56,7 +56,7 @@ namespace PetCare.ViewModels
             }
             catch
             {
-                // Handle potential DB connection errors silently or log
+
             }
         }
 
@@ -74,11 +74,11 @@ namespace PetCare.ViewModels
                 _selectedRole = value; 
                 OnPropertyChanged(nameof(SelectedRole)); 
                 
-                // Clinic selection is no longer during registration for medics
-                IsClinicSelectionVisible = false;
-                // Show clinic creation only for 'Administrator'
+                
+                
+
                 IsClinicCreationVisible = (_selectedRole == "Administrator");
-                // Show Parafa input only for 'Medic Veterinar'
+
                 IsMedicParafaVisible = (_selectedRole == "Medic Veterinar");
             }
         }
@@ -190,23 +190,17 @@ namespace PetCare.ViewModels
                 return;
             }
             
-            // Medicine clinic selection is now skipped; medics join later via approval
-            /*
-            if (SelectedRole == "Medic Veterinar" && SelectedClinic == null)
-            {
-                ErrorMessage = "Te rog selectează clinica la care lucrezi.";
-                return;
-            }
-            */
+
+
             
-            // Validate Parafa for Medics
+
             if (SelectedRole == "Medic Veterinar" && string.IsNullOrWhiteSpace(NrParafa))
             {
                 ErrorMessage = "Te rog completează numărul de parafă.";
                 return;
             }
 
-            // Validate New Clinic for Admins
+
             if (SelectedRole == "Administrator")
             {
                 if (string.IsNullOrWhiteSpace(ClinicaNouaNume) || string.IsNullOrWhiteSpace(ClinicaNouaAdresa) || 
@@ -225,8 +219,8 @@ namespace PetCare.ViewModels
 
             var authService = new AuthenticationService();
             
-            // Map nice role names to internal DB values (Strict CHECK constraint: 'Admin', 'Medic', 'Owner')
-            string roleToSave = "Owner"; // Default safe fallback
+
+            string roleToSave = "Owner"; 
             switch (SelectedRole)
             {
                 case "Proprietar":
@@ -240,16 +234,16 @@ namespace PetCare.ViewModels
                     break;
             }
             
-            // Pass clinic ID logic
-            int? clinicaId = null; // Medics join later
+
+            int? clinicaId = null; 
 
             string errorResult = authService.RegisterUser(Nume, Prenume, Email, Password, Telefon, roleToSave, 
                                                         clinicaId, ClinicaNouaNume, ClinicaNouaAdresa, ClinicaNouaTelefon, ClinicaNouaCUI, NrParafa);
 
-            if (errorResult == null) // Success returns null
+            if (errorResult == null) 
             {
                 MessageBox.Show("Cont creat cu succes! Te rog să te autentifici.", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Navigate back to Login
+
                 System.Windows.Application.Current.MainWindow.Content = new System.Windows.Controls.Frame { Source = new System.Uri("Views/LoginView.xaml", System.UriKind.Relative) };
             }
             else

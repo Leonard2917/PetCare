@@ -95,7 +95,7 @@ namespace PetCare.Models
             }
         }
 
-        public List<ReminderDTO> GetReminders(int proprietarID)
+        public List<Reminder> GetReminders(int proprietarID)
         {
             using (var context = new PetCareEntities())
             {
@@ -106,7 +106,7 @@ namespace PetCare.Models
                     .OrderBy(r => r.DataLimita)
                     .ToList();
 
-                return reminders.Select(r => new ReminderDTO
+                return reminders.Select(r => new Reminder
                 {
                     ReminderID = r.ReminderID,
                     AnimalNume = r.Animale.Nume,

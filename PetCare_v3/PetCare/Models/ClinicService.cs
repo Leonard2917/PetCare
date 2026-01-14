@@ -34,7 +34,7 @@ namespace PetCare.Models
             }
         }
 
-        public List<MedicInfoDTO> GetClinicMedics(int clinicaID)
+        public List<MedicInfo> GetClinicMedics(int clinicaID)
         {
             using (var context = new PetCareEntities())
             {
@@ -42,7 +42,7 @@ namespace PetCare.Models
                     .Include("Clinicis")
                     .Include("Utilizatori")
                     .Where(m => m.Clinicis.Any(c => c.ClinicaID == clinicaID))
-                    .Select(m => new MedicInfoDTO
+                    .Select(m => new MedicInfo
                     {
                         MedicID = m.MedicID,
                         Nume = m.Utilizatori.Nume,
@@ -56,11 +56,11 @@ namespace PetCare.Models
             }
         }
 
-        public List<ClinicDTO> GetAllClinicsForBooking()
+        public List<Clinic> GetAllClinicsForBooking()
         {
             using (var context = new PetCareEntities())
             {
-                return context.Clinicis.Select(c => new ClinicDTO
+                return context.Clinicis.Select(c => new Clinic
                 {
                     ClinicaID = c.ClinicaID,
                     Nume = c.Nume,
@@ -84,11 +84,11 @@ namespace PetCare.Models
             }
         }
 
-        public List<ServiceDTO> GetClinicServices(int clinicaID)
+        public List<Service> GetClinicServices(int clinicaID)
         {
             using (var context = new PetCareEntities())
             {
-                return context.Serviciis.Where(s => s.ClinicaID == clinicaID).Select(s => new ServiceDTO
+                return context.Serviciis.Where(s => s.ClinicaID == clinicaID).Select(s => new Service
                 {
                     ServiciuID = s.ServiciuID,
                     ClinicaID = s.ClinicaID.Value,

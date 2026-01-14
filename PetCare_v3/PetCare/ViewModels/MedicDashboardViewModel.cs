@@ -11,25 +11,25 @@ namespace PetCare.ViewModels
         private readonly UserModel _loggedInUser;
         private int? _medicID;
 
-        // Profile Properties
+
         private string _nrParafa;
         private string _bio;
         private bool _isProfileComplete;
 
-        // Schedule Properties
+
         public ObservableCollection<ScheduleModel> WeeklySchedule { get; set; } = new ObservableCollection<ScheduleModel>();
 
-        // Collections
+
         public ObservableCollection<SelectableSpeciesModel> Specializations { get; set; } = new ObservableCollection<SelectableSpeciesModel>();
         
-        // Multi-Clinic Properties
-        public ObservableCollection<ClinicDTO> MyClinics { get; set; } = new ObservableCollection<ClinicDTO>();
-        
-        // Appointments
-        public ObservableCollection<AppointmentDTO> MyAppointments { get; set; } = new ObservableCollection<AppointmentDTO>();
 
-        // Join Requests
-        public ObservableCollection<MedicRequestDTO> MedicRequests { get; set; } = new ObservableCollection<MedicRequestDTO>();
+        public ObservableCollection<Clinic> MyClinics { get; set; } = new ObservableCollection<Clinic>();
+        
+
+        public ObservableCollection<Appointment> MyAppointments { get; set; } = new ObservableCollection<Appointment>();
+
+
+        public ObservableCollection<MedicRequest> MedicRequests { get; set; } = new ObservableCollection<MedicRequest>();
 
         private bool _hasRequests;
         public bool HasRequests
@@ -40,8 +40,8 @@ namespace PetCare.ViewModels
 
         public StatisticsViewModel Statistics { get; set; }
 
-        private ClinicDTO _selectedClinic;
-        public ClinicDTO SelectedClinic
+        private Clinic _selectedClinic;
+        public Clinic SelectedClinic
         {
             get => _selectedClinic;
             set
@@ -76,7 +76,7 @@ namespace PetCare.ViewModels
             set { _bio = value; OnPropertyChanged(nameof(Bio)); }
         }
         
-        // This could determine which tab is focused initially
+
         public int SelectedTabIndex { get; set; } = 0; 
 
         public void RefreshData()
@@ -93,7 +93,7 @@ namespace PetCare.ViewModels
 
             if (_medicID.HasValue)
             {
-                // LOAD PROFILE
+
                 var profile = medicService.GetMedicProfile(_medicID.Value);
                 NrParafa = profile?.NrParafa;
                 Bio = profile?.Bio;
@@ -101,25 +101,25 @@ namespace PetCare.ViewModels
                 if (string.IsNullOrEmpty(NrParafa))
                 {
                     MessageBox.Show("Te rugăm să îți completezi profilul (Nr. Parafă este obligatoriu).", "Profil Incomplet", MessageBoxButton.OK, MessageBoxImage.Information);
-                    SelectedTabIndex = 0; // Force Profile Tab
+                    SelectedTabIndex = 0;
                 }
 
-                // LOAD SPECIALTIES
+
                 LoadSpecialties(medicService);
 
-                // LOAD CLINICS
+
                 LoadClinics(medicService);
 
-                // LOAD SCHEDULE (for first clinic if available)
+
                 if (SelectedClinic != null)
                 {
                     LoadSchedule(medicService);
                 }
                 
-                // LOAD APPOINTMENTS
+
                 LoadAppointments(appointmentService);
 
-                // LOAD REQUESTS
+
                 LoadMedicRequests(medicService);
             }
         }
@@ -143,7 +143,7 @@ namespace PetCare.ViewModels
                 MyClinics.Add(clinic);
             }
             
-            // Auto-select first clinic
+
             if (MyClinics.Count > 0)
             {
                 SelectedClinic = MyClinics[0];
@@ -208,7 +208,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        public void ViewMedicalRecord(AppointmentDTO appointment)
+        public void ViewMedicalRecord(Appointment appointment)
         {
             if (appointment == null) return;
 
@@ -227,19 +227,18 @@ namespace PetCare.ViewModels
         }
 
 
-        public void OpenChat(AppointmentDTO appointment)
+        public void OpenChat(Appointment appointment)
         {
             if (appointment == null) return;
             
-            // Partner name for medic is the Animal Owner (or Animal Name)
-            // appointment.MedicNume in MedicDashboard assumes Owner Name based on my previous read of DTO mapping in Service
-            // Let's verify DTO mapping in AppointmentService.GetMedicAppointments
-            // Verified: MedicNume property in DTO is mapped to Owner Name in GetMedicAppointments. 
-            // "MedicNume = ownerName,"
+
+
+
+
             
             var chatView = new Views.ChatView(appointment.ProgramareID, _loggedInUser.UtilizatorID, appointment.MedicNume);
             
-            // Mark as read locally immediately when opening
+
             appointment.HasUnreadMessages = false;
             
             chatView.ShowDialog();
@@ -253,7 +252,7 @@ namespace PetCare.ViewModels
                 return;
             }
 
-            // Convert string inputs to TimeSpan
+
             foreach (var item in WeeklySchedule.Where(s => s.IsWorkingDay))
             {
                 if (TimeSpan.TryParse(item.OraInceputStr, out TimeSpan start) &&
@@ -287,7 +286,7 @@ namespace PetCare.ViewModels
             var clinicService = new ClinicService();
             var allClinics = clinicService.GetAllClinicsForBooking();
             
-            // Simple selection dialog - you could make this fancier
+
             var availableClinics = allClinics.Where(c => !MyClinics.Any(mc => mc.ClinicaID == c.ClinicaID)).ToList();
             
             if (availableClinics.Count == 0)
@@ -296,8 +295,7 @@ namespace PetCare.ViewModels
                 return;
             }
 
-            // For now, show a simple input box asking for Clinic ID
-            // In a real app, you'd use a proper selection dialog
+
             var clinicList = string.Join("\n", availableClinics.Select(c => $"{c.ClinicaID}: {c.Nume} - {c.Adresa}"));
             var result = Microsoft.VisualBasic.Interaction.InputBox(
                 $"Introdu ID-ul clinicii la care vrei să te asociezi:\n\n{clinicList}",

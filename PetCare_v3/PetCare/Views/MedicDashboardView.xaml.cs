@@ -39,7 +39,7 @@ namespace PetCare.Views
         private void FinalizeAppointment_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var appointment = button?.DataContext as AppointmentDTO;
+            var appointment = button?.DataContext as Appointment;
             if (appointment != null)
             {
                 var issueView = new IssueMedicalRecordView(appointment);
@@ -52,7 +52,7 @@ namespace PetCare.Views
         private void ViewRecord_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            if (button?.DataContext is AppointmentDTO appointment)
+            if (button?.DataContext is Appointment appointment)
             {
                 _viewModel.ViewMedicalRecord(appointment);
             }
@@ -61,7 +61,7 @@ namespace PetCare.Views
         private void OpenChat_Click(object sender, RoutedEventArgs e)
         {
              var button = sender as Button;
-            if (button?.DataContext is AppointmentDTO appointment)
+            if (button?.DataContext is Appointment appointment)
             {
                 _viewModel.OpenChat(appointment);
             }

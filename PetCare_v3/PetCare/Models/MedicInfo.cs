@@ -2,7 +2,7 @@ using System;
 
 namespace PetCare.Models
 {
-    public class MedicInfoDTO
+    public class MedicInfo
     {
         public int MedicID { get; set; }
         public string Nume { get; set; }

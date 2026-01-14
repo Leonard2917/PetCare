@@ -16,7 +16,7 @@ namespace PetCare.ViewModels
         
         private bool _isAddAnimalVisible;
         
-        // Add Animal Inputs
+
         private string _newAnimalName;
         private SpeciesModel _selectedSpecies;
         private string _newAnimalMicrocip;
@@ -24,7 +24,7 @@ namespace PetCare.ViewModels
 
         public ObservableCollection<AnimalModel> Animals { get; set; } = new ObservableCollection<AnimalModel>();
         public ObservableCollection<SpeciesModel> Species { get; set; } = new ObservableCollection<SpeciesModel>();
-        public ObservableCollection<AppointmentDTO> Appointments { get; set; } = new ObservableCollection<AppointmentDTO>();
+        public ObservableCollection<Appointment> Appointments { get; set; } = new ObservableCollection<Appointment>();
 
         public StatisticsViewModel Statistics { get; set; }
 
@@ -35,7 +35,7 @@ namespace PetCare.ViewModels
             LoadProfile();
         }
 
-        // --- Properties ---
+
 
         public string WelcomeMessage => $"Salut, {_loggedInUser.Prenume}!";
 
@@ -84,7 +84,7 @@ namespace PetCare.ViewModels
             set { _newAnimalBirthDate = value; OnPropertyChanged(nameof(NewAnimalBirthDate)); }
         }
 
-        // --- Logic ---
+
 
         private void LoadProfile()
         {
@@ -106,16 +106,16 @@ namespace PetCare.ViewModels
         {
             var ownerService = new OwnerService();
             
-            // Load Species
+
             var speciesList = ownerService.GetSpecies();
             Species.Clear();
             foreach (var s in speciesList) Species.Add(s);
             if (Species.Any()) SelectedSpecies = Species.First();
 
-            // Load Animals
+
             LoadAnimals();
             
-            // Load Appointments
+
             LoadAppointments();
             LoadReminders();
         }
@@ -130,7 +130,7 @@ namespace PetCare.ViewModels
             foreach (var a in myAnimals) Animals.Add(a);
         }
 
-        public ObservableCollection<MedicalHistoryDTO> SelectedAnimalHistory { get; set; } = new ObservableCollection<MedicalHistoryDTO>();
+        public ObservableCollection<MedicalHistory> SelectedAnimalHistory { get; set; } = new ObservableCollection<MedicalHistory>();
 
         private AnimalModel _selectedAnimalForHistory;
         public AnimalModel SelectedAnimalForHistory
@@ -154,7 +154,7 @@ namespace PetCare.ViewModels
 
             foreach (var h in history)
             {
-                SelectedAnimalHistory.Add(new MedicalHistoryDTO
+                SelectedAnimalHistory.Add(new MedicalHistory
                 {
                     FisaID = h.FisaID,
                     Data = h.DataCrearii ?? DateTime.MinValue,
@@ -166,7 +166,7 @@ namespace PetCare.ViewModels
         }
 
         
-        public ObservableCollection<ReminderDTO> Reminders { get; set; } = new ObservableCollection<ReminderDTO>();
+        public ObservableCollection<Reminder> Reminders { get; set; } = new ObservableCollection<Reminder>();
 
         private void LoadReminders()
         {
@@ -178,20 +178,20 @@ namespace PetCare.ViewModels
             foreach (var r in reminders) Reminders.Add(r);
         }
 
-        public void OpenChat(AppointmentDTO appointment)
+        public void OpenChat(Appointment appointment)
         {
             if (appointment == null) return;
             
-            // Partner name for owner is the Medic
+
             var chatView = new Views.ChatView(appointment.ProgramareID, _loggedInUser.UtilizatorID, appointment.MedicNume);
             
-            // Mark as read locally immediately when opening
+
             appointment.HasUnreadMessages = false;
             
             chatView.ShowDialog();
         }
 
-        public void ViewMedicalRecord(MedicalHistoryDTO historyItem)
+        public void ViewMedicalRecord(MedicalHistory historyItem)
         {
             if (historyItem == null) return;
             var viewWindow = new Views.ViewMedicalRecordView(historyItem.FullRecord);
@@ -202,7 +202,7 @@ namespace PetCare.ViewModels
         {
             if (_proprietarID == null) return;
             var appointmentService = new AppointmentService();
-            var chatService = new ChatService(); // Instantiate ChatService
+                var chatService = new ChatService();
             var appointments = appointmentService.GetOwnerAppointments(_proprietarID.Value);
             
             Appointments.Clear();
@@ -213,7 +213,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // --- Actions ---
+
 
         public void SaveProfile()
         {
@@ -228,7 +228,7 @@ namespace PetCare.ViewModels
 
             if (success)
             {
-                // Refresh to get the new ID
+
                 _proprietarID = ownerService.GetProprietarID(_loggedInUser.UtilizatorID);
                 IsProfileIncomplete = false;
                 LoadData();
@@ -260,12 +260,12 @@ namespace PetCare.ViewModels
             if (success)
             {
                 MessageBox.Show("Animal adăugat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Reset inputs
+
                 NewAnimalName = "";
                 NewAnimalMicrocip = "";
                 NewAnimalBirthDate = DateTime.Today;
                 
-                // Close form
+
                 IsAddAnimalVisible = false;
 
                 LoadAnimals();

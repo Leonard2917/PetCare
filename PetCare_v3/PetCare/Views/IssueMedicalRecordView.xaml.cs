@@ -11,7 +11,7 @@ namespace PetCare.Views
             InitializeComponent();
         }
 
-        public IssueMedicalRecordView(AppointmentDTO appointment)
+        public IssueMedicalRecordView(Appointment appointment)
         {
             InitializeComponent();
             DataContext = new IssueMedicalRecordViewModel(appointment);

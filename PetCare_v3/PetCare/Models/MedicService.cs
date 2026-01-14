@@ -15,14 +15,14 @@ namespace PetCare.Models
             }
         }
 
-        public MedicInfoDTO GetMedicProfile(int medicID)
+        public MedicInfo GetMedicProfile(int medicID)
         {
             using (var context = new PetCareEntities())
             {
                 var medic = context.Medicis.Include("Utilizatori").FirstOrDefault(m => m.MedicID == medicID);
                 if (medic != null)
                 {
-                    return new MedicInfoDTO
+                    return new MedicInfo
                     {
                         MedicID = medic.MedicID,
                         Nume = medic.Utilizatori.Nume,
@@ -111,29 +111,29 @@ namespace PetCare.Models
             }
         }
 
-        public List<ClinicDTO> GetMedicClinicsList(int medicID)
+        public List<Clinic> GetMedicClinicsList(int medicID)
         {
             using (var context = new PetCareEntities())
             {
                 var medic = context.Medicis.Include("Clinicis").FirstOrDefault(m => m.MedicID == medicID);
                 if (medic != null)
                 {
-                    return medic.Clinicis.Select(c => new ClinicDTO
+                    return medic.Clinicis.Select(c => new Clinic
                     {
                         ClinicaID = c.ClinicaID,
                         Nume = c.Nume,
                         Adresa = c.Adresa
                     }).ToList();
                 }
-                return new List<ClinicDTO>();
+                return new List<Clinic>();
             }
         }
 
-        public List<ClinicDTO> GetAllClinics()
+        public List<Clinic> GetAllClinics()
         {
             using (var context = new PetCareEntities())
             {
-                return context.Clinicis.Select(c => new ClinicDTO
+                return context.Clinicis.Select(c => new Clinic
                 {
                     ClinicaID = c.ClinicaID,
                     Nume = c.Nume,
@@ -263,7 +263,7 @@ namespace PetCare.Models
             }
         }
 
-        public List<MedicInfoDTO> GetAvailableMedicsForAnimal(int clinicaID, int specieID)
+        public List<MedicInfo> GetAvailableMedicsForAnimal(int clinicaID, int specieID)
         {
             using (var context = new PetCareEntities())
             {
@@ -273,7 +273,7 @@ namespace PetCare.Models
                     .Include("Utilizatori")
                     .Where(m => m.Clinicis.Any(c => c.ClinicaID == clinicaID) &&
                                 m.Speciis.Any(s => s.SpecieID == specieID))
-                    .Select(m => new MedicInfoDTO
+                    .Select(m => new MedicInfo
                     {
                         MedicID = m.MedicID,
                         Nume = m.Utilizatori.Nume,
@@ -292,14 +292,14 @@ namespace PetCare.Models
             {
                 try
                 {
-                    // Check if already in clinic
+
                     var medic = context.Medicis.Include("Clinicis").FirstOrDefault(m => m.MedicID == medicID);
                     if (medic != null && medic.Clinicis.Any(c => c.ClinicaID == clinicID))
                     {
                         return false;
                     }
 
-                    // Check if request already exists
+
                     if (context.CereriMedicis.Any(r => r.MedicID == medicID && r.ClinicaID == clinicID && r.Status == "Pending"))
                     {
                         return false;
@@ -321,14 +321,14 @@ namespace PetCare.Models
             }
         }
 
-        public List<MedicRequestDTO> GetMedicRequests(int medicID)
+        public List<MedicRequest> GetMedicRequests(int medicID)
         {
             using (var context = new PetCareEntities())
             {
                 return context.CereriMedicis
                     .Include("Clinici")
                     .Where(r => r.MedicID == medicID)
-                    .Select(r => new MedicRequestDTO
+                    .Select(r => new MedicRequest
                     {
                         CerereID = r.CerereID,
                         ClinicaID = r.ClinicaID,
@@ -341,14 +341,14 @@ namespace PetCare.Models
             }
         }
 
-        public List<MedicRequestDTO> GetIncomingRequestsForClinic(int clinicID)
+        public List<MedicRequest> GetIncomingRequestsForClinic(int clinicID)
         {
             using (var context = new PetCareEntities())
             {
                 return context.CereriMedicis
                     .Include("Medici.Utilizatori")
                     .Where(r => r.ClinicaID == clinicID && r.Status == "Pending")
-                    .Select(r => new MedicRequestDTO
+                    .Select(r => new MedicRequest
                     {
                         CerereID = r.CerereID,
                         MedicID = r.MedicID,
@@ -397,7 +397,7 @@ namespace PetCare.Models
         }
     }
 
-    public class MedicRequestDTO
+    public class MedicRequest
     {
         public int CerereID { get; set; }
         public int MedicID { get; set; }

@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using PetCare.ViewModels;
 
-// ATENȚIE AICI: Trebuie să fie NumeProiect.Views
 namespace PetCare.Views
 {
     public partial class LoginView : Page

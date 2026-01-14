@@ -22,7 +22,7 @@ namespace PetCare.Views
             if (listBox != null)
             {
                 _viewModel.SelectedServices.Clear();
-                foreach (ServiceDTO service in listBox.SelectedItems)
+                foreach (Service service in listBox.SelectedItems)
                 {
                     _viewModel.SelectedServices.Add(service);
                 }

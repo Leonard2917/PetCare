@@ -6,7 +6,7 @@ namespace PetCare.Models
 {
     public class ChatService
     {
-        public List<ChatMessageDTO> GetMessages(int programareID, int currentUserId)
+        public List<ChatMessage> GetMessages(int programareID, int currentUserId)
         {
             using (var context = new PetCareEntities())
             {
@@ -16,7 +16,7 @@ namespace PetCare.Models
                     .OrderBy(m => m.DataOra)
                     .ToList();
 
-                return messages.Select(m => new ChatMessageDTO
+                return messages.Select(m => new ChatMessage
                 {
                     MesajID = m.MesajID,
                     SenderName = m.Utilizatori != null ? m.Utilizatori.Nume + " " + m.Utilizatori.Prenume : "Unknown",
@@ -56,7 +56,7 @@ namespace PetCare.Models
         {
              using (var context = new PetCareEntities())
             {
-                // Count messages NOT sent by me, that are NOT read
+
                 return context.Mesajes.Count(m => m.ProgramareID == programareID && m.ExpeditorID != currentUserId && (m.IsCitit == null || m.IsCitit == false));
             }
         }
@@ -65,7 +65,7 @@ namespace PetCare.Models
         {
             using (var context = new PetCareEntities())
             {
-                // Find messages NOT sent by me, that are NOT read
+
                 var unreadMessages = context.Mesajes
                     .Where(m => m.ProgramareID == programareID && m.ExpeditorID != currentUserId && (m.IsCitit == null || m.IsCitit == false))
                     .ToList();

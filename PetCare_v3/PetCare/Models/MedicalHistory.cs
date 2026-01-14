@@ -1,9 +1,8 @@
 using System;
-using PetCare.Models;
 
-namespace PetCare.ViewModels
+namespace PetCare.Models
 {
-    public class MedicalHistoryDTO
+    public class MedicalHistory
     {
         public int FisaID { get; set; }
         public DateTime Data { get; set; }

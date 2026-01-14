@@ -185,28 +185,28 @@
     </Compile>
     <Compile Include="Models\MedicalRecordService.cs" />
     <Compile Include="Models\AnimalModel.cs" />
-    <Compile Include="Models\AppointmentDTO.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\AppointmentService.cs" />
     <Compile Include="Models\AuthenticationService.cs" />
-    <Compile Include="Models\StatisticsDTOs.cs" />
+    <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\StatisticsService.cs" />
-    <Compile Include="Models\ClinicDTO.cs" />
+    <Compile Include="Models\Clinic.cs" />
     <Compile Include="Models\ClinicService.cs" />
     <Compile Include="Models\ClinicsModel.cs" />
-    <Compile Include="Models\MedicInfoDTO.cs" />
+    <Compile Include="Models\MedicInfo.cs" />
     <Compile Include="ViewModels\IssueMedicalRecordViewModel.cs" />
     <Compile Include="Models\MedicService.cs" />
     <Compile Include="Models\OwnerService.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Models\SelectableSpeciesModel.cs" />
-    <Compile Include="Models\ServiceDTO.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Models\SpeciesModel.cs" />
     <Compile Include="Models\StockModel.cs" />
     <Compile Include="Models\StockService.cs" />
     <Compile Include="Models\TimeSlot.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\ReminderDTO.cs" />
-    <Compile Include="Models\ChatMessageDTO.cs" />
+    <Compile Include="Models\Reminder.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
     <Compile Include="Models\ChatService.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\StatisticsViewModel.cs" />
@@ -231,7 +231,7 @@
       <DependentUpon>ViewMedicalRecordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ViewMedicalRecordViewModel.cs" />
-    <Compile Include="ViewModels\MedicalHistoryDTO.cs" />
+    <Compile Include="Models\MedicalHistory.cs" />
     <Compile Include="Views\BookAppointmentView.xaml.cs">
       <DependentUpon>BookAppointmentView.xaml</DependentUpon>
     </Compile>

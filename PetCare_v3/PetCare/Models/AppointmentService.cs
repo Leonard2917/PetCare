@@ -118,7 +118,7 @@ namespace PetCare.Models
             }
         }
 
-        public List<AppointmentDTO> GetOwnerAppointments(int proprietarID)
+        public List<Appointment> GetOwnerAppointments(int proprietarID)
         {
             using (var context = new PetCareEntities())
             {
@@ -130,7 +130,7 @@ namespace PetCare.Models
                     .OrderByDescending(p => p.DataOra)
                     .ToList();
 
-                var result = new List<AppointmentDTO>();
+                var result = new List<Appointment>();
 
                 foreach (var appt in appointments)
                 {
@@ -146,7 +146,7 @@ namespace PetCare.Models
                         .Where(s => serviciiIDs.Contains(s.ServiciuID))
                         .Sum(s => (int?)s.DurataEstimataMinute) ?? 0;
 
-                    result.Add(new AppointmentDTO
+                    result.Add(new Appointment
                     {
                         ProgramareID = appt.ProgramareID,
                         ClinicaID = appt.ClinicaID.Value,
@@ -166,7 +166,7 @@ namespace PetCare.Models
             }
         }
 
-        public List<AppointmentDTO> GetMedicAppointments(int medicID)
+        public List<Appointment> GetMedicAppointments(int medicID)
         {
             using (var context = new PetCareEntities())
             {
@@ -178,7 +178,7 @@ namespace PetCare.Models
                     .OrderBy(p => p.DataOra)
                     .ToList();
 
-                var result = new List<AppointmentDTO>();
+                var result = new List<Appointment>();
 
                 foreach (var appt in appointments)
                 {
@@ -198,7 +198,7 @@ namespace PetCare.Models
                         ? $"{appt.Animale.Proprietari.Utilizatori.Nume} {appt.Animale.Proprietari.Utilizatori.Prenume}"
                         : "N/A";
 
-                    result.Add(new AppointmentDTO
+                    result.Add(new Appointment
                     {
                         ProgramareID = appt.ProgramareID,
                         ClinicaID = appt.ClinicaID.Value,

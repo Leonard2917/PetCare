@@ -2,7 +2,7 @@ using System;
 
 namespace PetCare.Models
 {
-    public class ReminderDTO
+    public class Reminder
     {
         public int ReminderID { get; set; }
         public string AnimalNume { get; set; }
@@ -12,6 +12,6 @@ namespace PetCare.Models
         public string MedicNume { get; set; }
         
         public string DataLimitaDisplay => DataLimita.ToString("dd.MM.yyyy");
-        public string StatusColor => DataLimita < DateTime.Today ? "#FFCDD2" : "#E8F5E9"; // Red if overdue, Green if future
+        public string StatusColor => DataLimita < DateTime.Today ? "#FFCDD2" : "#E8F5E9"; 
     }
 }

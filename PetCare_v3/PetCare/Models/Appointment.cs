@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PetCare.Models
 {
-    public class AppointmentDTO : ViewModels.BaseViewModel 
+    public class Appointment : ViewModels.BaseViewModel 
     {
         public int ProgramareID { get; set; }
         public int ClinicaID { get; set; }
@@ -23,7 +23,7 @@ namespace PetCare.Models
         public bool CanFinalize => Status == "Confirmed";
         public bool CanViewRecord => Status == "Completed"; 
 
-        // Chat UI Properties
+
         private bool _hasUnreadMessages;
         public bool HasUnreadMessages
         {

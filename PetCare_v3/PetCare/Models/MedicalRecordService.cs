@@ -6,7 +6,7 @@ namespace PetCare.Models
 {
     public class MedicalRecordService
     {
-        public string SaveMedicalRecord(int programareID, string diagnostic, string tratament, List<int> serviciiIDs, List<MaterialUsageDTO> materiale, 
+        public string SaveMedicalRecord(int programareID, string diagnostic, string tratament, List<int> serviciiIDs, List<MaterialUsage> materiale, 
                                       bool addReminder, DateTime? reminderDate, string reminderMessage)
         {
             using (var context = new PetCareEntities())
@@ -15,18 +15,18 @@ namespace PetCare.Models
                 {
                     try
                     {
-                        // 1. Create the FisaMedicale
+
                         var fisa = new FiseMedicale
                         {
                             ProgramareID = programareID,
                             Diagnostic = diagnostic,
-                            Tratament = tratament ?? " ", // Ensure not null
+                            Tratament = tratament ?? " ",
                             DataCrearii = DateTime.Now
                         };
                         context.FiseMedicales.Add(fisa);
                         context.SaveChanges();
 
-                        // 2. Add Services
+
                         foreach (var sId in serviciiIDs)
                         {
                             var service = context.Serviciis.Find(sId);
@@ -41,7 +41,7 @@ namespace PetCare.Models
                             }
                         }
 
-                        // 3. Add Materials and deduct stock
+
                         foreach (var mat in materiale)
                         {
                             context.DetaliiFisa_Materiale.Add(new DetaliiFisa_Materiale
@@ -58,7 +58,7 @@ namespace PetCare.Models
                             }
                         }
 
-                        // 4. Update Appointment Status & Add Reminder
+
                         var appointment = context.Programaris.Find(programareID);
                         if (appointment != null)
                         {
@@ -80,12 +80,12 @@ namespace PetCare.Models
 
                         context.SaveChanges();
                         transaction.Commit();
-                        return null; // Success
+                        return null;
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        // Return the inner exception message if available for detailed debugging
+
                         var msg = ex.Message;
                         if (ex.InnerException != null) msg += " Inner: " + ex.InnerException.Message;
                         return msg;
@@ -147,13 +147,13 @@ namespace PetCare.Models
         }
     }
 
-    public class MaterialUsageDTO
+    public class MaterialUsage
     {
         public int StocID { get; set; }
         public string NumeMaterial { get; set; }
         public decimal Cantitate { get; set; }
         
-        // Extended for View View
+
         public decimal Cost { get; set; }
     }
 }

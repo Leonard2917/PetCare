@@ -16,7 +16,7 @@ namespace PetCare.ViewModels
         private int _adminID;
         private int _clinicID;
 
-        // Clinic Details
+
         private string _clinicName;
         private string _clinicAddress;
         private string _clinicPhone;
@@ -43,16 +43,16 @@ namespace PetCare.ViewModels
             set { _clinicCUI = value; OnPropertyChanged(nameof(ClinicCUI)); }
         }
 
-        // Services
-        public ObservableCollection<ServiceDTO> Services { get; set; }
-        private ServiceDTO _selectedService;
-        public ServiceDTO SelectedService
+
+        public ObservableCollection<Service> Services { get; set; }
+        private Service _selectedService;
+        public Service SelectedService
         {
             get => _selectedService;
             set { _selectedService = value; OnPropertyChanged(nameof(SelectedService)); }
         }
 
-        // Inputs for Service
+
         private string _newServiceName;
         private decimal _newServicePrice;
         private int _newServiceDuration = 30;
@@ -73,14 +73,14 @@ namespace PetCare.ViewModels
             set { _newServiceDuration = value; OnPropertyChanged(nameof(NewServiceDuration)); }
         }
 
-        // Medics
-        public ObservableCollection<MedicInfoDTO> Medics { get; set; }
 
-        // Incoming Join Requests from Medics
-        public ObservableCollection<MedicRequestDTO> IncomingRequests { get; set; } = new ObservableCollection<MedicRequestDTO>();
+        public ObservableCollection<MedicInfo> Medics { get; set; }
+
+
+        public ObservableCollection<MedicRequest> IncomingRequests { get; set; } = new ObservableCollection<MedicRequest>();
         public int IncomingRequestsCount => IncomingRequests.Count;
 
-        // Stock / Inventory
+
         public ObservableCollection<StockModel> StockList { get; set; }
         private StockModel _selectedStock;
         public StockModel SelectedStock
@@ -118,12 +118,12 @@ namespace PetCare.ViewModels
         public StatisticsViewModel Statistics { get; set; }
 
 
-        // Constructor
+
         public AdminDashboardViewModel(UserModel user)
         {
             _clinicService = new ClinicService();
             _stockService = new StockService();
-            _adminID = user.UtilizatorID; // UserID is passed
+            _adminID = user.UtilizatorID; 
             
             Statistics = new StatisticsViewModel(user);
 
@@ -132,8 +132,8 @@ namespace PetCare.ViewModels
             {
                 _clinicID = id.Value;
                 LoadClinicDetails();
-                Services = new ObservableCollection<ServiceDTO>();
-                Medics = new ObservableCollection<MedicInfoDTO>();
+                Services = new ObservableCollection<Service>();
+                Medics = new ObservableCollection<MedicInfo>();
                 StockList = new ObservableCollection<StockModel>();
                 
                 LoadServices();
@@ -187,9 +187,9 @@ namespace PetCare.ViewModels
         }
 
 
-        // Start Public Methods for Code-Behind
 
-        // Clinic Logic
+
+
         public void SaveClinic()
         {
             bool success = _clinicService.UpdateClinicDetails(_clinicID, ClinicName, ClinicAddress, ClinicPhone, ClinicCUI);
@@ -197,7 +197,7 @@ namespace PetCare.ViewModels
             else MessageBox.Show("Eroare la salvare.");
         }
 
-        // Service Logic
+
         public void AddService()
         {
             if (string.IsNullOrWhiteSpace(NewServiceName)) return;
@@ -219,7 +219,7 @@ namespace PetCare.ViewModels
              if (success) MessageBox.Show("Serviciu actualizat!");
         }
 
-        public void DeleteService(ServiceDTO service)
+        public void DeleteService(Service service)
         {
             if (service != null)
             {
@@ -229,7 +229,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Stock Logic
+
         public void AddStock()
         {
              if (string.IsNullOrWhiteSpace(NewProdus)) return;
@@ -261,8 +261,8 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Medic Approval Logic
-        public void ApproveRequest(MedicRequestDTO request)
+
+        public void ApproveRequest(MedicRequest request)
         {
             if (request == null) return;
             var medicService = new MedicService();
@@ -274,7 +274,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        public void RejectRequest(MedicRequestDTO request)
+        public void RejectRequest(MedicRequest request)
         {
             if (request == null) return;
             var medicService = new MedicService();
@@ -285,7 +285,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Boilerplate INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

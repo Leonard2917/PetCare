@@ -1,6 +1,6 @@
 namespace PetCare.Models
 {
-    public class ServiceDTO
+    public class Service
     {
         public int ServiciuID { get; set; }
         public int ClinicaID { get; set; }

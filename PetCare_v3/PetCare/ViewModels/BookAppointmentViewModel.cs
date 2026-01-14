@@ -16,7 +16,7 @@ namespace PetCare.ViewModels
         private readonly MedicService _medicService;
         private readonly AppointmentService _appointmentService;
 
-        // Step 1: Animal & Clinic
+
         public ObservableCollection<AnimalModel> MyAnimals { get; set; } = new ObservableCollection<AnimalModel>();
         private AnimalModel _selectedAnimal;
         public AnimalModel SelectedAnimal
@@ -31,9 +31,9 @@ namespace PetCare.ViewModels
             }
         }
 
-        public ObservableCollection<ClinicDTO> AllClinics { get; set; } = new ObservableCollection<ClinicDTO>();
-        private ClinicDTO _selectedClinic;
-        public ClinicDTO SelectedClinic
+        public ObservableCollection<Clinic> AllClinics { get; set; } = new ObservableCollection<Clinic>();
+        private Clinic _selectedClinic;
+        public Clinic SelectedClinic
         {
             get => _selectedClinic;
             set
@@ -45,9 +45,9 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Step 2: Services
-        public ObservableCollection<ServiceDTO> ClinicServices { get; set; } = new ObservableCollection<ServiceDTO>();
-        public ObservableCollection<ServiceDTO> SelectedServices { get; set; } = new ObservableCollection<ServiceDTO>();
+
+        public ObservableCollection<Service> ClinicServices { get; set; } = new ObservableCollection<Service>();
+        public ObservableCollection<Service> SelectedServices { get; set; } = new ObservableCollection<Service>();
 
         private int _totalDuration;
         public int TotalDuration
@@ -57,10 +57,10 @@ namespace PetCare.ViewModels
         }
         public string TotalDurationDisplay => $"{TotalDuration} minute";
 
-        // Step 3: Medic
-        public ObservableCollection<MedicInfoDTO> AvailableMedics { get; set; } = new ObservableCollection<MedicInfoDTO>();
-        private MedicInfoDTO _selectedMedic;
-        public MedicInfoDTO SelectedMedic
+
+        public ObservableCollection<MedicInfo> AvailableMedics { get; set; } = new ObservableCollection<MedicInfo>();
+        private MedicInfo _selectedMedic;
+        public MedicInfo SelectedMedic
         {
             get => _selectedMedic;
             set
@@ -72,7 +72,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Step 4: Date
+
         public ObservableCollection<DateTime> AvailableDates { get; set; } = new ObservableCollection<DateTime>();
         private DateTime? _selectedDate;
         public DateTime? SelectedDate
@@ -87,7 +87,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // Step 5: Time
+
         public ObservableCollection<TimeSlot> AvailableTimeSlots { get; set; } = new ObservableCollection<TimeSlot>();
         private TimeSlot _selectedTimeSlot;
         public TimeSlot SelectedTimeSlot
@@ -101,7 +101,7 @@ namespace PetCare.ViewModels
             }
         }
 
-        // UI State
+
         public bool IsStep2Enabled => SelectedAnimal != null;
         public bool IsStep3Enabled => SelectedClinic != null;
         public bool IsStep4Enabled => SelectedServices.Count > 0;
@@ -118,8 +118,7 @@ namespace PetCare.ViewModels
             _appointmentService = new AppointmentService();
 
             LoadAnimals();
-            
-            // Listen to SelectedServices changes
+
             SelectedServices.CollectionChanged += (s, e) => 
             {
                 CalculateTotalDuration();
@@ -196,7 +195,7 @@ namespace PetCare.ViewModels
 
             AvailableDates.Clear();
             var today = DateTime.Today;
-            for (int i = 0; i < 30; i++) // Next 30 days
+            for (int i = 0; i < 30; i++) 
             {
                 var date = today.AddDays(i);
                 var dayOfWeek = ((int)date.DayOfWeek == 0) ? 7 : (int)date.DayOfWeek;
@@ -247,7 +246,7 @@ namespace PetCare.ViewModels
             if (success)
             {
                 MessageBox.Show("Programare creată cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Navigate back to owner dashboard
+
                 Application.Current.MainWindow.Content = new Views.OwnerDashboardView(_loggedInUser);
             }
             else

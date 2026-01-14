@@ -11,7 +11,7 @@ namespace PetCare.ViewModels
         private readonly int _currentUserId;
         private readonly ChatService _chatService;
 
-        public ObservableCollection<ChatMessageDTO> Messages { get; set; } = new ObservableCollection<ChatMessageDTO>();
+        public ObservableCollection<ChatMessage> Messages { get; set; } = new ObservableCollection<ChatMessage>();
 
         private string _newMessageText;
         public string NewMessageText
@@ -27,7 +27,7 @@ namespace PetCare.ViewModels
             set { _title = value; OnPropertyChanged(nameof(Title)); }
         }
 
-        // Commands (relied on RelayCommand like implementation in BaseViewModel if available, else simple methods called from code-behind)
+
         
         public ChatViewModel(int programareID, int currentUserId, string chatPartnerName)
         {
@@ -36,7 +36,7 @@ namespace PetCare.ViewModels
             _chatService = new ChatService();
             Title = $"Chat cu {chatPartnerName}";
             
-            // Mark as read when opening chat
+
             _chatService.MarkAsRead(_programareID, _currentUserId);
             
             LoadMessages();
@@ -59,8 +59,8 @@ namespace PetCare.ViewModels
             bool success = _chatService.SendMessage(_programareID, _currentUserId, NewMessageText);
             if (success)
             {
-                NewMessageText = ""; // Clear input
-                LoadMessages(); // Refresh
+                NewMessageText = "";
+                LoadMessages();
             }
             else
             {
